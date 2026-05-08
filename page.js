@@ -1,0 +1,133 @@
+export default function Home() {
+  return (
+    <main className="min-h-screen bg-zinc-100 text-zinc-900">
+      <section className="bg-[linear-gradient(to_bottom_right,#27272a,#18181b)] text-white py-24">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <h1 className="text-6xl font-black leading-tight">
+              BUILT ON STRENGTH.
+              <span className="block text-amber-500">FINISHED WITH PRIDE.</span>
+            </h1>
+
+            <p className="mt-8 text-xl text-zinc-300 leading-relaxed">
+              Over 20 years of professional concrete experience with attention to detail,
+              durability, and craftsmanship that sets us apart.
+            </p>
+
+            <a
+              href="#contact"
+              className="inline-block mt-10 bg-amber-600 hover:bg-amber-500 transition px-8 py-4 rounded-2xl font-bold"
+            >
+              GET A FREE QUOTE
+            </a>
+          </div>
+
+          <div className="flex justify-center">
+            <img
+              src="/logo.png"
+              alt="Kowalski Concrete Contracting"
+              className="max-w-md w-full"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+          <div>
+            <h2 className="text-5xl font-black leading-tight">
+              EXPERIENCE YOU CAN BUILD ON.
+            </h2>
+
+            <p className="mt-8 text-lg text-zinc-700 leading-relaxed">
+              Kowalski Concrete Contracting provides high-quality concrete solutions
+              for residential and commercial projects throughout Ontario.
+            </p>
+
+            <p className="mt-6 text-lg text-zinc-700 leading-relaxed">
+              We take pride in every project and believe attention to detail is what
+              separates good work from exceptional craftsmanship.
+            </p>
+          </div>
+
+          <div className="grid gap-6">
+            <div className="bg-zinc-900 text-white rounded-3xl p-8">
+              <h3 className="text-3xl font-black">20+ Years Experience</h3>
+            </div>
+
+            <div className="bg-amber-600 text-white rounded-3xl p-8">
+              <h3 className="text-3xl font-black">Attention To Detail</h3>
+            </div>
+
+            <div className="bg-zinc-800 text-white rounded-3xl p-8">
+              <h3 className="text-3xl font-black">Pride In Our Work</h3>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-zinc-900 text-white py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-5xl font-black text-center">
+            CONCRETE SOLUTIONS FOR EVERY PROJECT
+          </h2>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+            {[
+              "Driveways",
+              "Garage Floors",
+              "Patios",
+              "Foundations",
+              "Steps & Landings",
+              "Decorative Concrete",
+            ].map((service) => (
+              <div
+                key={service}
+                className="bg-zinc-800 border border-zinc-700 rounded-3xl p-8"
+              >
+                <h3 className="text-2xl font-bold">{service}</h3>
+
+                <p className="mt-4 text-zinc-400">
+                  Professional concrete workmanship completed with precision and durability.
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="bg-[linear-gradient(to_bottom_right,#292524,#111827)] text-white py-24">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-5xl font-black">
+            LET'S BUILD SOMETHING STRONG TOGETHER.
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-16">
+            <div className="bg-zinc-900 rounded-3xl p-8">
+              <h3 className="text-amber-500 uppercase tracking-widest text-sm">Phone</h3>
+              <p className="mt-4 text-2xl font-bold">249-535-7501</p>
+            </div>
+
+            <div className="bg-zinc-900 rounded-3xl p-8">
+              <h3 className="text-amber-500 uppercase tracking-widest text-sm">Email</h3>
+              <p className="mt-4 text-xl font-bold break-words">
+                krisk@kowalskicc.ca
+              </p>
+            </div>
+
+            <div className="bg-zinc-900 rounded-3xl p-8">
+              <h3 className="text-amber-500 uppercase tracking-widest text-sm">Website</h3>
+              <p className="mt-4 text-xl font-bold break-words">
+                www.kowalskicc.ca
+              </p>
+            </div>
+          </div>
+
+          <p className="mt-10 text-zinc-400">
+            2060 Lea Rd, Innisfil ON L9S 1T3
+          </p>
+        </div>
+      </section>
+    </main>
+  );
+}
