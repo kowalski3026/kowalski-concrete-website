@@ -35,8 +35,8 @@ export default function Home() {
     backgroundImage:
       "linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('/hero.jpg')",
   }}
->
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+  >
+        <div className="max-w-7xl mx-auto px-6 pt-40 pb-24 grid lg:grid-cols-2 gap-16 items-center">
           <div>
             <h1 className="text-6xl font-black leading-tight">
               BUILT ON STRENGTH.
