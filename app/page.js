@@ -1,7 +1,5 @@
 export default function Home() {
   return (
-    export default function Home() {
-  return (
     <>
       
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
