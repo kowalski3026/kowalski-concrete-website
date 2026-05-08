@@ -22,13 +22,13 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="flex justify-center">
-            <img
-              src="/Logo.png"
-              alt="Kowalski Concrete Contracting"
-              className="max-w-md w-full"
-            />
-          </div>
+          <div className="mt-12">
+  <img
+    src="/Logo.png"
+    alt="Kowalski Concrete Contracting"
+    className="w-full max-w-lg rounded-2xl shadow-2xl"
+  />
+</div>
         </div>
       </section>
 
