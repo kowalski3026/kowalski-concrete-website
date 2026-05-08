@@ -31,7 +31,7 @@ export default function Home() {
         </div>
       </nav>
 
-      <main className="min-h-screen">
+      <main className="min-h-screen">      
     <main className="min-h-screen bg-zinc-100 text-zinc-900">
       <section className="bg-[linear-gradient(to_bottom_right,#27272a,#18181b)] text-white py-24">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
@@ -161,5 +161,6 @@ export default function Home() {
         </div>
       </section>
     </main>
+                </>
   );
 }
