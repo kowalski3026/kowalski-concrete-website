@@ -24,7 +24,7 @@ export default function Home() {
 
           <div className="flex justify-center">
             <img
-              src="/logo.png"
+              src="/Logo.png"
               alt="Kowalski Concrete Contracting"
               className="max-w-md w-full"
             />
