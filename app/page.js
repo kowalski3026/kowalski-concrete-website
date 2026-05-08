@@ -1,5 +1,37 @@
 export default function Home() {
   return (
+    export default function Home() {
+  return (
+    <>
+      
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+
+          <div className="flex items-center gap-3">
+            <img src="/logo.jpg" className="w-14 h-14 object-contain" />
+            <div className="text-white font-bold leading-tight">
+              Kowalski Concrete
+            </div>
+          </div>
+
+          <div className="hidden md:flex gap-8 text-white uppercase text-sm font-semibold">
+            <a href="#about">About</a>
+            <a href="#services">Services</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <a
+            href="#contact"
+            className="border border-white px-5 py-2 text-white font-bold uppercase text-sm hover:bg-white hover:text-black transition"
+          >
+            Get Quote
+          </a>
+
+        </div>
+      </nav>
+
+      <main className="min-h-screen">
     <main className="min-h-screen bg-zinc-100 text-zinc-900">
       <section className="bg-[linear-gradient(to_bottom_right,#27272a,#18181b)] text-white py-24">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
