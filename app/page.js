@@ -36,14 +36,14 @@ export default function Home() {
       "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/hero.jpg')",
   }}
   >
-        <div className="max-w-7xl mx-auto px-6 pt-40 pb-24 grid lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 pt-48 pb-32 grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h1 className="text-6xl font-black leading-tight">
+            <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight">
               BUILT ON STRENGTH.
               <span className="block text-amber-500">FINISHED WITH PRIDE.</span>
             </h1>
 
-            <p className="mt-8 text-xl text-zinc-300 leading-relaxed">
+            <p className="mt-8 text-lg md:text-2xl text-zinc-200 leading-relaxed max-w-2xl">
               Over 20 years of professional concrete experience with attention to detail,
               durability, and craftsmanship that sets us apart.
             </p>
