@@ -33,7 +33,7 @@ export default function Home() {
   className="relative min-h-screen bg-cover bg-center text-white"
   style={{
     backgroundImage:
-      "linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('/hero.jpg')",
+      "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/hero.jpg')",
   }}
   >
         <div className="max-w-7xl mx-auto px-6 pt-40 pb-24 grid lg:grid-cols-2 gap-16 items-center">
