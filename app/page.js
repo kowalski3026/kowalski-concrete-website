@@ -28,7 +28,7 @@ export default function Home() {
 
         </div>
       </nav>
-     
+     <main className="min-h-screen bg-zinc-100 text-zinc-900">
     <section
   className="relative min-h-screen bg-cover bg-center text-white"
   style={{
