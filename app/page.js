@@ -129,6 +129,20 @@ export default function Home() {
           </div>
         </div>
       </section>
+                <section className="bg-zinc-800 text-white py-24">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <h2 className="text-5xl font-black">
+      MUNICIPAL & INFRASTRUCTURE
+    </h2>
+
+    <p className="mt-8 text-zinc-300 text-xl max-w-3xl">
+      Experienced in bridge rehabilitation, municipal concrete,
+      structural repairs, curbs, sidewalks, and public infrastructure projects.
+    </p>
+
+  </div>
+</section>
 
       <section id="contact" className="bg-[linear-gradient(to_bottom_right,#292524,#111827)] text-white py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
