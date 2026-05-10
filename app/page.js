@@ -3,10 +3,10 @@ export default function Home() {
     <>
       
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
 
           <div className="flex items-center gap-3">
-            <img src="/logo.jpg" className="w-14 h-14 object-contain" />
+            <img src="/logo.jpg" className="w-28 h-28 object-contain" />
             <div className="text-white font-bold leading-tight">
               Kowalski Concrete
             </div>
