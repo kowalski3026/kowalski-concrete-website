@@ -14,7 +14,7 @@ export default function Home() {
 
           <a
   href="tel:249-535-7501"
-  className="text-white font-bold text-sm mr-4"
+  className="hidden md:block text-white font-bold text-sm mr-4"
 >
   249-535-7501
 </a>
