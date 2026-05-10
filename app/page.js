@@ -12,8 +12,14 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="hidden md:flex gap-8 text-white uppercase text-sm font-semibold">
-    <a href="tel:249-535-7501">249-535-7501</a>
+          <a
+  href="tel:249-535-7501"
+  className="text-white font-bold text-sm mr-4"
+>
+  249-535-7501
+</a>
+
+<div className="hidden md:flex gap-8 text-white uppercase text-sm font-semibold">
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
