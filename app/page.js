@@ -5,14 +5,15 @@ export default function Home() {
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-5">
             <img src="/logo.jpg" className="w-28 h-28 object-contain" />
-            <div className="text-white font-bold leading-tight">
+            <div className="text-white font-black leading-tight text-xl">
               Kowalski Concrete
             </div>
           </div>
 
           <div className="hidden md:flex gap-8 text-white uppercase text-sm font-semibold">
+    <a href="tel:249-535-7501">249-535-7501</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
             <a href="#projects">Projects</a>
@@ -44,6 +45,9 @@ export default function Home() {
             </h1>
     <p className="mt-6 text-lg md:text-2xl text-zinc-300 italic">
   Transforming ideas into lasting concrete craftsmanship.
+</p>
+    <p className="mt-6 text-sm md:text-lg uppercase tracking-[0.3em] text-amber-400 font-semibold">
+  Serving Simcoe County & Surrounding Areas
 </p>
 
             <p className="mt-8 text-lg md:text-2xl text-zinc-200 leading-relaxed max-w-2xl">
