@@ -56,13 +56,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="mt-12">
-  <img
-    src="/logo.jpg"
-    alt="Kowalski Concrete Contracting"
-    className="w-full max-w-lg rounded-2xl shadow-2xl"
-  />
-</div>
+      
         </div>
       </section>
 
