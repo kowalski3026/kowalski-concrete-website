@@ -42,6 +42,9 @@ export default function Home() {
               BUILT ON STRENGTH.
               <span className="block text-amber-500">FINISHED WITH PRIDE.</span>
             </h1>
+    <p className="mt-6 text-lg md:text-2xl text-zinc-300 italic">
+  Transforming ideas into lasting concrete craftsmanship.
+</p>
 
             <p className="mt-8 text-lg md:text-2xl text-zinc-200 leading-relaxed max-w-2xl">
               Over 20 years of professional concrete experience with attention to detail,
