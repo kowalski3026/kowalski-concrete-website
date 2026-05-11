@@ -183,7 +183,86 @@ export default function Home() {
 
   </div>
 </section>
+<section className="py-24 bg-zinc-900 text-white">
+  <div className="max-w-7xl mx-auto px-6">
 
+    <div className="text-center">
+      <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+        MUNICIPAL EXPERIENCE
+      </h2>
+
+      <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
+
+      <p className="mt-8 text-zinc-300 text-xl max-w-4xl mx-auto leading-relaxed">
+        Extensive experience working on municipal and infrastructure concrete
+        projects including bridge rehabilitation, sidewalks, curbs, structural
+        repairs, and large-scale public works.
+      </p>
+    </div>
+
+    <div className="grid md:grid-cols-3 gap-8 mt-20">
+
+      <div className="group overflow-hidden rounded-3xl bg-zinc-800">
+        <img
+          src="/bridge1.jpg"
+          alt="Bridge rehabilitation concrete work"
+          className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Bridge Rehabilitation
+          </h3>
+
+          <p className="mt-3 text-zinc-400 leading-relaxed">
+            Structural concrete repairs and rehabilitation work on municipal
+            bridge infrastructure projects.
+          </p>
+        </div>
+      </div>
+
+      <div className="group overflow-hidden rounded-3xl bg-zinc-800">
+        <img
+          src="/bridge2.jpg"
+          alt="Municipal sidewalk and curb concrete work"
+          className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Municipal Concrete
+          </h3>
+
+          <p className="mt-3 text-zinc-400 leading-relaxed">
+            Professional concrete workmanship for sidewalks, curbs, and public
+            infrastructure projects.
+          </p>
+        </div>
+      </div>
+
+      <div className="group overflow-hidden rounded-3xl bg-zinc-800">
+        <img
+          src="/bridge3.jpg"
+          alt="Infrastructure concrete forming and finishing"
+          className="h-80 w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+
+        <div className="p-6">
+          <h3 className="text-2xl font-bold">
+            Infrastructure Projects
+          </h3>
+
+          <p className="mt-3 text-zinc-400 leading-relaxed">
+            Experience with large-scale infrastructure concrete forming,
+            finishing, and structural work.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
       <section id="contact" className="bg-[linear-gradient(to_bottom_right,#292524,#111827)] text-white py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-black">
