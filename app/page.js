@@ -128,9 +128,25 @@ export default function Home() {
               >
                 <h3 className="text-2xl font-bold">{service}</h3>
 
-                <p className="mt-4 text-zinc-400">
-                  Professional concrete workmanship completed with precision and durability.
-                </p>
+              <p className="mt-4 text-zinc-400">
+  {service === "Driveways" &&
+    "High-performance driveways built for durability, function, and standout curb appeal."}
+
+  {service === "Garage Floors" &&
+    "Heavy-duty concrete garage floors finished for durability and a clean modern look."}
+
+  {service === "Patios" &&
+    "Beautiful outdoor concrete spaces designed for entertaining, relaxing, and everyday living."}
+
+  {service === "Foundations" &&
+    "Precision-built foundations engineered for strength, stability, and lasting reliability."}
+
+  {service === "Steps & Landings" &&
+    "Modern concrete entrances designed to combine safety with clean architectural style."}
+
+  {service === "Decorative Concrete" &&
+    "Premium decorative finishes that bring texture, elegance, and personality to your space."}
+</p>
               </div>
             ))}
           </div>
