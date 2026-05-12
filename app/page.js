@@ -73,14 +73,14 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-white">
+      <section className="py-24 bg-black/40 backdrop-blur-sm border border-zinc-700">
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
           <div>
             <h2 className="text-5xl font-black leading-tight">
               EXPERIENCE YOU CAN BUILD ON.
             </h2>
 
-            <p className="mt-8 text-lg text-zinc-700 leading-relaxed">
+            <p className="mt-8 text-lg text-zinc-300 leading-relaxed">
               Kowalski Concrete Contracting provides high-quality concrete solutions
               for residential and commercial projects throughout Ontario.
             </p>
