@@ -3,10 +3,11 @@ export default function Home() {
     <>
       
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-1 
+  flex items-center justify-between">
 
           <div className="flex items-center gap-5">
-            <img src="/logo1.png" className="w-36 h-44 object-contain" />
+            <img src="/logo1.png" className="w-40 md:w-48 h-auto object-contain" />
             <div className="text-white leading-tight">
   <p className="text-sm md:text-base font-bold tracking-wide">
     (249) 535-7501
