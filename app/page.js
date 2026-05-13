@@ -73,7 +73,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-black/40 backdrop-blur-sm border border-zinc-700">
+      <section
+  className="py-24 bg-cover bg-center"
+  style={{ backgroundImage: "url('/rebar-bg.jpg')" }}
+>
         <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
           <div>
             <h2 className="text-5xl font-black leading-tight">
