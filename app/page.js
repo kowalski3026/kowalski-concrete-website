@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <>
       
-      <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-black/30 border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
 
           <div className="flex items-center gap-3 min-w-0">
@@ -39,11 +39,11 @@ export default function Home() {
   className="relative min-h-screen bg-cover bg-center text-white"
   style={{
     backgroundImage:
-      "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/hero.jpg')",
+      "linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('/hero.jpg')",
   }}
   >
         <div className="max-w-7xl mx-auto px-6 pt-48 pb-32 grid lg:grid-cols-2 gap-16 items-center">
-        <div className="bg-black/45 backdrop-blur-sm p-8 rounded-3xl shadow-2xl">
+        <div className="bg-black/20 p-8 rounded-3xl shadow-2xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
               BUILT ON STRENGTH.
               <span className="block text-amber-400">FINISHED WITH PRIDE.</span>
