@@ -88,7 +88,7 @@ export default function Home() {
               for residential and commercial projects throughout Ontario.
             </p>
 
-            <p className="mt-6 text-lg text-zinc-700 leading-relaxed">
+            <p className="mt-6 text-lg text-white/90 leading-relaxed drop-shadow-lg">
               We take pride in every project and believe attention to detail is what
               separates good work from exceptional craftsmanship.
             </p>
