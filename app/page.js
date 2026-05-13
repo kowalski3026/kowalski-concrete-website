@@ -27,8 +27,8 @@ export default function Home() {
 
           <a
             href="#contact"
-            
-          >className="border border-white px-3 py-2 text-white font-bold uppercase text-xs md:text-sm whitespace-nowrap hover:bg-white hover:text-black transition"
+            className="border border-white px-3 py-2 text-white font-bold uppercase text-xs md:text-sm whitespace-nowrap hover:bg-white hover:text-black transition"
+  >
             Get Quote
           </a>
 
