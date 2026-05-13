@@ -26,7 +26,7 @@ export default function Home() {
           </div>
 
           <a
-            href="#contact"
+            href="#quote-form"
             className="border border-white px-5 py-2 text-white font-bold uppercase text-sm hover:bg-white hover:text-black transition"
           >
             Get Quote
@@ -273,6 +273,59 @@ export default function Home() {
           <h2 className="text-5xl font-black">
             LET'S BUILD SOMETHING STRONG TOGETHER.
           </h2>
+            <form
+  action="https://formsubmit.co/info@kowalskicc.ca"
+  method="POST"
+  className="space-y-6 mt-12 max-w-3xl mx-auto"
+>
+
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    required
+    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
+  />
+
+  <input
+    type="tel"
+    name="phone"
+    placeholder="Phone Number"
+    required
+    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
+  />
+
+  <input
+    type="email"
+    name="email"
+    placeholder="Email Address"
+    required
+    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
+  />
+
+  <input
+    type="text"
+    name="project"
+    placeholder="Project Type"
+    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
+  />
+
+  <textarea
+    name="message"
+    placeholder="Tell us about your project"
+    rows="6"
+    required
+    className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
+  ></textarea>
+
+  <button
+    type="submit"
+    className="bg-amber-500 text-black font-black px-10 py-4 rounded-xl hover:bg-amber-400 transition"
+  >
+    SUBMIT REQUEST
+  </button>
+
+</form>
 
           <div className="grid md:grid-cols-3 gap-6 mt-16">
             <div className="bg-zinc-900 rounded-3xl p-8">
