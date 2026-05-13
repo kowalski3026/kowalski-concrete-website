@@ -38,10 +38,9 @@ export default function Home() {
     <section
   className="relative min-h-screen bg-cover bg-center text-white"
   style={{
-    backgroundImage:
-      "linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('/hero.jpg')",
+    backgroundImage: "url('/hero.jpg')",
   }}
-  >
+>
         <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 grid lg:grid-cols-2 gap-10 items-center">
        <div className="p-6 rounded-3xl max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
