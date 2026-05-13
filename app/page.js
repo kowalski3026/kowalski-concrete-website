@@ -3,10 +3,9 @@ export default function Home() {
     <>
       
       <nav className="fixed top-0 left-0 w-full z-50 bg-black/80 backdrop-blur border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-6 py-1 
-  flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
 
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-3 min-w-0">
             <img src="/logo1.png" className="w-40 md:w-48 h-auto object-contain" />
             <div className="text-white leading-tight">
   <p className="text-sm md:text-base font-bold tracking-wide">
@@ -28,8 +27,8 @@ export default function Home() {
 
           <a
             href="#contact"
-            className="border border-white px-5 py-2 text-white font-bold uppercase text-sm hover:bg-white hover:text-black transition"
-          >
+            
+          >className="border border-white px-3 py-2 text-white font-bold uppercase text-xs md:text-sm whitespace-nowrap hover:bg-white hover:text-black transition"
             Get Quote
           </a>
 
