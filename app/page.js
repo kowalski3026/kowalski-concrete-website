@@ -43,7 +43,7 @@ export default function Home() {
   }}
   >
         <div className="max-w-7xl mx-auto px-6 pt-32 pb-16 grid lg:grid-cols-2 gap-10 items-center">
-       <div className="bg-black/20 p-6 rounded-3xl shadow-2xl max-w-xl">
+       <div className="p-6 rounded-3xl max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
               BUILT ON STRENGTH.
               <span className="block text-amber-400">FINISHED WITH PRIDE.</span>
