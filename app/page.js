@@ -26,7 +26,7 @@ export default function Home() {
           </div>
 
           <a
-            href="#quote-form"
+            href="#contact"
             className="border border-white px-5 py-2 text-white font-bold uppercase text-sm hover:bg-white hover:text-black transition"
           >
             Get Quote
