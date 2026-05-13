@@ -7,9 +7,15 @@ export default function Home() {
 
           <div className="flex items-center gap-5">
             <img src="/logo.jpg" className="w-28 h-28 object-contain" />
-            <div className="text-white font-black leading-tight text-xl">
-              Kowalski Concrete
-            </div>
+            <div className="text-white leading-tight">
+  <p className="text-sm md:text-base font-bold tracking-wide">
+    (249) 535-7501
+  </p>
+
+  <p className="text-xs text-zinc-400">
+    info@kowalskicc.ca
+  </p>
+</div>
           </div>
 
           <a
