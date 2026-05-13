@@ -294,7 +294,12 @@ export default function Home() {
     required
     className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
   />
-
+<input
+  type="text"
+  name="address"
+  placeholder="Project Address"
+  className="w-full p-4 bg-zinc-900 border border-zinc-700 rounded-xl"
+/>
   <input
     type="email"
     name="email"
@@ -330,20 +335,28 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-6 mt-16">
             <div className="bg-zinc-900 rounded-3xl p-8">
               <h3 className="text-amber-500 uppercase tracking-widest text-sm">Phone</h3>
-              <p className="mt-4 text-2xl font-bold">249-535-7501</p>
+              <a
+  href="tel:2495357501"
+  className="mt-4 text-2xl font-bold block hover:text-amber-400 transition"
+>
+  249-535-7501
+</a>
             </div>
 
             <div className="bg-zinc-900 rounded-3xl p-8">
               <h3 className="text-amber-500 uppercase tracking-widest text-sm">Email</h3>
-              <p className="mt-4 text-xl font-bold break-words">
-                krisk@kowalskicc.ca
-              </p>
+              <a
+  href="mailto:krisk@kowalskicc.ca"
+  className="mt-4 text-xl font-bold block hover:text-amber-400 transition"
+>
+  krisk@kowalskicc.ca
+</a>
             </div>
 
             <div className="bg-zinc-900 rounded-3xl p-8">
               <h3 className="text-amber-500 uppercase tracking-widest text-sm">Website</h3>
               <p className="mt-4 text-xl font-bold break-words">
-                www.kowalskicc.ca
+                kowalskicc.ca
               </p>
             </div>
           </div>
