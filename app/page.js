@@ -6,7 +6,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-2 flex items-center justify-between">
 
           <div className="flex items-center gap-5">
-            <img src="/logo.png" className="w-28 h-28 object-contain" />
+            <img src="/logo1.png" className="w-28 h-28 object-contain" />
             <div className="text-white leading-tight">
   <p className="text-sm md:text-base font-bold tracking-wide">
     (249) 535-7501
