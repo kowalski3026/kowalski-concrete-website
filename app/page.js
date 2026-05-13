@@ -76,7 +76,8 @@ export default function Home() {
   className="py-24 bg-cover bg-center"
   style={{ backgroundImage: "url('/rebar-bg.jpg')" }}
 >
-        <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
+  <div className="absolute inset-0 bg-black/70"></div>
+        <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
           <div>
             <h2 className="text-5xl font-black leading-tight">
               EXPERIENCE YOU CAN BUILD ON.
@@ -109,8 +110,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-zinc-900 text-white py-24">
-        <div className="max-w-7xl mx-auto px-6">
+                <section
+  className="text-white py-24 bg-cover bg-center relative"
+  style={{ backgroundImage: "url('/services-bg.jpg')" }}
+>
+  <div className="absolute inset-0 bg-black/80"></div>
+         <div className="relative z-10 max-w-7xl mx-auto px-6">
           <h2 className="text-5xl font-black text-center">
             CONCRETE SOLUTIONS FOR EVERY PROJECT
           </h2>
