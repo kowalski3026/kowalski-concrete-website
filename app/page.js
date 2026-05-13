@@ -43,12 +43,12 @@ export default function Home() {
   }}
   >
         <div className="max-w-7xl mx-auto px-6 pt-48 pb-32 grid lg:grid-cols-2 gap-16 items-center">
-          <div className="bg-black/45 backdrop-blur-sm p-8 rounded-3xl shadow-2xl">
+        <div className="bg-black/10 backdrop-blur-sm p-8 rounded-3xl shadow-2xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight">
               BUILT ON STRENGTH.
               <span className="block text-amber-500">FINISHED WITH PRIDE.</span>
             </h1>
-    <p className="mt-6 text-lg md:text-2xl text-zinc-300 italic">
+    <p className="mt-6 text-lg md:text-2xl text-white italic">
   Transforming ideas into lasting concrete craftsmanship.
 </p>
     <p className="mt-6 text-sm md:text-lg uppercase tracking-[0.3em] text-amber-400 font-semibold">
