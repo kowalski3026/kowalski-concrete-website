@@ -111,7 +111,7 @@ export default function Home() {
       </section>
 
                 <section
-  className="text-white py-24 bg-cover bg-center"
+  className="text-white py-24 bg-zinc-950 bg-cover bg-center"
   style={{ backgroundImage: "url('/services-bg.jpg')" }}
 >
 
@@ -131,7 +131,7 @@ export default function Home() {
             ].map((service) => (
               <div
                 key={service}
-                className="bg-zinc-800 border border-zinc-700 rounded-3xl p-8"
+                className="bg-zinc-900/90 border border-zinc-700 rounded-3xl p-8"
               >
                 <h3 className="text-2xl font-bold">{service}</h3>
 
