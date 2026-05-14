@@ -36,7 +36,7 @@ export default function Home() {
       </nav>
      <main className="min-h-screen bg-zinc-100 text-zinc-900">
     <section
-  className="relative min-h-[1400px] md:min-h-screen bg-cover bg-center text-white"
+  className="relative md:min-h-screen bg-cover bg-center text-white"
   style={{
     backgroundImage: "url('/hero.jpg')",
   }}
