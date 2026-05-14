@@ -161,41 +161,14 @@ export default function Home() {
         </div>
       </section>
               
-                <section className="py-24 bg-zinc-900 text-white">
-  <div className="max-w-7xl mx-auto px-6">
-
-    <h2 className="text-5xl font-black text-center">
-      MUNICIPAL & INFRASTRUCTURE EXPERIENCE
-    </h2>
-
-    <p className="text-zinc-400 text-center mt-6 text-xl max-w-4xl mx-auto">
-      Experienced in bridge rehabilitation, municipal structural repairs,
-      sidewalks, curbs, and large-scale concrete infrastructure projects.
-    </p>
-
-    <div className="grid md:grid-cols-3 gap-6 mt-16">
-
-      <img
-        src="/bridge1.jpg"
-        className="rounded-3xl h-80 w-full object-cover"
-      />
-
-      <img
-        src="/bridge2.jpg"
-        className="rounded-3xl h-80 w-full object-cover"
-      />
-
-      <img
-        src="/bridge3.jpg"
-        className="rounded-3xl h-80 w-full object-cover"
-      />
-
-    </div>
-
-  </div>
+                
 </section>
-<section className="py-24 bg-zinc-900 text-white">
-  <div className="max-w-7xl mx-auto px-6">
+              <section
+  className="relative py-24 bg-cover bg-center text-white"
+  style={{ backgroundImage: "url('/municipal-bg.jpg')" }}
+>
+  <div className="absolute inset-0 bg-black/70"></div>
+  <div className="relative z-10 max-w-7xl mx-auto px-6">
 
     <div className="text-center">
       <h2 className="text-5xl md:text-6xl font-black tracking-tight">
