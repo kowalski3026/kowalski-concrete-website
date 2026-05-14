@@ -173,9 +173,9 @@ export default function Home() {
 
   <div className="relative z-10 max-w-7xl mx-auto px-6">
     <div className="text-center">
-      className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight leading-none"
-        INFRASTRUCTURE EXPERIENCE
-      </h2>
+  <h2 className="text-3xl sm:text-4xl md:text-6xl font-black tracking-tight leading-none px-4">
+    INFRASTRUCTURE EXPERIENCE
+  </h2>
 
       <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
 
