@@ -170,7 +170,7 @@ export default function Home() {
   backgroundPosition: "center",
 }}
 >
-  <div className="absolute inset-0 bg-black/70"></div>
+  <div className="absolute inset-0 bg-gradient-to-b from-black/70 to-black/30"></div>
   <div className="relative z-10 max-w-7xl mx-auto px-6">
 
     <div className="text-center">
