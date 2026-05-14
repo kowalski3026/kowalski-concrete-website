@@ -160,9 +160,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-              
-                
-              
+                     
               <section
   className="relative py-24 text-white overflow-hidden"
   style={{
