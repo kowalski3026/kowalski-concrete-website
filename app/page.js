@@ -36,14 +36,15 @@ export default function Home() {
       </nav>
      <main className="min-h-screen bg-zinc-100 text-zinc-900">
     <section
-  <div className="absolute inset-0 bg-black/10"></div>
-  className="relative min-h-[1400px] md:min-h-screen bg-black bg-cover bg-center text-white"
+  className="relative min-h-[1400px] md:min-h-screen bg-cover bg-center text-white"
   style={{
     backgroundImage: "url('/hero.jpg')",
   }}
 >
-    <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-48 grid lg:grid-cols-2 gap-10 items-center">
-       <div className="bg-black/55 backdrop-blur-sm p-8 rounded-3xl shadow-2xl max-w-xl">
+  <div className="absolute inset-0 bg-black/10"></div>
+
+  <div className="relative z-10 max-w-7xl mx-auto px-6 pt-48 pb-32">
+    <div className="bg-black/55 backdrop-blur-sm p-8 rounded-3xl shadow-2xl max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
               BUILT ON STRENGTH.
               <span className="block text-amber-400">FINISHED WITH PRIDE.</span>
