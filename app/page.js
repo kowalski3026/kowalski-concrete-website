@@ -45,8 +45,8 @@ export default function Home() {
   <div className="relative z-10 max-w-7xl mx-auto px-6 pt-48 pb-32">
     <div className="p-8 max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
-              BUILT ON STRENGTH.
-              <span className="block text-amber-400">FINISHED WITH PRIDE.</span>
+              FROM FOUNDATION..
+              <span className="block text-amber-400">TO FINISH..</span>
             </h1>
     <p className="mt-6 text-lg md:text-2xl text-white italic">
   Transforming ideas into lasting concrete craftsmanship.
