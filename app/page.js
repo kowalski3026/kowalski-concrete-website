@@ -189,10 +189,27 @@ export default function Home() {
 
     <div className="mt-20 max-w-5xl mx-auto">
       <div className="bg-black/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-zinc-700">
-        <img
-          src="/municipal-bg.jpg"
-          className="w-full h-[400px] object-cover"
-        />
+        <div className="grid md:grid-cols-2 gap-6 p-6">
+  <img
+    src="/bridge.jpg"
+    className="w-full h-[260px] object-cover rounded-2xl"
+  />
+
+  <img
+    src="/sidewalk.jpg"
+    className="w-full h-[260px] object-cover rounded-2xl"
+  />
+
+  <img
+    src="/curb.jpg"
+    className="w-full h-[260px] object-cover rounded-2xl"
+  />
+
+  <img
+    src="/infrastructure.jpg"
+    className="w-full h-[260px] object-cover rounded-2xl"
+  />
+</div>
 
         <div className="p-10">
           <h3 className="text-3xl font-bold">
