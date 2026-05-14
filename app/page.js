@@ -173,7 +173,7 @@ export default function Home() {
 
   <div className="relative z-10 max-w-7xl mx-auto px-6">
     <div className="text-center">
-      <h2 className="text-5xl md:text-6xl font-black tracking-tight">
+      className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight leading-none"
         INFRASTRUCTURE EXPERIENCE
       </h2>
 
