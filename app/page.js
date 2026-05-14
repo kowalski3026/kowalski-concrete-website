@@ -3,9 +3,9 @@ export default function Home() {
     <>
       
       <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black/90 to-transparent border-b border-zinc-800/40">
-        <div className="max-w-7xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
 
-          <div className="flex items-center gap-3 min-w-0">
+          <div className="flex flex-col md:flex-row items-center gap-3 min-w-0 text-center md:text-left">
             <img src="/logo1.png" className="w-40 md:w-48 h-auto object-contain" />
             <div className="text-white leading-tight">
   <p className="text-sm md:text-base font-bold tracking-wide">
