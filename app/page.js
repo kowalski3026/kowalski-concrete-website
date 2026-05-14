@@ -164,8 +164,11 @@ export default function Home() {
                 
 </section>
               <section
-  className="relative py-24 bg-cover bg-center text-white"
-  style={{ backgroundImage: "url('/municipal-bg.jpg')" }}
+  className="relative py-24 bg-cover bg-center bg-fixed text-white"
+  style={{ backgroundImage: "url('/municipal-bg.jpg')",
+        backgroundSize: "cover",
+  backgroundPosition: "center",
+}}
 >
   <div className="absolute inset-0 bg-black/70"></div>
   <div className="relative z-10 max-w-7xl mx-auto px-6">
