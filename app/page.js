@@ -170,46 +170,46 @@ export default function Home() {
     backgroundRepeat: "no-repeat",
   }}
 >
-  
-  <div className="relative z-10 max-w-7xl mx-auto px-6">
+  <div className="absolute inset-0 bg-black/50"></div>
 
+  <div className="relative z-10 max-w-7xl mx-auto px-6">
     <div className="text-center">
       <h2 className="text-5xl md:text-6xl font-black tracking-tight">
-        MUNICIPAL EXPERIENCE
+        INFRASTRUCTURE EXPERIENCE
       </h2>
 
       <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
 
       <p className="mt-8 text-zinc-300 text-xl max-w-4xl mx-auto leading-relaxed">
-        Extensive experience working on municipal and infrastructure concrete
-        projects including bridge rehabilitation, sidewalks, curbs, structural
-        repairs, and large-scale public works.
+        Experienced in bridge rehabilitation, structural concrete repairs,
+        sidewalks, curbs, and large-scale public infrastructure projects built
+        for durability and long-term performance.
       </p>
     </div>
 
     <div className="mt-20 max-w-5xl mx-auto">
-  <div className="bg-black/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-zinc-700">
+      <div className="bg-black/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-zinc-700">
+        <img
+          src="/municipal-bg.jpg"
+          className="w-full h-[400px] object-cover"
+        />
 
-    <img
-      src="/municipal-bg.jpg"
-      className="w-full h-[400px] object-cover"
-    />
+        <div className="p-10">
+          <h3 className="text-3xl font-bold">
+            Public Works & Structural Concrete
+          </h3>
 
-    <div className="p-10">
-      <h3 className="text-3xl font-bold">
-        Municipal & Infrastructure Projects
-      </h3>
-
-      <p className="mt-6 text-zinc-300 text-lg leading-relaxed">
-        Extensive experience delivering large-scale municipal concrete work
-        including bridge rehabilitation, sidewalks, curbs, structural repairs,
-        and public infrastructure improvements built for long-term durability.
-      </p>
+          <p className="mt-6 text-zinc-300 text-lg leading-relaxed">
+            Skilled in delivering demanding infrastructure projects including
+            bridge rehabilitation, concrete restoration, sidewalks, curbs, and
+            structural repairs designed to withstand heavy use and harsh
+            Canadian conditions.
+          </p>
+        </div>
+      </div>
     </div>
-
   </div>
-</div>
-          </section>
+</section>
       <section id="contact" className="bg-[linear-gradient(to_bottom_right,#292524,#111827)] text-white py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-black">
