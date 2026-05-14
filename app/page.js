@@ -12,7 +12,7 @@ export default function Home() {
     (249) 535-7501
   </p>
 
-  <p className="text-xs text-amber-300">
+  <p className="text-sm md:text-base text-amber-300">
     info@kowalskicc.ca
   </p>
 </div>
