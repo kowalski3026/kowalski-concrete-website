@@ -77,7 +77,7 @@ export default function Home() {
   className="py-24 bg-cover bg-center"
   style={{ backgroundImage: "url('/rebar-bg.jpg')" }}
 >
-  <div className="absolute inset-0 bg-black/70"></div>
+  
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16">
           <div>
             <h2 className="text-5xl font-black leading-tight">
