@@ -226,6 +226,56 @@ export default function Home() {
     </div>
   </div>
 </section>
+              <section className="py-24 bg-black text-white">
+  <div className="max-w-7xl mx-auto px-6">
+
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-6xl font-black tracking-tight">
+        PROJECT GALLERY
+      </h2>
+
+      <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
+
+      <p className="mt-8 text-zinc-300 text-lg max-w-3xl mx-auto">
+        Real projects. Real craftsmanship. Built to last.
+      </p>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <img
+        src="/gallery/photo1.jpg"
+        className="rounded-3xl object-cover h-80 w-full"
+      />
+
+      <img
+        src="/gallery/photo2.jpg"
+        className="rounded-3xl object-cover h-80 w-full"
+      />
+
+      <img
+        src="/gallery/photo3.jpg"
+        className="rounded-3xl object-cover h-80 w-full"
+      />
+
+      <img
+        src="/gallery/photo4.jpg"
+        className="rounded-3xl object-cover h-80 w-full"
+      />
+
+      <img
+        src="/gallery/photo5.jpg"
+        className="rounded-3xl object-cover h-80 w-full"
+      />
+
+      <img
+        src="/gallery/photo6.jpg"
+        className="rounded-3xl object-cover h-80 w-full"
+      />
+
+    </div>
+  </div>
+</section>
       <section id="contact" className="bg-[linear-gradient(to_bottom_right,#292524,#111827)] text-white py-24">
         <div className="max-w-5xl mx-auto px-6 text-center">
           <h2 className="text-5xl font-black">
