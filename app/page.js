@@ -165,11 +165,12 @@ export default function Home() {
               
               <section
   className="relative py-24 text-white overflow-hidden"
-  style={{ backgroundImage: "url('/municipal-bg.jpg')",
-        backgroundSize: "cover",
-         backgroundPosition: "center",
-         backgroundRepeat: "no-repeat",
-}}
+  style={{
+    backgroundImage: "url('/municipal-bg.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
 >
   
   <div className="relative z-10 max-w-7xl mx-auto px-6">
