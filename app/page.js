@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <>
       
-      <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black/70 to-transparent border-b border-zinc-800/40">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-gradient-to-b from-black/90 to-transparent border-b border-zinc-800/40">
         <div className="max-w-7xl mx-auto px-4 py-1 flex items-center justify-between gap-3">
 
           <div className="flex items-center gap-3 min-w-0">
