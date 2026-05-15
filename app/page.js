@@ -46,7 +46,7 @@ export default function Home() {
     <div className="p-8 max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
               MAKING YOUR DREAMS COME TRUE...
-              <span className="block text-amber-400">IN CONCRETE!</span>
+              <span className="block text-amber-400">WITH CONCRETE!</span>
             </h1>
     <p className="mt-6 text-lg md:text-2xl text-white italic">
   Transforming ideas into lasting concrete craftsmanship.
