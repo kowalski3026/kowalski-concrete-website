@@ -188,7 +188,7 @@ export default function Home() {
 
       <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
 
-      <p className="mt-8 text-black text-extrabold text-xl max-w-4xl mx-auto leading-relaxed">
+      <p className="mt-8 text-black font-extrabold text-xl max-w-4xl mx-auto leading-relaxed">
         Experienced in bridge rehabilitation, structural concrete repairs,
         sidewalks, curbs, and large-scale public infrastructure projects built
         for durability and long-term performance.
