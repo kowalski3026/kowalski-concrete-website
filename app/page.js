@@ -37,7 +37,7 @@ export default function Home() {
         </div>
       </nav>
      <main className="min-h-screen bg-zinc-100 text-zinc-900">
-    <section
+    <section id="about"
   className="relative md:min-h-screen bg-cover bg-center text-white"
   style={{
     backgroundImage: "url('/hero.jpg')",
@@ -75,7 +75,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
+      <section id="services"
   className="py-24 bg-cover bg-center"
   style={{ backgroundImage: "url('/rebar-bg.jpg')" }}
 >
@@ -229,7 +229,7 @@ export default function Home() {
     </div>
   </div>
 </section>
-              <section
+              <section id="about"
   className="py-24 text-white relative overflow-hidden"
   style={{
     backgroundImage: "url('/hero2.jpg')",
