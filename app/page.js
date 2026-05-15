@@ -226,8 +226,17 @@ export default function Home() {
     </div>
   </div>
 </section>
-              <section className="py-24 bg-black text-white">
-  <div className="max-w-7xl mx-auto px-6">
+              <section
+  className="py-24 text-white relative overflow-hidden"
+  style={{
+    backgroundImage: "url('/hero.jpg')",
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
+  }}
+>
+  <div className="absolute inset-0 bg-black/75"></div>
+  <div className="relative z-10 max-w-7xl mx-auto px-6">
 
     <div className="text-center mb-16">
       <h2 className="text-4xl md:text-6xl font-black tracking-tight">
