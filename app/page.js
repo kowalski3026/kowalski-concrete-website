@@ -229,7 +229,7 @@ export default function Home() {
               <section
   className="py-24 text-white relative overflow-hidden"
   style={{
-    backgroundImage: "url('/hero.jpg')",
+    backgroundImage: "url('/hero2.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
