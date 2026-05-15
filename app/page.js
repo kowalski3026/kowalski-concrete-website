@@ -245,7 +245,7 @@ export default function Home() {
 
       <div className="w-32 h-1 bg-amber-500 mx-auto mt-6 rounded-full"></div>
 
-      <p className="mt-8 text-zinc-300 text-lg max-w-3xl mx-auto">
+      <p className="mt-8 text-white-300 text-lg max-w-3xl mx-auto">
         Real projects. Real craftsmanship. Built to last.
       </p>
     </div>
