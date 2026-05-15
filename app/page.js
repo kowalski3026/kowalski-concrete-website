@@ -39,7 +39,7 @@ export default function Home() {
      <main className="min-h-screen bg-zinc-100 text-zinc-900">
     <section
   id="about"
-  className="relative min-h-[1400px] min-h-screen bg-cover bg-center text-white"
+  className="min-h-screen bg-cover bg-center text-white"
   style={{
   backgroundImage:
     "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/hero.jpg')",
@@ -49,7 +49,7 @@ export default function Home() {
 
 
 
-  <div className="max-w-7xl mx-auto px-6 pt-80 pb-32">
+  <div className="max-w-7xl mx-auto px-6 pt-48 pb-32">
     <div className="p-8 max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
               MAKE YOUR DREAMS COME TRUE...
