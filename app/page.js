@@ -45,7 +45,7 @@ export default function Home() {
   <div className="relative z-10 max-w-7xl mx-auto px-6 pt-48 pb-32">
     <div className="p-8 max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
-              MAKING YOUR DREAMS COME TRUE...
+              MAKE YOUR DREAMS COME TRUE...
               <span className="block text-amber-400">WITH CONCRETE!</span>
             </h1>
     <p className="mt-6 text-lg md:text-2xl text-white italic">
