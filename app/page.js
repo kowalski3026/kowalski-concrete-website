@@ -41,8 +41,9 @@ export default function Home() {
   id="about"
   className="relative min-h-[1400px] min-h-screen bg-cover bg-center text-white"
   style={{
-    backgroundImage: "url('/hero.jpg')",
-  }}
+  backgroundImage:
+    "linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)), url('/hero.jpg')",
+}}
 >
   
 
