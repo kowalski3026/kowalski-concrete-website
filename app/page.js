@@ -369,7 +369,7 @@ export default function Home() {
   href="mailto:krisk@kowalskicc.ca"
   className="mt-4 text-xl font-bold block hover:text-amber-400 transition"
 >
-  krisk@kowalskicc.ca
+  info@kowalskicc.ca
 </a>
             </div>
 
