@@ -7,12 +7,12 @@ export default function Home() {
 
           <div className="flex items-center gap-4">
             <img src="/logo1.png" className="w-40 md:w-48 h-auto object-contain" />
-            <div className="flex flex-col items-end text-right">
+            <div className="flex flex-col items-end justify-center text-right leading-tight">
   <p className="text-sm md:text-base font-bold tracking-wide text-white">
     (249) 535-7501
   </p>
 
-  <p className="text-base md:text-lg text-amber-300 font-medium">
+  <p className="text-base md:text-lg text-amber-300 font-medium text-center self-end">
     info@kowalskicc.ca
   </p>
 
