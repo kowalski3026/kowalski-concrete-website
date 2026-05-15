@@ -16,9 +16,12 @@ export default function Home() {
     info@kowalskicc.ca
   </p>
 
-  <button className="mt-2 border border-zinc-400 px-4 py-2 text-sm font-bold text-white hover:bg-amber-500 hover:text-black transition">
-    GET QUOTE
-  </button>
+  <a
+  href="#contact"
+  className="mt-2 inline-block border border-zinc-400 px-4 py-2 text-sm font-bold text-white hover:bg-amber-500 hover:text-black transition"
+>
+  GET QUOTE
+</a>
 </div>
           </div>
 
