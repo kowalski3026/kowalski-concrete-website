@@ -229,7 +229,7 @@ export default function Home() {
     </div>
   </div>
 </section>
-              <section id="about"
+              <section id="projects"
   className="py-24 text-white relative overflow-hidden"
   style={{
     backgroundImage: "url('/hero2.jpg')",
