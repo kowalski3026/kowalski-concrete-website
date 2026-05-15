@@ -92,12 +92,12 @@ export default function Home() {
               EXPERIENCE YOU CAN BUILD ON.
             </h2>
 
-            <p className="mt-8 text-2×1 font-black text-white leading-relaxed drop-shadow-2×1">
+            <p className="mt-8 text-4×1 font-black text-white leading-relaxed drop-shadow-2×1">
               Kowalski Concrete Contracting provides high-quality concrete solutions
               for residential and commercial projects throughout Ontario.
             </p>
 
-            <p className="mt-6 text-2×1 font-black text-white leading-relaxed drop-shadow-2×1">
+            <p className="mt-6 text-4×1 font-black text-white leading-relaxed drop-shadow-2×1">
               We take pride in every project and believe attention to detail is what
               separates good work from exceptional craftsmanship.
             </p>
