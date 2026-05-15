@@ -47,7 +47,7 @@ className="relative md:min-h-screen bg-cover bg-center text-white"
 
 
 
-  <div className="relative z-10 max-w-7xl mx-auto px-6 pt-48 pb-32">
+  <div className="max-w-7xl mx-auto px-6 pt-48 pb-32">
     <div className="p-8 max-w-xl">
             <h1 className="text-5xl md:text-7xl font-black leading-none tracking-tight text-white">
               MAKE YOUR DREAMS COME TRUE...
