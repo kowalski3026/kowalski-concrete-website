@@ -38,12 +38,13 @@ export default function Home() {
       </nav>
      <main className="min-h-screen bg-zinc-100 text-zinc-900">
     <section id="about"
-  className="relative md:min-h-screen bg-cover bg-center text-white"
+className="relative overflow-hidden md:min-h-screen bg-cover bg-center text-white"
   style={{
     backgroundImage: "url('/hero.jpg')",
   }}
 >
-  <div className="absolute inset-0 bg-black/50"></div>
+  <div className="absolute inset-0 bg-black/50"></div> 
+  <div className="relative z-10">
 
 
   <div className="relative z-10 max-w-7xl mx-auto px-6 pt-48 pb-32">
@@ -74,6 +75,7 @@ export default function Home() {
 
       
         </div>
+                </div>
       </section>
 
       <section id="services"
