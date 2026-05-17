@@ -384,6 +384,14 @@ export default function Home() {
               <p className="mt-4 text-xl font-bold break-words">
                 kowalskicc.ca
               </p>
+    <a
+  href="https://facebook.com/KowalskiContracting"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="mt-3 text-lg text-amber-500 hover:text-amber-400 block transition"
+>
+  Facebook
+</a>
             </div>
           </div>
 
