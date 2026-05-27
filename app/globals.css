@@ -167,4 +167,11 @@ h1, h2, h3, h4, .display {
   padding: 0.25rem 0.75rem;
   border-radius: 2px;
 }
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
 
+* {
+  box-sizing: border-box;
+}
