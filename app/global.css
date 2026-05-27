@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap');
+
+:root {
+  --font-display: 'Barlow Condensed', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+  --color-amber: #F59E0B;
+  --color-amber-dark: #D97706;
+  --color-charcoal: #141414;
+  --color-stone: #1C1917;
+}
+
+/* ── RESET ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/*
+ * OVERFLOW FIX:
+ * - Only set overflow-x: hidden on body, NOT html.
+ *   Setting it on html breaks position:fixed in Safari/iOS.
+ * - Use a wrapper div clipped with a clip-path alternative.
+ */
+html {
+  scroll-behavior: smooth;
+  /* Do NOT set overflow-x:hidden here — breaks fixed nav on iOS */
+}
+
+body {
+  font-family: var(--font-body);
+  background: #F5F3F0;
+  color: #141414;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden; /* Only on body */
+  max-width: 100%;
+  position: relative;
+}
+
+h1, h2, h3, h4, .display {
+  font-family: var(--font-display);
+}
+
+/* ── NAV LINK UNDERLINE ─────────────────────────────────── */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-amber);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* ── GALLERY HOVER ──────────────────────────────────────── */
+.gallery-item {
+  overflow: hidden;
+  position: relative;
+}
+.gallery-item img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.gallery-item:hover img {
+  transform: scale(1.06);
+}
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
+}
+
+/* ── SERVICE CARD HOVER ─────────────────────────────────── */
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+}
+
+/* ── SCROLL ANIMATION ───────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up {
+  animation: fadeUp 0.7s ease forwards;
+}
+
+/* ── STAT NUMBER ────────────────────────────────────────── */
+.stat-number {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--color-amber);
+}
+
+/* ── FORM INPUTS ────────────────────────────────────────── */
+.form-input {
+  width: 100%;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: white;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  outline: none;
+  /* Prevent inputs from exceeding their container on iOS */
+  max-width: 100%;
+  min-width: 0;
+}
+.form-input::placeholder {
+  color: rgba(255,255,255,0.35);
+}
+.form-input:focus {
+  border-color: var(--color-amber);
+  background: rgba(255,255,255,0.08);
+}
+
+/* ── AMBER DIVIDER ──────────────────────────────────────── */
+.amber-rule {
+  display: block;
+  width: 48px;
+  height: 3px;
+  background: var(--color-amber);
+  border-radius: 2px;
+  margin: 1.25rem 0;
+}
+
+/* ── HAMBURGER ──────────────────────────────────────────── */
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+/* ── TAG PILL ───────────────────────────────────────────── */
+.tag-pill {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-amber);
+  border: 1px solid var(--color-amber);
+  padding: 0.25rem 0.75rem;
+  border-radius: 2px;
+}
+
+/* ── ABOUT IMAGE COMPOSITION (mobile) ───────────────────── */
+/*
+ * On mobile the absolute-positioned images inside .img-composition
+ * escape and cause overflow. We switch to a stacked static layout
+ * below md breakpoint via the mobile-img-stack class.
+ */
+.img-composition {
+  position: relative;
+  overflow: hidden; /* clip any child that tries to escape */
+}
+
+/* ── GLOBAL SECTION SAFETY ──────────────────────────────── */
+section, footer, nav, main {
+  max-width: 100%;
+  overflow-x: hidden; /* belt-and-suspenders per section */
+}
+
+/* ── PREVENT WIDE IMAGES ────────────────────────────────── */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
