@@ -372,7 +372,7 @@ export default function Home() {
                       20+ YRS
                     </div>
                     <div className="text-xs uppercase tracking-widest mt-0.5" style={{ fontFamily: "var(--font-display)", color: "rgba(0,0,0,0.6)" }}>
-                      In Business
+                      In the Business
                     </div>
                   </div>
                 </div>
