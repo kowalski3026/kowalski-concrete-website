@@ -357,7 +357,7 @@ borderBottom: "none",
               <div data-reveal data-delay="0.15s">
                 <div className="lg:hidden relative">
                   <img
-                    src="/hero2.jpg"
+                    src="/hero3.jpg"
                     className="w-full object-cover"
                     style={{ height: "260px", borderRadius: "2px" }}
                     alt="Concrete work"
