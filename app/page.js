@@ -28,6 +28,12 @@ const SERVICES = [
   },
 ];
 
+const STATS = [
+  { number: "20+", label: "Years of Experience" },
+  { number: "500+", label: "Projects Completed" },
+  { number: "100%", label: "Licensed & Insured" },
+];
+
 const GALLERY = [
   "/gallery/photo1.jpg",
   "/gallery/photo2.jpg",
@@ -74,7 +80,6 @@ export default function Home() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
@@ -84,11 +89,6 @@ export default function Home() {
 
   return (
     <>
-      {/* ─── NAV ─────────────────────────────────────────────────────
-          FIX: nav uses left-0 right-0 instead of w-full to stay
-          strictly within viewport bounds. overflow-hidden on the
-          inner wrapper prevents any child from bleeding out.
-      ──────────────────────────────────────────────────────────── */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
         style={{
@@ -99,10 +99,8 @@ export default function Home() {
           borderBottom: scrolled ? "1px solid rgba(255,255,255,0.06)" : "none",
         }}
       >
-        {/* FIX: overflow-hidden clips anything that could push width */}
         <div className="overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-            {/* Logo — constrained height, no min-width that could overflow */}
             <a href="#about" onClick={closeMenu} className="flex-shrink-0">
               <img
                 src="/logo1.png"
@@ -112,7 +110,6 @@ export default function Home() {
               />
             </a>
 
-            {/* Desktop links */}
             <div
               className="hidden md:flex items-center gap-8 lg:gap-10"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "0.08em" }}
@@ -128,8 +125,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* CTA + Hamburger */}
-            {/* FIX: flex-shrink-0 so this group never gets squeezed into nothing */}
             <div className="flex items-center gap-3 flex-shrink-0">
               <a
                 href="#contact"
@@ -145,7 +140,6 @@ export default function Home() {
                 Free Quote
               </a>
 
-              {/* FIX: explicit w-10 h-10 touch target, no inline transforms that widen */}
               <button
                 className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-1.5 flex-shrink-0"
                 onClick={() => setMenuOpen((v) => !v)}
@@ -159,10 +153,7 @@ export default function Home() {
                     transformOrigin: "center",
                   }}
                 />
-                <span
-                  className="hamburger-line"
-                  style={{ opacity: menuOpen ? 0 : 1 }}
-                />
+                <span className="hamburger-line" style={{ opacity: menuOpen ? 0 : 1 }} />
                 <span
                   className="hamburger-line"
                   style={{
@@ -175,10 +166,6 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Mobile Menu
-            FIX: position relative (not absolute/fixed), so it pushes
-            content down rather than overlapping. overflow-hidden + maxHeight
-            for the slide animation. Width is naturally 100% of nav. */}
         <div
           className="md:hidden overflow-hidden transition-all duration-300"
           style={{
@@ -186,7 +173,6 @@ export default function Home() {
             background: "rgba(14,14,14,0.98)",
           }}
         >
-          {/* FIX: px-4 instead of px-6, w-full ensured by block display */}
           <div className="px-4 py-6 flex flex-col gap-5 border-t border-white/10 w-full">
             {["About", "Services", "Projects", "Contact"].map((item) => (
               <a
@@ -221,7 +207,6 @@ export default function Home() {
 
       <main className="overflow-x-hidden w-full">
 
-        {/* ─── HERO ────────────────────────────────────────────────── */}
         <section
           id="about"
           className="relative min-h-screen flex items-end w-full"
@@ -232,27 +217,20 @@ export default function Home() {
             backgroundPosition: "center",
           }}
         >
-          {/* Grain overlay — inset-0 is fine as it's clipped by parent overflow */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E\")",
-              opacity: 0.4,
-            }}
+            style={{ opacity: 0.4 }}
           />
 
-          {/* FIX: px-4 sm:px-6 for mobile breathing room */}
           <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 pb-16 sm:pb-20 md:pb-28 pt-36 sm:pt-40">
             <div className="max-w-3xl">
-              <span className="tag-pill mb-6 inline-block">Simcoe County & Surrounding Areas</span>
+              <span className="tag-pill mb-6 inline-block">Simcoe County &amp; Surrounding Areas</span>
 
               <h1
                 className="text-white leading-none"
                 style={{
                   fontFamily: "var(--font-display)",
                   fontWeight: 900,
-                  /* FIX: clamp floor reduced so it never overflows on 320px screens */
                   fontSize: "clamp(3rem, 12vw, 7.5rem)",
                   letterSpacing: "-0.01em",
                   lineHeight: 0.92,
@@ -276,7 +254,6 @@ export default function Home() {
                 through every Canadian season.
               </p>
 
-              {/* FIX: flex-col on mobile so buttons don't force width */}
               <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                 <a
                   href="#contact"
@@ -307,7 +284,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Scroll indicator — desktop only, safely hidden on mobile */}
           <div className="absolute bottom-8 right-6 hidden md:flex flex-col items-center gap-2 opacity-50">
             <span
               className="text-white text-xs tracking-widest uppercase"
@@ -317,18 +293,13 @@ export default function Home() {
             </span>
             <div
               className="w-px"
-              style={{
-                height: "48px",
-                background: "linear-gradient(to bottom, white, transparent)",
-              }}
+              style={{ height: "48px", background: "linear-gradient(to bottom, white, transparent)" }}
             />
           </div>
         </section>
 
-        {/* ─── STATS BAR ───────────────────────────────────────────── */}
         <section className="w-full" style={{ background: "var(--color-charcoal)" }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-12">
-            {/* FIX: single col on mobile, 3 col on md+ */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-0 sm:divide-x sm:divide-white/10">
               {STATS.map(({ number, label }, i) => (
                 <div
@@ -350,14 +321,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── ABOUT / EXPERIENCE ──────────────────────────────────── */}
         <section
           id="services"
           className="py-16 sm:py-20 lg:py-28 w-full"
           style={{ background: "#F5F3F0" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            {/* FIX: single col below lg, gap reduced on mobile */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
               <div data-reveal>
                 <span className="tag-pill" style={{ color: "#141414", borderColor: "#141414" }}>
@@ -387,12 +356,7 @@ export default function Home() {
                 </p>
               </div>
 
-              {/* FIX: The absolute-positioned image composition was the PRIMARY
-                  overflow culprit on mobile. Replaced with a static CSS Grid
-                  composition that never escapes its container.
-                  On mobile: simple stacked layout. On lg+: the layered look. */}
               <div data-reveal data-delay="0.15s">
-                {/* Mobile: simple single image */}
                 <div className="lg:hidden relative">
                   <img
                     src="/hero2.jpg"
@@ -413,7 +377,6 @@ export default function Home() {
                   </div>
                 </div>
 
-                {/* Desktop: layered composition — safe because parent is NOT overflow:visible */}
                 <div
                   className="hidden lg:block relative overflow-hidden"
                   style={{ height: "520px" }}
@@ -447,7 +410,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── SERVICE CARDS ───────────────────────────────────────── */}
         <section
           className="py-16 sm:py-20 lg:py-28 w-full"
           style={{ background: "var(--color-charcoal)" }}
@@ -468,7 +430,6 @@ export default function Home() {
               </h2>
             </div>
 
-            {/* FIX: 1 col mobile, 2 col sm, 3 col lg */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
               {SERVICES.map((svc, i) => (
                 <div
@@ -482,7 +443,6 @@ export default function Home() {
                   data-reveal
                   data-delay={`${i * 0.07}s`}
                 >
-                  
                   <h3
                     className="text-white"
                     style={{
@@ -502,14 +462,12 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── INFRASTRUCTURE ──────────────────────────────────────── */}
         <section className="py-16 sm:py-20 lg:py-28 w-full" style={{ background: "#F5F3F0" }}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            {/* FIX: single col on mobile */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
               <div data-reveal>
                 <span className="tag-pill" style={{ color: "#141414", borderColor: "#141414" }}>
-                  Infrastructure & Public Works
+                  Infrastructure &amp; Public Works
                 </span>
                 <h2
                   className="mt-5 sm:mt-6 leading-none"
@@ -545,7 +503,6 @@ export default function Home() {
                 </ul>
               </div>
 
-              {/* 2×2 image grid — always safe, uses normal flow */}
               <div className="grid grid-cols-2 gap-2 sm:gap-3" data-reveal data-delay="0.15s">
                 {["/bridge.jpg", "/sidewalk.jpg", "/curb.jpg", "/infrastructure.jpg"].map((src, i) => (
                   <div key={i} className="gallery-item" style={{ borderRadius: "2px", aspectRatio: "1/1" }}>
@@ -558,7 +515,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── GALLERY ─────────────────────────────────────────────── */}
         <section
           id="projects"
           className="py-16 sm:py-20 lg:py-28 w-full"
@@ -583,29 +539,16 @@ export default function Home() {
               </p>
             </div>
 
-            {/* FIX: On mobile, 1 col uniform grid (no row-span tricks).
-                On md+, restore the asymmetric 3-col layout.
-                The span-2 row trick was causing height/width calculation
-                issues at narrow widths. */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
               {GALLERY.map((src, i) => (
                 <div
                   key={i}
                   className="gallery-item"
-                  style={{
-                    borderRadius: "2px",
-                    aspectRatio: "4/3",
-                    /* Only apply row-span on md+ via inline check — Tailwind can't
-                       do conditional inline styles, so we use a CSS custom approach */
-                  }}
+                  style={{ borderRadius: "2px", aspectRatio: "4/3" }}
                   data-reveal
                   data-delay={`${i * 0.07}s`}
                 >
-                  <img
-                    src={src}
-                    alt={`Project ${i + 1}`}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={src} alt={`Project ${i + 1}`} className="w-full h-full object-cover" />
                   <div className="gallery-overlay" />
                 </div>
               ))}
@@ -613,18 +556,13 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── CONTACT ─────────────────────────────────────────────── */}
         <section
           id="contact"
           className="py-16 sm:py-20 lg:py-28 w-full"
-          style={{
-            background: "linear-gradient(135deg, #0D0D0D 0%, #1A1108 100%)",
-          }}
+          style={{ background: "linear-gradient(135deg, #0D0D0D 0%, #1A1108 100%)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6">
-            {/* FIX: single col on mobile, two col on lg+ */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* Left col */}
               <div data-reveal>
                 <span className="tag-pill">Get in Touch</span>
                 <h2
@@ -653,7 +591,7 @@ export default function Home() {
                     { label: "Phone", content: <a href="tel:2495357501" className="text-white text-lg sm:text-xl font-semibold hover:text-amber-400 transition">(249) 535-7501</a> },
                     { label: "Email", content: <a href="mailto:info@kowalskicc.ca" className="text-white text-base sm:text-xl font-semibold hover:text-amber-400 transition break-all">info@kowalskicc.ca</a> },
                     { label: "Location", content: <p className="text-white/70 text-base">2060 Lea Rd, Innisfil ON L9S 1T3</p> },
-                    { label: "Social", content: <a href="https://facebook.com/KowalskiContracting" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-amber-400 transition font-medium">Facebook →</a> },
+                    { label: "Social", content: <a href="https://facebook.com/KowalskiContracting" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-amber-400 transition font-medium">Facebook</a> },
                   ].map(({ label, content }) => (
                     <div key={label}>
                       <div
@@ -668,56 +606,20 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Right col — form */}
               <div data-reveal data-delay="0.15s">
                 <form
                   action="https://formsubmit.co/info@kowalskicc.ca"
                   method="POST"
                   className="space-y-4 w-full"
                 >
-                  {/* FIX: grid-cols-1 on mobile, grid-cols-2 on sm+ */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Your Name"
-                      required
-                      className="form-input"
-                    />
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="Phone Number"
-                      required
-                      className="form-input"
-                    />
+                    <input type="text" name="name" placeholder="Your Name" required className="form-input" />
+                    <input type="tel" name="phone" placeholder="Phone Number" required className="form-input" />
                   </div>
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    required
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="address"
-                    placeholder="Project Address"
-                    className="form-input"
-                  />
-                  <input
-                    type="text"
-                    name="project"
-                    placeholder="Project Type (e.g. Driveway, Patio, Foundation)"
-                    className="form-input"
-                  />
-                  <textarea
-                    name="message"
-                    placeholder="Tell us about your project — size, timeline, any specifics..."
-                    rows="5"
-                    required
-                    className="form-input resize-none"
-                  />
+                  <input type="email" name="email" placeholder="Email Address" required className="form-input" />
+                  <input type="text" name="address" placeholder="Project Address" className="form-input" />
+                  <input type="text" name="project" placeholder="Project Type (e.g. Driveway, Patio, Foundation)" className="form-input" />
+                  <textarea name="message" placeholder="Tell us about your project — size, timeline, any specifics..." rows="5" required className="form-input resize-none" />
                   <button
                     type="submit"
                     className="w-full py-4 font-bold uppercase tracking-widest text-black transition-all duration-200"
@@ -739,13 +641,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ─── FOOTER ──────────────────────────────────────────────── */}
         <footer
           className="border-t w-full"
-          style={{
-            background: "#0A0A0A",
-            borderColor: "rgba(255,255,255,0.06)",
-          }}
+          style={{ background: "#0A0A0A", borderColor: "rgba(255,255,255,0.06)" }}
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <img
@@ -758,7 +656,7 @@ export default function Home() {
               className="text-white/30 text-xs text-center"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "0.08em" }}
             >
-              © {new Date().getFullYear()} Kowalski Concrete Contracting — Simcoe County, Ontario
+              {`© ${new Date().getFullYear()} Kowalski Concrete Contracting — Simcoe County, Ontario`}
             </p>
             <a
               href="https://facebook.com/KowalskiContracting"
