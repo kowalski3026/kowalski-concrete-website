@@ -590,7 +590,7 @@ export default function Home() {
                   {[
                     { label: "Phone", content: <a href="tel:2495357501" className="text-white text-lg sm:text-xl font-semibold hover:text-amber-400 transition">(249) 535-7501</a> },
                     { label: "Email", content: <a href="mailto:info@kowalskicc.ca" className="text-white text-base sm:text-xl font-semibold hover:text-amber-400 transition break-all">info@kowalskicc.ca</a> },
-                    { label: "Location", content: <p className="text-white/70 text-base">2060 Lea Rd, Innisfil ON L9S 1T3</p> },
+                    
                     { label: "Social", content: <a href="https://facebook.com/KowalskiContracting" target="_blank" rel="noopener noreferrer" className="text-white/70 hover:text-amber-400 transition font-medium">Facebook</a> },
                   ].map(({ label, content }) => (
                     <div key={label}>
