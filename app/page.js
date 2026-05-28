@@ -4,44 +4,26 @@ import { useState, useEffect } from "react";
 const SERVICES = [
   {
     title: "Driveways",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:36,height:36}}><path d="M3 17l3-10h12l3 10"/><path d="M3 17h18"/><path d="M12 7V3"/><path d="M8 17l1-4h6l1 4"/></svg>
-    ),
     desc: "High-performance driveways built for durability, function, and standout curb appeal that holds up through every Canadian winter.",
   },
   {
     title: "Garage Floors",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:36,height:36}}><rect x="2" y="3" width="20" height="18" rx="1"/><path d="M2 9h20"/><path d="M9 21V9"/></svg>
-    ),
     desc: "Heavy-duty concrete garage floors finished for maximum durability, easy cleaning, and a clean modern look that lasts decades.",
   },
   {
     title: "Patios",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:36,height:36}}><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
-    ),
     desc: "Beautiful outdoor concrete spaces designed for entertaining, relaxing, and everyday living — from simple slabs to decorative finishes.",
   },
   {
     title: "Foundations",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:36,height:36}}><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>
-    ),
     desc: "Precision-built foundations engineered for strength, stability, and lasting reliability. The base everything else depends on.",
   },
   {
     title: "Steps & Landings",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:36,height:36}}><path d="M3 21h4v-4h4v-4h4v-4h4V3"/><path d="M3 21V3"/></svg>
-    ),
     desc: "Modern concrete entrances combining safety with clean architectural style. First impressions that last.",
   },
   {
     title: "Decorative Concrete",
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{width:36,height:36}}><circle cx="12" cy="12" r="3"/><path d="M3 9h3M3 15h3M18 9h3M18 15h3M9 3v3M15 3v3M9 18v3M15 18v3"/><path d="M6.3 6.3l2.1 2.1M15.6 15.6l2.1 2.1M6.3 17.7l2.1-2.1M15.6 8.4l2.1-2.1"/></svg>
-    ),
     desc: "Premium decorative finishes that bring texture, elegance, and personality to your space — stamped, exposed, brushed, or coloured.",
   },
 ];
@@ -500,9 +482,7 @@ export default function Home() {
                   data-reveal
                   data-delay={`${i * 0.07}s`}
                 >
-                  <div className="mb-5" style={{ color: "var(--color-amber)" }}>
-  {svc.icon}
-</div>
+                  
                   <h3
                     className="text-white"
                     style={{
