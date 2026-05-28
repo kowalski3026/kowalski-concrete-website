@@ -645,7 +645,7 @@ borderBottom: "none",
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
             <img
-              src="/logo1.png"
+              src="/logo3.png"
               alt="Kowalski Concrete"
               className="h-9 sm:h-10 w-auto object-contain opacity-80"
               style={{ maxWidth: "140px" }}
