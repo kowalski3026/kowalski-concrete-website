@@ -103,7 +103,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
             <a href="#about" onClick={closeMenu} className="flex-shrink-0">
               <img
-                src="/logo1.png"
+                src="/logo3.png"
                 alt="Kowalski Concrete Contracting"
                 className="h-16 sm:h-20 md:h-24 w-auto object-contain"
                 style={{ maxWidth: "220px" }}
