@@ -656,7 +656,7 @@ export default function Home() {
               className="text-white/30 text-xs text-center"
               style={{ fontFamily: "var(--font-display)", letterSpacing: "0.08em" }}
             >
-              {`© ${new Date().getFullYear()} Kowalski Concrete Contracting — Simcoe County, Ontario`}
+              {`© ${new Date().getFullYear()} Kowalski Concrete Contracting Inc. — Simcoe County, Ontario`}
             </p>
             <a
               href="https://facebook.com/KowalskiContracting"
