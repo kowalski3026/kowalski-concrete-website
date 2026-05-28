@@ -103,8 +103,8 @@ borderBottom: "none",
               <img
                 src="/logo3.png"
                 alt="Kowalski Concrete Contracting"
-                className="h-20 sm:h-24 md:h-28 w-auto object-contain"
-                style={{ maxWidth: "280px" }}
+                className="h-28 sm:h-32 md:h-36 w-auto object-contain"
+                style={{ maxWidth: "340px" }}
               />
             </a>
 
