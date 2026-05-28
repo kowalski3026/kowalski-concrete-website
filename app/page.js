@@ -105,8 +105,8 @@ export default function Home() {
               <img
                 src="/logo3.png"
                 alt="Kowalski Concrete Contracting"
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain"
-                style={{ maxWidth: "220px" }}
+                className="h-20 sm:h-24 md:h-28 w-auto object-contain"
+                style={{ maxWidth: "280px" }}
               />
             </a>
 
