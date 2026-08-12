@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Kowalski Concrete Contracting — Driveways, Patios &amp; Structural Concrete | Innisfil &amp; Barrie</title>
+<meta name="description" content="Concrete driveways, patios, steps and structural work in Innisfil, Barrie and Simcoe County. 32 MPa air-entrained mix, proper base prep, honest pricing. 20+ years, $2M insured.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=DM+Sans:opsz,wght@9..40,400..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0B0B0C;
+  --panel:#151719;
+  --paper:#F5F3F0;
+  --card:#FBFAF8;
+  --line:#D6D1CA;
+  --hair:rgba(232,228,222,.14);
+  --graphite:#8A8F94;
+  --body:#3D4145;
+  --bone:#E8E4DE;
+  --amber:#F59E0B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:#141414;
+  font-family:"DM Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+p{line-height:1.66;color:var(--body);font-size:16px}
+img{display:block}
+
+/* ===== two-tier type system =====
+   WIDE  (wdth 112) = cinematic tier — hero, commercial
+   NARROW(wdth 70)  = technical tier — spec sheet, labels        */
+.wide{font-family:"Archivo",system-ui,sans-serif;font-variation-settings:"wdth" 112,"wght" 800;
+  text-transform:uppercase;line-height:.87;letter-spacing:-.035em}
+.narrow{font-family:"Archivo",system-ui,sans-serif;font-variation-settings:"wdth" 70,"wght" 800;
+  text-transform:uppercase;line-height:.92;letter-spacing:.005em}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--graphite)}
+
+/* ===== nav ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;
+  align-items:center;padding:14px 22px;transition:background .45s,border-color .45s;
+  border-bottom:1px solid transparent}
+nav.solid{background:rgba(245,243,240,.92);backdrop-filter:blur(10px);border-bottom-color:var(--line)}
+nav .mark{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;
+  text-transform:uppercase;letter-spacing:.16em;font-size:15px;color:var(--bone);transition:color .45s}
+nav.solid .mark{color:#141414}
+nav .mark i{font-style:normal;color:var(--amber)}
+nav a{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  text-decoration:none;color:var(--bone);border:1px solid var(--hair);padding:9px 15px;transition:.3s}
+nav.solid a{color:#141414;border-color:var(--line)}
+nav a:hover,nav a:focus-visible{background:var(--amber);border-color:var(--amber);color:#0B0B0C}
+
+/* ===== HERO — cinematic tier ===== */
+.hero{position:relative;height:100svh;min-height:580px;overflow:hidden;display:flex;
+  align-items:flex-end;background:var(--ink)}
+.hero-media{position:absolute;inset:-8%;z-index:0;animation:pan 28s ease-in-out infinite alternate}
+.hero-media img{width:100%;height:100%;object-fit:cover;filter:grayscale(.4) contrast(1.08) brightness(.46)}
+@keyframes pan{from{transform:scale(1.08) translate3d(-1.5%,1%,0)}to{transform:scale(1.2) translate3d(2%,-2%,0)}}
+.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(to top,rgba(11,11,12,.97) 4%,rgba(11,11,12,.3) 58%,rgba(11,11,12,.72) 100%)}
+.hero-in{position:relative;z-index:2;width:100%;padding-bottom:54px;color:var(--bone)}
+.hero .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.28em;
+  text-transform:uppercase;color:var(--graphite);margin-bottom:18px;opacity:0;animation:fade 1s .15s forwards}
+.hero h1{font-size:clamp(48px,12.5vw,150px)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(105%);
+  animation:rise .95s cubic-bezier(.16,1,.3,1) forwards}
+.hero h1 .ln:nth-child(2) i{animation-delay:.11s}
+.hero h1 .ln:nth-child(3) i{animation-delay:.22s;color:var(--amber)}
+@keyframes rise{to{transform:translateY(0)}}
+@keyframes fade{to{opacity:1}}
+.hero .sub{max-width:430px;margin-top:22px;color:#A9ADB1;opacity:0;animation:fade 1s .5s forwards}
+.hero .rule{height:1px;background:var(--hair);margin:26px 0 18px;opacity:0;animation:fade 1s .62s forwards}
+.hero .stats{display:flex;gap:26px;flex-wrap:wrap;opacity:0;animation:fade 1s .74s forwards}
+.hero .stats div{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--graphite)}
+.hero .stats b{display:block;font-family:"Archivo";font-variation-settings:"wdth" 100,"wght" 700;
+  font-size:26px;color:var(--bone);letter-spacing:-.02em;margin-bottom:3px}
+.cue{position:absolute;right:22px;bottom:54px;z-index:3;writing-mode:vertical-rl;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--graphite)}
+.cue::after{content:"";display:block;width:1px;height:44px;background:var(--graphite);
+  margin:10px auto 0;transform-origin:top;animation:drop 1.9s ease-in-out infinite}
+@keyframes drop{0%,100%{transform:scaleY(.2)}50%{transform:scaleY(1)}}
+
+/* ===== TECHNICAL tier — paper w/ drafting grid ===== */
+.tech{background:var(--paper);position:relative;
+  background-image:linear-gradient(rgba(20,20,20,.035) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(20,20,20,.035) 1px,transparent 1px);
+  background-size:32px 32px}
+.sec{padding:88px 0}
+.titleblock{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+  border-top:2px solid #141414;border-bottom:1px solid var(--line);padding:8px 0}
+.sec h2{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;text-transform:uppercase;
+  font-size:clamp(38px,9vw,86px);line-height:.9;letter-spacing:.004em;margin-top:26px}
+.sec h2 .a{color:var(--amber)}
+.lead{max-width:47ch;margin-top:18px;font-size:17px}
+
+/* self-drawing detail */
+.detail{margin-top:34px;border:1px solid var(--line);background:var(--card);padding:16px 10px 6px;position:relative}
+.detail .tag{position:absolute;top:-9px;left:14px;background:var(--card);padding:0 8px}
+svg .draw{stroke-dasharray:1400;stroke-dashoffset:1400;transition:stroke-dashoffset 1.7s cubic-bezier(.16,1,.3,1)}
+svg.in .draw{stroke-dashoffset:0}
+svg .lbl{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:#5B6166;letter-spacing:.04em}
+svg .lbl.key{fill:#141414;font-weight:500}
+svg .pop{opacity:0;transition:opacity .5s .95s}
+svg.in .pop{opacity:1}
+
+.strip{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);margin-top:42px}
+@media(min-width:760px){.strip{grid-template-columns:repeat(4,1fr)}}
+.strip div{padding:20px 16px 20px 0;border-bottom:1px solid var(--line)}
+.strip b{display:block;font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;
+  font-size:38px;line-height:1;letter-spacing:.01em}
+.strip span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--graphite)}
+
+/* control-joint divider */
+.joint{height:1px;background:var(--line);position:relative}
+.joint::before{content:"";position:absolute;left:0;top:-1px;height:3px;width:0;background:#141414;
+  transition:width 1.3s cubic-bezier(.16,1,.3,1)}
+.joint.in::before{width:100%}
+
+/* ===== estimator ===== */
+.est{border:1px solid #141414;background:#fff}
+.est-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:14px 20px;background:#141414;color:var(--paper)}
+.est-head h3{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;
+  text-transform:uppercase;font-size:21px;letter-spacing:.05em}
+.est-head span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;color:#9AA0A6}
+.est-body{padding:26px 20px}
+.field{margin-bottom:26px}
+.field .flabel{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:11px}
+.field .flabel .v{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;font-size:25px}
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:2px;background:var(--line);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;background:var(--amber);
+  border:2px solid #141414;cursor:pointer;border-radius:0;transform:rotate(45deg)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;background:var(--amber);border:2px solid #141414;
+  border-radius:0;cursor:pointer}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts button{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+  padding:10px 14px;background:transparent;border:1px solid var(--line);cursor:pointer;color:var(--body);transition:.2s}
+.opts button[aria-pressed=true]{background:#141414;color:var(--paper);border-color:#141414}
+.out{border-top:1px dashed var(--line);margin-top:6px;padding-top:22px;display:flex;
+  justify-content:space-between;align-items:flex-end;gap:14px;flex-wrap:wrap}
+.out .num{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;
+  font-size:clamp(40px,9vw,64px);line-height:1;letter-spacing:-.005em}
+.out .num i{font-style:normal;color:var(--amber)}
+.out .note{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--graphite);
+  max-width:32ch;line-height:1.6;letter-spacing:.02em;text-transform:none}
+.est .go{display:block;text-align:center;background:var(--amber);color:#141414;text-decoration:none;
+  padding:17px;font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;
+  text-transform:uppercase;letter-spacing:.1em;font-size:17px;margin-top:22px;transition:.25s}
+.est .go:hover,.est .go:focus-visible{background:#141414;color:var(--amber)}
+
+/* ===== services ===== */
+.svcs{display:grid;grid-template-columns:1fr;margin-top:30px;border-top:1px solid var(--line)}
+@media(min-width:740px){.svcs{grid-template-columns:1fr 1fr}}
+@media(min-width:1040px){.svcs{grid-template-columns:repeat(3,1fr)}}
+.svc{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:24px 20px 26px;
+  background:transparent;transition:background .35s}
+.svc:hover{background:var(--card)}
+.svc .ph{aspect-ratio:16/10;overflow:hidden;background:var(--line);margin-bottom:16px}
+.svc .ph img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15);
+  transition:transform 1s cubic-bezier(.16,1,.3,1),filter .5s}
+.svc:hover .ph img{transform:scale(1.06);filter:none}
+.svc h3{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;text-transform:uppercase;
+  font-size:25px;letter-spacing:.01em;margin-bottom:8px}
+.svc p{font-size:15px}
+.svc .spec{margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--graphite)}
+.svc .spec span::before{content:"· "}
+.svc .spec span:first-child::before{content:""}
+
+/* ===== process rows ===== */
+.row{display:grid;grid-template-columns:1fr;gap:6px;padding:24px 0;border-bottom:1px solid var(--line);
+  opacity:0;transform:translateY(20px);transition:.72s cubic-bezier(.16,1,.3,1)}
+.row.in{opacity:1;transform:none}
+@media(min-width:820px){.row{grid-template-columns:96px 250px 1fr;gap:30px;align-items:baseline}}
+.row h4{font-family:"Archivo";font-variation-settings:"wdth" 70,"wght" 800;text-transform:uppercase;
+  font-size:26px;letter-spacing:.01em}
+.row:hover{background:rgba(245,158,11,.055)}
+
+/* ===== COMMERCIAL — cinematic tier ===== */
+.cine{background:var(--ink);color:var(--bone)}
+.cine .mono{color:var(--graphite)}
+.cine-intro{padding:88px 0 0}
+.cine-intro h2{font-size:clamp(34px,7.4vw,76px);max-width:15ch}
+.cine-intro p{color:#A9ADB1;max-width:48ch;margin-top:20px}
+.cine-list{display:flex;gap:20px;flex-wrap:wrap;margin-top:26px;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--graphite)}
+.cine-list span{border:1px solid var(--hair);padding:8px 13px}
+.pinwrap{height:300vh;position:relative}
+.pin{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.pin-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;padding:0 22px 20px}
+.pin-head h3{font-family:"Archivo";font-variation-settings:"wdth" 112,"wght" 800;
+  text-transform:uppercase;font-size:clamp(24px,4.4vw,46px);letter-spacing:-.03em}
+.track{display:flex;gap:14px;padding-left:22px;will-change:transform}
+.slide{position:relative;flex:0 0 auto;width:76vw;max-width:520px;aspect-ratio:4/5;
+  overflow:hidden;background:var(--panel)}
+@media(min-width:820px){.slide{width:34vw;aspect-ratio:3/4}}
+.slide img{width:100%;height:100%;object-fit:cover;filter:grayscale(.25) brightness(.8);transition:.6s}
+.slide:hover img{filter:none;transform:scale(1.04)}
+.slide .cap{position:absolute;left:0;right:0;bottom:0;padding:18px;
+  background:linear-gradient(to top,rgba(11,11,12,.92),transparent)}
+.slide .cap b{display:block;font-family:"Archivo";font-variation-settings:"wdth" 90,"wght" 700;
+  text-transform:uppercase;letter-spacing:.05em;font-size:15px}
+.slide .cap span{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--amber)}
+.progress{height:1px;background:var(--hair);margin:22px 22px 0;position:relative}
+.progress i{position:absolute;left:0;top:0;height:1px;background:var(--amber);width:0}
+
+/* ===== CLOSER — before/after ===== */
+.closer{padding:88px 0 96px}
+.closer h2{font-size:clamp(36px,8.4vw,84px)}
+.ba{position:relative;margin-top:30px;overflow:hidden;aspect-ratio:16/11;background:var(--line);
+  border:1px solid var(--line);touch-action:pan-y;cursor:ew-resize;user-select:none}
+@media(min-width:880px){.ba{aspect-ratio:16/8}}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba .after{clip-path:inset(0 0 0 var(--x,50%))}
+.ba .before{filter:grayscale(.55) brightness(.82) contrast(.95)}
+.ba .tagl,.ba .tagr{position:absolute;top:14px;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;padding:7px 12px;pointer-events:none}
+.ba .tagl{left:14px;background:rgba(11,11,12,.7);color:#fff}
+.ba .tagr{right:14px;background:var(--amber);color:#141414}
+.handle{position:absolute;top:0;bottom:0;left:var(--x,50%);width:2px;background:#fff;pointer-events:none}
+.handle::after{content:"⇄";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;background:#fff;color:#141414;display:grid;place-items:center;
+  font-size:17px;box-shadow:0 6px 18px rgba(11,11,12,.3)}
+.bahint{position:absolute;left:50%;bottom:14px;transform:translateX(-50%);
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:#fff;background:rgba(11,11,12,.6);padding:7px 13px;pointer-events:none;
+  animation:pulse 2.4s ease-in-out infinite;transition:opacity .3s}
+@keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn{display:inline-block;text-decoration:none;padding:17px 28px;font-family:"Archivo";
+  font-variation-settings:"wdth" 70,"wght" 800;text-transform:uppercase;letter-spacing:.09em;
+  font-size:16px;transition:.25s}
+.btn.p{background:var(--amber);color:#141414}
+.btn.p:hover,.btn.p:focus-visible{background:#141414;color:var(--amber)}
+.btn.s{border:1px solid #141414;color:#141414}
+.btn.s:hover,.btn.s:focus-visible{background:#141414;color:var(--paper)}
+
+/* ===== footer ===== */
+footer{background:var(--ink);color:var(--graphite);padding:44px 0 40px;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;line-height:2}
+footer .areas{color:var(--bone);text-transform:uppercase;letter-spacing:.14em;margin-bottom:18px;
+  display:flex;gap:14px;flex-wrap:wrap}
+footer a{color:var(--amber);text-decoration:none}
+
+/* reveals + a11y */
+.up{opacity:0;transform:translateY(24px);transition:opacity .75s,transform .75s cubic-bezier(.16,1,.3,1)}
+.up.in{opacity:1;transform:none}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .up{opacity:1;transform:none}.row{opacity:1;transform:none}
+  .hero h1 .ln i{transform:none}.hero .eyebrow,.hero .sub,.hero .rule,.hero .stats{opacity:1}
+  svg .draw{stroke-dashoffset:0}svg .pop{opacity:1}.joint::before{width:100%}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="mark">Kowalski<i>·</i>Concrete</div>
+  <a href="tel:2495357501">249 535 7501</a>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div class="hero-media"><img src="/hero3.jpg" alt="Concrete being placed and finished on a residential pour"></div>
+  <div class="hero-in wrap">
+    <div class="eyebrow">Innisfil · Barrie · Simcoe County</div>
+    <h1 class="wide">
+      <span class="ln"><i>Poured</i></span>
+      <span class="ln"><i>once.</i></span>
+      <span class="ln"><i>Done right.</i></span>
+    </h1>
+    <p class="sub">32 MPa air-entrained mix, six inches of compacted base, joints cut on time. The parts you can't see are the parts that fail.</p>
+    <div class="rule"></div>
+    <div class="stats">
+      <div><b>20+</b>Years on the trowel</div>
+      <div><b>500+</b>Pours completed</div>
+      <div><b>$2M</b>Liability coverage</div>
+    </div>
+  </div>
+  <div class="cue">Scroll</div>
+</header>
+
+<main class="tech">
+
+<!-- ================= SPEC SHEET ================= -->
+<section class="sec wrap" id="spec">
+  <div class="titleblock">
+    <span class="mono">Drawing 01 · Typical residential slab</span>
+    <span class="mono">Section A–A · Rev 2026</span>
+  </div>
+  <h2>What you're<br>actually<br><span class="a">paying for.</span></h2>
+  <p class="lead">Most quotes are one line and a number. Here's the whole build-up, drawn to scale, so you can hold mine up against anyone else's.</p>
+
+  <div class="detail">
+    <span class="tag mono">Section A–A · Driveway</span>
+    <svg id="sec-svg" viewBox="0 0 700 262" style="width:100%;height:auto" role="img"
+      aria-label="Cross-section of a residential concrete driveway showing compacted subgrade, six inch granular base, four inch 32 MPa slab, welded wire mesh and a saw-cut control joint">
+      <defs>
+        <pattern id="hatch" width="7" height="7" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="7" stroke="#C9C3BA" stroke-width="1.6"/>
+        </pattern>
+        <pattern id="agg" width="12" height="12" patternUnits="userSpaceOnUse">
+          <circle cx="3" cy="4" r="1.5" fill="#BFC4C8"/><circle cx="9" cy="9" r="1.1" fill="#BFC4C8"/>
+        </pattern>
+      </defs>
+      <rect x="90" y="186" width="520" height="52" fill="url(#hatch)"/>
+      <rect x="90" y="140" width="520" height="46" fill="url(#agg)" stroke="#8A8F94" stroke-width="1"/>
+      <rect x="90" y="96" width="520" height="44" fill="#DBDDDE" stroke="#141414" stroke-width="1.6"/>
+      <path d="M350 96 L350 118" stroke="#141414" stroke-width="3"/>
+      <g class="pop">
+        <circle cx="150" cy="122" r="3" fill="#F59E0B"/><circle cx="230" cy="122" r="3" fill="#F59E0B"/>
+        <circle cx="310" cy="122" r="3" fill="#F59E0B"/><circle cx="390" cy="122" r="3" fill="#F59E0B"/>
+        <circle cx="470" cy="122" r="3" fill="#F59E0B"/><circle cx="550" cy="122" r="3" fill="#F59E0B"/>
+      </g>
+      <g stroke="#F59E0B" stroke-width="1.2" fill="none" class="draw">
+        <path d="M64 96 L64 140 M58 96 L70 96 M58 140 L70 140"/>
+        <path d="M64 140 L64 186 M58 140 L70 140 M58 186 L70 186"/>
+        <path d="M350 82 L350 60 L470 60"/>
+        <path d="M550 122 L620 122 L640 108"/>
+        <path d="M90 250 L610 250 M90 244 L90 256 M610 244 L610 256"/>
+      </g>
+      <text class="lbl key" x="12" y="122">4″ SLAB</text>
+      <text class="lbl" x="8" y="168">6″ BASE</text>
+      <text class="lbl key" x="476" y="57">SAW-CUT JOINT @ 10′</text>
+      <text class="lbl key" x="560" y="104">6×6 MESH</text>
+      <text class="lbl" x="96" y="212">COMPACTED SUBGRADE</text>
+      <text class="lbl key" x="286" y="243">SLOPE 1–2% AWAY FROM HOUSE</text>
+      <text class="lbl key" x="98" y="122">32 MPa AIR-ENTRAINED</text>
+    </svg>
+  </div>
+
+  <div class="strip">
+    <div><b>32</b><span>MPa — min for Ontario exterior</span></div>
+    <div><b>5–8%</b><span>Entrained air</span></div>
+    <div><b>10′</b><span>Control joint spacing</span></div>
+    <div><b>28d</b><span>Full design strength</span></div>
+  </div>
+</section>
+
+<div class="joint"></div>
+
+<!-- ================= ESTIMATOR ================= -->
+<section class="sec wrap">
+  <span class="mono">Tool 01 · Before you call anyone</span>
+  <h2 style="margin-top:20px">Ballpark it<br>yourself.</h2>
+  <p class="lead" style="margin-bottom:34px">Real Simcoe County numbers for 2026. Move the slider — no email, no form, no follow-up call you didn't ask for.</p>
+
+  <div class="est">
+    <div class="est-head">
+      <h3>Ballpark estimator</h3>
+      <span>Live · Simcoe County 2026</span>
+    </div>
+    <div class="est-body">
+      <div class="field">
+        <label class="flabel" for="sq"><span class="mono">Area</span><span class="v"><span id="sqv">600</span> sq ft</span></label>
+        <input id="sq" type="range" min="100" max="1600" step="25" value="600">
+      </div>
+      <div class="field">
+        <span class="mono" style="display:block;margin-bottom:11px">Finish</span>
+        <div class="opts" id="fin">
+          <button data-m="1" aria-pressed="true">Broom</button>
+          <button data-m="1.35" aria-pressed="false">Exposed aggregate</button>
+          <button data-m="1.6" aria-pressed="false">Stamped</button>
+        </div>
+      </div>
+      <div class="field">
+        <span class="mono" style="display:block;margin-bottom:11px">Existing surface</span>
+        <div class="opts" id="rem">
+          <button data-r="0" aria-pressed="true">Nothing there</button>
+          <button data-r="3.5" aria-pressed="false">Tear out old</button>
+        </div>
+      </div>
+      <div class="out">
+        <div class="num" aria-live="polite">$<i id="lo">6,000</i> – $<i id="hi">9,000</i></div>
+        <p class="note">Installed range: excavation, compacted base, forming, 32 MPa mix, placement and finishing. Access, grade and drainage move this. Not a quote.</p>
+      </div>
+      <a class="go" href="/free-quote.html">Get the real number</a>
+    </div>
+  </div>
+</section>
+
+<div class="joint"></div>
+
+<!-- ================= SERVICES ================= -->
+<section class="sec wrap">
+  <span class="mono">Residential · 02</span>
+  <h2 style="margin-top:20px">What I pour.</h2>
+  <div class="svcs">
+    <article class="svc up">
+      <div class="ph"><img src="/gallery/photo1.jpg" alt="Finished concrete driveway" loading="lazy"></div>
+      <h3>Driveways</h3>
+      <p>Tear-out, re-graded base, formed and poured. Most two-car driveways are done inside three days.</p>
+      <div class="spec"><span>4″ slab</span><span>32 MPa</span><span>Joints @ 10′</span></div>
+    </article>
+    <article class="svc up">
+      <div class="ph"><img src="/gallery/photo2.jpg" alt="Concrete patio" loading="lazy"></div>
+      <h3>Patios</h3>
+      <p>Sloped away from the house so water never sits against your foundation or freezes at the door.</p>
+      <div class="spec"><span>1–2% fall</span><span>Fibre mesh</span><span>Sealed</span></div>
+    </article>
+    <article class="svc up">
+      <div class="ph"><img src="/gallery/photo4.jpg" alt="Concrete steps and landing" loading="lazy"></div>
+      <h3>Steps &amp; landings</h3>
+      <p>Formed on site and rebar-tied into the slab, with even risers you won't trip on in the dark.</p>
+      <div class="spec"><span>Rebar tied</span><span>Code riser</span><span>Non-slip</span></div>
+    </article>
+    <article class="svc up">
+      <div class="ph"><img src="/gallery/photo6.jpg" alt="Stamped decorative concrete" loading="lazy"></div>
+      <h3>Stamped &amp; coloured</h3>
+      <p>Texture and colour without the shifting, settling and weeds you get from pavers.</p>
+      <div class="spec"><span>Integral colour</span><span>Release</span><span>Sealed</span></div>
+    </article>
+    <article class="svc up">
+      <div class="ph"><img src="/gallery/photo5.jpg" alt="Concrete garage floor" loading="lazy"></div>
+      <h3>Garage floors</h3>
+      <p>Flat, hard-troweled and sealed. Sweeps clean and takes a jack stand without spalling.</p>
+      <div class="spec"><span>Power float</span><span>Drain fall</span><span>Sealed</span></div>
+    </article>
+    <article class="svc up">
+      <div class="ph"><img src="/hero2.jpg" alt="Retaining wall construction" loading="lazy"></div>
+      <h3>Retaining walls</h3>
+      <p>Built for the grade and drained behind, so they hold the hill instead of slowly leaning off it.</p>
+      <div class="spec"><span>Drained</span><span>Reinforced</span><span>Engineered</span></div>
+    </article>
+  </div>
+</section>
+
+<div class="joint"></div>
+
+<!-- ================= PROCESS ================= -->
+<section class="sec wrap">
+  <span class="mono">Sequence · 03</span>
+  <h2 style="margin-top:20px">How a pour<br>actually goes.</h2>
+  <div style="margin-top:34px">
+    <div class="row"><span class="mono">Day 0</span><h4>Layout &amp; excavation</h4><p>Strings up, sod and old surface out, dig to depth. You'll see the shape of it by lunch.</p></div>
+    <div class="row"><span class="mono">Day 0</span><h4>Base &amp; compaction</h4><p>Granular A in lifts, plate-compacted, graded for fall away from the building.</p></div>
+    <div class="row"><span class="mono">Day 1</span><h4>Forms &amp; steel</h4><p>Forms set and checked for level and slope. Mesh or fibre depending on what's driving over it.</p></div>
+    <div class="row"><span class="mono">Day 2</span><h4>Pour &amp; finish</h4><p>Placed, screeded, floated, broomed. Timing is everything — finish too early and you seal water into the surface.</p></div>
+    <div class="row"><span class="mono">Day 2</span><h4>Joints cut</h4><p>Saw-cut within 12 hours. Concrete cracks; joints decide where it does.</p></div>
+    <div class="row"><span class="mono">Day 7</span><h4>Drive on it</h4><p>Walk at 24–48 hours, light vehicle at 7 days, full strength at 28.</p></div>
+  </div>
+</section>
+</main>
+
+<!-- ================= COMMERCIAL — cinematic ================= -->
+<section class="cine">
+  <div class="cine-intro wrap">
+    <span class="mono">Infrastructure · 04</span>
+    <h2 class="wide" style="margin-top:20px">Same crew.<br>Bigger pours.</h2>
+    <p>Twenty years of this work started on municipal jobs — bridge rehabilitation, structural repairs, sidewalks and curbs built to hold up under salt, plows and freeze-thaw. General contractors and municipalities: the tolerances you work to are the ones I learned on.</p>
+    <div class="cine-list">
+      <span>Bridge rehabilitation</span><span>Structural repairs</span><span>Sidewalks &amp; curbs</span><span>Municipal works</span>
+    </div>
+  </div>
+
+  <div class="pinwrap">
+    <div class="pin">
+      <div class="pin-head">
+        <h3>Selected works</h3>
+        <span class="mono">Scroll →</span>
+      </div>
+      <div class="track" id="track">
+        <figure class="slide"><img src="/bridge.jpg" alt="Bridge rehabilitation project" loading="lazy"><figcaption class="cap"><span>Bridge rehabilitation</span><b>Structural deck repair</b></figcaption></figure>
+        <figure class="slide"><img src="/infrastructure.jpg" alt="Municipal infrastructure concrete" loading="lazy"><figcaption class="cap"><span>Municipal</span><b>Structural concrete</b></figcaption></figure>
+        <figure class="slide"><img src="/sidewalk.jpg" alt="Municipal sidewalk pour" loading="lazy"><figcaption class="cap"><span>Sidewalks</span><b>Public realm</b></figcaption></figure>
+        <figure class="slide"><img src="/curb.jpg" alt="Curb and gutter work" loading="lazy"><figcaption class="cap"><span>Curb &amp; gutter</span><b>Roadworks</b></figcaption></figure>
+        <figure class="slide"><img src="/rebar-bg.jpg" alt="Rebar placement" loading="lazy"><figcaption class="cap"><span>Reinforcement</span><b>Tied on site</b></figcaption></figure>
+      </div>
+      <div class="progress"><i id="bar"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLOSER ================= -->
+<section class="tech">
+  <div class="closer wrap">
+    <span class="mono up">The whole point · 05</span>
+    <h2 class="narrow up" style="margin-top:20px">See the<br>difference.</h2>
+    <p class="lead up">Drag the handle. Left is what most driveways in this county look like after fifteen winters. Right is what replacing it properly gets you.</p>
+
+    <div class="ba up" id="ba" role="slider" aria-label="Before and after driveway comparison"
+         aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0">
+      <img class="before" src="/gallery/photo3.jpg" alt="Driveway before replacement">
+      <img class="after" src="/gallery/photo1.jpg" alt="Driveway after replacement">
+      <span class="tagl">Before</span>
+      <span class="tagr">After</span>
+      <div class="handle"></div>
+      <span class="bahint" id="bahint">Drag to compare</span>
+    </div>
+
+    <div class="cta-row up">
+      <a class="btn p" href="/free-quote.html">Get a free quote</a>
+      <a class="btn s" href="tel:2495357501">Call 249 535 7501</a>
+    </div>
+    <p class="up" style="margin-top:18px;max-width:46ch">Send me length, width and a photo of the access. You'll have a real range back within 24 hours — from me, not a call centre.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="areas">
+      <span>Innisfil</span><span>Barrie</span><span>Alcona</span><span>Stroud</span>
+      <span>Cookstown</span><span>Bradford</span><span>Angus</span><span>Muskoka</span>
+    </div>
+    KOWALSKI CONCRETE CONTRACTING INC. · 2060 LEA RD, INNISFIL ON L9S 1T3<br>
+    <a href="tel:2495357501">249 535 7501</a> · <a href="mailto:office@kowalskicc.ca">OFFICE@KOWALSKICC.CA</a><br>
+    HST 77871 6571 RT0001 · $2M LIABILITY · © 2026
+  </div>
+</footer>
+
+<script>
+/* reveals */
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+}),{threshold:.2});
+document.querySelectorAll('.up,.row,.joint,#sec-svg').forEach(el=>io.observe(el));
+
+/* nav goes solid once past the hero */
+const nav=document.getElementById('nav'),hero=document.querySelector('.hero');
+new IntersectionObserver(([e])=>nav.classList.toggle('solid',!e.isIntersecting),
+  {rootMargin:'-70px 0px 0px 0px'}).observe(hero);
+
+/* pinned horizontal pan */
+const pw=document.querySelector('.pinwrap'),track=document.getElementById('track'),bar=document.getElementById('bar');
+let tick=false;
+function pan(){
+  const r=pw.getBoundingClientRect(),total=pw.offsetHeight-window.innerHeight;
+  const p=Math.min(1,Math.max(0,-r.top/total));
+  const dist=Math.max(0,track.scrollWidth-window.innerWidth+44);
+  track.style.transform='translate3d('+(-p*dist)+'px,0,0)';
+  bar.style.width=(p*100)+'%';
+  tick=false;
+}
+addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(pan);tick=true}},{passive:true});
+addEventListener('resize',pan);pan();
+
+/* estimator */
+const sq=document.getElementById('sq'),sqv=document.getElementById('sqv'),
+      lo=document.getElementById('lo'),hi=document.getElementById('hi');
+let mult=1,rem=0;
+function group(id,fn){
+  const g=document.getElementById(id);
+  g.addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    [...g.children].forEach(c=>c.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true'); fn(b); calc();
+  });
+}
+group('fin',b=>mult=parseFloat(b.dataset.m));
+group('rem',b=>rem=parseFloat(b.dataset.r));
+function fmt(n){const v=Math.round(n/100)*100;return v.toLocaleString('en-CA')}
+function calc(){
+  const a=+sq.value; sqv.textContent=a.toLocaleString('en-CA');
+  const small=a<250?1.25:a<400?1.1:1;          /* setup + delivery minimums hit small jobs */
+  lo.textContent=fmt(a*(10*mult*small+rem));
+  hi.textContent=fmt(a*(15*mult*small+rem));
+}
+sq.addEventListener('input',calc); calc();
+
+/* before / after */
+const ba=document.getElementById('ba'),hint=document.getElementById('bahint');
+let drag=false;
+function setX(clientX){
+  const r=ba.getBoundingClientRect();
+  let p=((clientX-r.left)/r.width)*100; p=Math.max(0,Math.min(100,p));
+  ba.style.setProperty('--x',p+'%'); ba.setAttribute('aria-valuenow',Math.round(p));
+  if(hint) hint.style.opacity=0;
+}
+ba.addEventListener('pointerdown',e=>{drag=true;ba.setPointerCapture(e.pointerId);setX(e.clientX)});
+ba.addEventListener('pointermove',e=>{if(drag)setX(e.clientX)});
+addEventListener('pointerup',()=>drag=false);
+ba.addEventListener('keydown',e=>{
+  const cur=+ba.getAttribute('aria-valuenow');
+  if(e.key==='ArrowLeft'||e.key==='ArrowRight'){
+    e.preventDefault();
+    const n=Math.max(0,Math.min(100,cur+(e.key==='ArrowRight'?4:-4)));
+    ba.style.setProperty('--x',n+'%'); ba.setAttribute('aria-valuenow',n);
+    if(hint) hint.style.opacity=0;
+  }
+});
+ba.style.setProperty('--x','50%');
+</script>
+</body>
+</html>
