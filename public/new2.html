@@ -250,18 +250,10 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
   </div>
 </section>
 
-<!-- ========== BEAT 03 — the reveal (drafting animation, same swap) ========== -->
-<section class="beat" data-beat>
+<!-- ========== BEAT 03 — the reveal, scroll-scrubbed sprite ========== -->
+<section class="beat" data-beat data-scrub data-sprite="/reveal-sprite.jpg" data-cols="10" data-rows="6" data-frames="60" data-fw="380" data-fh="676">
   <div class="stick">
-    <div class="svgstage">
-      <svg viewBox="0 0 400 200" style="width:min(86vw,560px)">
-        <g class="draw" fill="none" stroke="#E8E4DE" stroke-width="1.4">
-          <path d="M40 40 L360 40 M40 60 L360 60 M40 80 L360 80 M40 100 L360 100 M40 120 L360 120 M40 140 L360 140 M40 160 L360 160"/>
-        </g>
-        <path class="draw" d="M30 30 H370 V170 H30 Z" fill="none" stroke="#F59E0B" stroke-width="3"/>
-        <text x="200" y="192" text-anchor="middle" fill="#8A8F94" font-family="IBM Plex Mono" font-size="10" letter-spacing="3">BROOM FINISH · SEALED</text>
-      </svg>
-    </div>
+    <canvas class="scrub-canvas"></canvas>
     <div class="shade"></div>
     <div class="b-copy">
       <div class="b-num">03 / THE REVEAL</div>
