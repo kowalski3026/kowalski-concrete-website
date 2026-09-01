@@ -16,7 +16,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body>{children<div google-add-preferred-source-btn data-theme="dark"></div>}</body>
+      <body>{children}<div google-add-preferred-source-btn data-theme="dark"></div></body>
     </html>
   );
 }
