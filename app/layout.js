@@ -10,12 +10,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+    <script async src="https://news.google.com/swg/js/v1/publisher.js"></script>
         {/* width=device-width prevents mobile browsers from zooming out to fit wide content */}
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       </head>
-      <body>{children}</body>
+      <body>{children<div google-add-preferred-source-btn data-theme="dark"></div>}</body>
     </html>
   );
 }
