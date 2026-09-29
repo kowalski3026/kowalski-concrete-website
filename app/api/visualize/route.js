@@ -192,6 +192,7 @@ export async function POST(request) {
   if (typeof image !== 'string' || image.length < 1000 || image.length > MAX_B64_CHARS || !/^[A-Za-z0-9+/=]+$/.test(image)) return json({ error: 'That photo is too large or not valid. Try a smaller one.' }, 400);
   if (!looksLikeImage(image, mime)) return json({ error: 'That file does not look like a photo.' }, 400);
 
+  const tok = typeof body.token === 'string' && /^[a-f0-9]{32}$/.test(body.token) ? body.token : 'none';
   const choices = cleanChoices(body.choices);
   const prompt = buildPrompt(choices);
 
@@ -204,10 +205,13 @@ export async function POST(request) {
   const kGlob = 'viz:g:' + t.day;
   let counts;
   let unlocked = false;
+  let bonusCap = 0;
   try {
     const r = await redis(rc, [
       ['GET', 'viz:off'],
       ['GET', 'viz:unlock:' + ip],
+      ['GET', 'viz:bonus:' + ip],
+      ['GET', 'viz:tok:' + tok],
       ['INCR', kIpH], ['EXPIRE', kIpH, 4000],
       ['INCR', kIpD], ['EXPIRE', kIpD, 90000],
       ['INCR', kGlob], ['EXPIRE', kGlob, 90000],
@@ -216,8 +220,9 @@ export async function POST(request) {
       await redis(rc, [['DECR', kIpH], ['DECR', kIpD], ['DECR', kGlob]]).catch(() => {});
       return json({ error: 'The visualizer is taking a short break. Please try again later, or call 249-535-7501.' }, 503);
     }
-    counts = { h: r[2], d: r[4], g: r[6] };
-    unlocked = r[1] === '1' || r[1] === 1;
+    counts = { h: r[4], d: r[6], g: r[8] };
+    bonusCap = parseInt(r[2], 10) || 0;
+    unlocked = r[1] === '1' || r[1] === 1 || r[3] === '1' || r[3] === 1;
   } catch (e) {
     return json({ error: 'The visualizer is busy. Please try again in a few minutes.' }, 503); // fail closed
   }
@@ -225,7 +230,7 @@ export async function POST(request) {
 
   if (counts.g > lim.global) { await refund(); return json({ error: 'We have hit today’s free preview limit. Please try again tomorrow, or call 249-535-7501 for a free quote.' }, 429); }
   if (!unlocked && counts.d > lim.free) { await refund(); return json({ needLead: true, error: 'Enter your name and a phone or email to unlock 2 more free previews.' }, 402); }
-  if (unlocked && counts.d > lim.unlocked) { await refund(); return json({ error: 'You have used today’s free previews. Call 249-535-7501 or request a free quote and we will take it from here.' }, 429); }
+  if (unlocked && counts.d > Math.max(lim.unlocked, bonusCap)) { await refund(); return json({ error: 'You have used today’s free previews. Call 249-535-7501 or request a free quote and we will take it from here.' }, 429); }
   if (counts.h > lim.ipHour) { await refund(); return json({ error: 'You have used your previews for this hour. Please try again in a bit.' }, 429); }
   if (counts.d > lim.ipDay) { await refund(); return json({ error: 'You have used all of today’s previews. Please try again tomorrow, or call 249-535-7501.' }, 429); }
 
