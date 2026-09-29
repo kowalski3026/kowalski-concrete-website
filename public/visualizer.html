@@ -488,7 +488,6 @@ footer a{color:#B9B4AC}
         <p class="viz-lead-s">Leave your name and a phone or email. We'll only use it to follow up on your project — no spam.</p>
         <input type="text" id="vlName" placeholder="Your name" autocomplete="name" maxlength="80">
         <input type="text" id="vlContact" placeholder="Phone or email" autocomplete="tel" maxlength="120">
-        <input type="text" id="vlWebsite" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0;height:0">
         <label class="viz-lead-c"><input type="checkbox" id="vlConsent"> <span>I agree Kowalski Concrete may contact me about my project. I can opt out anytime.</span></label>
         <button class="viz-go" id="vlBtn" type="button">UNLOCK 2 MORE PREVIEWS</button>
         <div class="viz-error" id="vlErr"></div>
@@ -812,6 +811,8 @@ footer a{color:#B9B4AC}
     };
   }
 
+  function getTok(){ try{ return localStorage.getItem('vizTok') || ''; }catch(e){ return ''; } }
+  var justUnlocked = false;
   goBtn.addEventListener('click', function(){
     if(!imageBase64){ showError('Upload a photo first.'); return; }
     hideError();
@@ -834,17 +835,19 @@ footer a{color:#B9B4AC}
     fetch('/api/visualize', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ image: sendB64, mimeType: sendMime, choices: choices })
+      body: JSON.stringify({ image: sendB64, mimeType: sendMime, choices: choices, token: getTok() })
     })
     .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(d){ return {ok:r.ok, data:d}; }); })
     .then(function(res){
       statusEl.style.display = 'none';
       goBtn.disabled = false;
+      if(res.data && res.data.needLead && justUnlocked){ justUnlocked=false; showError('We saved your info, but could not confirm it. Please tap Generate once more, or call 249-535-7501.'); return; }
       if(res.data && res.data.needLead){ document.getElementById('vizLead').classList.add('show'); document.getElementById('vizLead').scrollIntoView({behavior:'smooth',block:'center'}); return; }
       if(!res.ok || !res.data || !res.data.data){
         showError((res.data && res.data.error) || 'Something went wrong. Please try again.');
         return;
       }
+      justUnlocked = false;
       if(res.data.prompt){ document.getElementById('vizPromptShown').textContent = res.data.prompt; }
       compareBase.src = preview.src;
       resultImg.src = 'data:' + res.data.mimeType + ';base64,' + res.data.data;
@@ -861,7 +864,7 @@ footer a{color:#B9B4AC}
       var name = document.getElementById('vlName').value.trim();
       var contact = document.getElementById('vlContact').value.trim();
       var consent = document.getElementById('vlConsent').checked;
-      var website = document.getElementById('vlWebsite').value;
+      var website = '';
       var ch = currentChoices();
       btn.disabled = true;
       fetch('/api/lead', {
@@ -872,6 +875,8 @@ footer a{color:#B9B4AC}
       .then(function(res){
         btn.disabled = false;
         if(!res.ok){ err.textContent = (res.data && res.data.error) || 'Something went wrong. Please try again.'; err.style.display = 'block'; return; }
+        try{ if(res.data && res.data.token) localStorage.setItem('vizTok', res.data.token); }catch(e){}
+        justUnlocked = true;
         if(!website){
           var isEmail = /@/.test(contact);
           var payload = { _subject: 'New Visualizer Lead — ' + name, _captcha: 'false', _template: 'table',
