@@ -36,6 +36,12 @@ function clientIp(request) {
   const xff = request.headers.get('x-forwarded-for');
   return xff ? xff.split(',')[0].trim() : 'unknown';
 }
+const torontoDay = () => {
+  const p = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Toronto', year: 'numeric', month: '2-digit', day: '2-digit' })
+    .formatToParts(new Date()).reduce((a, x) => { a[x.type] = x.value; return a; }, {});
+  return p.year + '-' + p.month + '-' + p.day;
+};
+const newToken = () => Array.from(crypto.getRandomValues(new Uint8Array(16))).map((x) => x.toString(16).padStart(2, '0')).join('');
 const clean = (v, n) => String(v == null ? '' : v).replace(/[\u0000-\u001f<>]/g, ' ').trim().slice(0, n);
 
 export async function POST(request) {
@@ -44,8 +50,6 @@ export async function POST(request) {
   if (!rc) return json({ error: 'Not set up yet.' }, 503);
   let b;
   try { b = await request.json(); } catch (e) { return json({ error: 'Bad request.' }, 400); }
-
-  if (b && b.website) return json({ ok: true }); // honeypot: bots fill this, humans never see it
 
   const name = clean(b && b.name, 80);
   const contact = clean(b && b.contact, 120);
@@ -68,17 +72,22 @@ export async function POST(request) {
     color: clean(c.fieldColor, 30),
     ip,
   };
+  const token = newToken();
   const kRate = 'viz:leadrate:' + ip;
   try {
     const r = await redis(rc, [['INCR', kRate], ['EXPIRE', kRate, 86400]]);
     if (r[0] > 5) return json({ error: 'Too many tries. Please call 249-535-7501.' }, 429);
+    // previews already used today -> unlock gives 2 MORE on top of whatever was used
+    const used = parseInt((await redis(rc, [['GET', 'viz:ip:d:' + ip + ':' + torontoDay()]]))[0], 10) || 0;
     await redis(rc, [
+      ['SET', 'viz:bonus:' + ip, String(Math.max(used, 0) + 2), 'EX', 86400],
       ['LPUSH', 'viz:leads', JSON.stringify(lead)],
       ['SET', 'viz:unlock:' + ip, '1', 'EX', 2592000], // 30 days
+      ['SET', 'viz:tok:' + token, '1', 'EX', 2592000], // works even if the visitor's IP changes
     ]);
   } catch (e) {
     console.error('lead save failed', e && e.message);
     return json({ error: 'Could not save that. Please try again.' }, 503);
   }
-  return json({ ok: true });
+  return json({ ok: true, token });
 }
