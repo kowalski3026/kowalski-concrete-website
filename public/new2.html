@@ -348,7 +348,13 @@ nav .brand .lockup{height:30px;width:auto;display:block;filter:drop-shadow(0 1px
 #play .pl-btn{display:inline-block;padding:18px 28px;border:0;border-radius:12px;background:linear-gradient(135deg,#FBBF24,#F59E0B 50%,#D97706);color:#141414;font-family:var(--mono);font-weight:700;font-size:13px;letter-spacing:.1em;box-shadow:0 0 28px rgba(245,158,11,.45);cursor:pointer;transition:transform .12s}
 #play .pl-btn:active{transform:scale(.97)}
 #play .pl-sub{margin:18px 0 0;font-size:13.5px;color:#9b948a}#play .pl-sub a{color:var(--amber);text-decoration:none;border-bottom:1px solid rgba(245,158,11,.5)}
-.g-tab{position:fixed;right:0;top:58%;z-index:60;border:0;padding:16px 9px;border-radius:12px 0 0 12px;background:linear-gradient(180deg,#FBBF24,#E8890A);color:#141414;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;writing-mode:vertical-rl;box-shadow:-4px 4px 18px rgba(0,0,0,.5);cursor:pointer;transform:translateX(100%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.g-tab{position:fixed;right:0;top:50%;margin-top:-80px;z-index:60;border:0;padding:16px 9px;border-radius:12px 0 0 12px;background:linear-gradient(180deg,#FBBF24,#E8890A);color:#141414;font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.2em;writing-mode:vertical-rl;box-shadow:-4px 4px 18px rgba(0,0,0,.5);cursor:pointer;transform:translateX(100%);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+#gPrev{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s}
+body.gprev #gPrev{opacity:1;pointer-events:auto}
+#gPrev .pc{width:min(230px,56vw);border:0;padding:0;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px rgba(0,0,0,.7),0 0 0 2px #FBBF24;cursor:pointer;transform:scale(.88) translateX(30px);transition:transform .35s cubic-bezier(.2,.8,.2,1);position:relative;display:block}
+body.gprev #gPrev .pc{transform:none}
+#gPrev img{display:block;width:100%;height:auto}
+#gPrev .pt{position:absolute;left:0;right:0;bottom:0;padding:26px 0 12px;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#FBBF24;font:700 12px var(--mono);letter-spacing:.2em;text-align:center}
 body.go .g-tab{transform:none;transition-delay:1.2s}body.gopen .g-tab{transform:translateX(100%);transition-delay:0s}
 .g-tab span{display:block;transform:rotate(180deg)}
 #game{position:fixed;inset:0;z-index:200;background:#0b0b0a;display:flex;flex-direction:column;transform:translateY(102%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
@@ -669,6 +675,7 @@ body.gopen{overflow:hidden}
 
 <!-- ========== GAME DRAWER ========== -->
 <button class="g-tab" id="gTab" type="button" aria-label="Play Slab Rush"><span>POUR A SLAB</span></button>
+<div id="gPrev"><button class="pc" id="gPc" type="button" aria-label="Open Slab Rush"><img src="/slabrush-preview.jpg" alt="Slab Rush game"><span class="pt">TAP TO PLAY</span></button></div>
 <div id="game" aria-hidden="true">
   <div class="g-bar"><img src="/kowalski-lockup.png" alt="Kowalski Concrete" height="24"><button id="gClose" type="button">← BACK TO SITE</button></div>
   <iframe id="gFrame" title="Slab Rush by Kowalski Concrete" allow="autoplay; fullscreen; accelerometer; gyroscope; clipboard-write" data-src="https://slab-rush.vercel.app/?from=kowalskicc"></iframe>
@@ -691,8 +698,10 @@ body.gopen{overflow:hidden}
   (function(){const gf=document.getElementById('gFrame'),b=document.body;
     function openG(){if(!gf.getAttribute('src'))gf.src=gf.dataset.src;b.classList.add('gopen');document.getElementById('game').setAttribute('aria-hidden','false')}
     function closeG(){b.classList.remove('gopen');document.getElementById('game').setAttribute('aria-hidden','true')}
-    document.getElementById('playBtn').addEventListener('click',openG);document.getElementById('gTab').addEventListener('click',openG);document.getElementById('gClose').addEventListener('click',closeG);
-    addEventListener('keydown',e=>{if(e.key==='Escape')closeG()});
+    document.getElementById('playBtn').addEventListener('click',openG);document.getElementById('gTab').addEventListener('click',e=>{e.stopPropagation();b.classList.add('gprev')});
+    document.getElementById('gPc').addEventListener('click',e=>{e.stopPropagation();b.classList.remove('gprev');openG()});
+    document.getElementById('gPrev').addEventListener('click',()=>b.classList.remove('gprev'));document.getElementById('gClose').addEventListener('click',closeG);
+    addEventListener('keydown',e=>{if(e.key==='Escape'){b.classList.remove('gprev');closeG()}});
   })();
   // swap nav logo/text colours over light sections
   const nav=document.querySelector('nav'), closer=document.getElementById('closer');
