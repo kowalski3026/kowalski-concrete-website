@@ -214,5 +214,27 @@ footer a{color:#B9B4AC}
 })();
 </script>
 
+<script>
+(function(){
+  try{
+    var p=new URLSearchParams(location.search);
+    function setSel(id,txt){var el=document.getElementById(id);if(!el||!txt)return;for(var i=0;i<el.options.length;i++){if(el.options[i].text===txt){el.selectedIndex=i;return;}}}
+    setSel('ptype',p.get('type'));
+    if(p.get('size'))document.getElementById('size').value=p.get('size');
+    if(p.get('rem'))setSel('removal','Not sure');
+    var parts=[];
+    if(p.get('est'))parts.push('Calculator ballpark: '+p.get('est'));
+    if(p.get('notes'))parts.push(p.get('notes'));
+    if(parts.length)document.getElementById('message').value=parts.join('\n')+'\n\n';
+    var form=document.querySelector('form.qform');
+    function hid(n,v){if(!v)return;var i=document.createElement('input');i.type='hidden';i.name=n;i.value=v;form.appendChild(i);}
+    var ref='';try{ref=document.referrer?new URL(document.referrer).hostname+new URL(document.referrer).pathname:'direct';}catch(e){}
+    hid('came_from',ref);
+    hid('utm_source',p.get('utm_source'));hid('utm_campaign',p.get('utm_campaign'));
+    hid('calc_estimate',p.get('est'));
+  }catch(e){}
+})();
+</script>
+<script src="/kc-track.js" defer></script>
 </body>
 </html>
