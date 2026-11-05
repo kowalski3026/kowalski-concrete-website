@@ -1120,7 +1120,7 @@ nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::befo
 <script>
 (function(){
   document.querySelectorAll('#calc input[type=range]').forEach(function(r){
-    var mn=+r.min, mx=+r.max, span=mx-mn, steps=[1,2,5,10,20,25,50,100,200,250,500], step=500;
+    var mn=+r.min, mx=+r.max, span=mx-mn, steps=[1,2,5,10,20,25,50,100,200,250,500,1000,2000,2500], step=2500;
     for(var k=0;k<steps.length;k++){ if(span/steps[k]<=6){ step=steps[k]; break; } }
     var first=Math.ceil(mn/step)*step, w=document.createElement('div'), sc=document.createElement('div');
     w.className='tape'; sc.className='scale'; sc.setAttribute('aria-hidden','true');
