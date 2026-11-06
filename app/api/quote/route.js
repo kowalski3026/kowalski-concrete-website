@@ -1,6 +1,6 @@
 // Kowalski Concrete — instant-quote booking requests.
 // Saves every request to Upstash (list "quote:requests", newest first), then emails it best-effort
-// (Resend, and formsubmit.co as a second route). The visitor sees success if ANY of those worked.
+// (Resend). The visitor sees success if either worked.
 // Same env vars as /api/lead: UPSTASH_REDIS_REST_URL/TOKEN (or KV_REST_API_*), RESEND_API_KEY, LEAD_TO_EMAIL.
 
 export const runtime = 'nodejs';
@@ -117,28 +117,8 @@ export async function POST(request) {
       return er.ok;
     } catch (e) { console.error('quote resend exception', e && e.message); return false; } finally { clearTimeout(t); }
   };
-  const viaFormsubmit = async () => {
-    const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 7000);
-    try {
-      const fr = await fetch('https://formsubmit.co/ajax/' + NOTIFY(), {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json', Origin: 'https://kowalskicc.ca', Referer: 'https://kowalskicc.ca/instant-quote.html' },
-        body: JSON.stringify({
-          _subject: 'Instant Quote Request — ' + rec.name, _captcha: 'false', _template: 'table',
-          name: rec.name, phone: rec.phone, email: rec.email || '(none)', address: rec.address || '(none)',
-          project: rec.project || '(none)', price_range: rec.price_range || '(none)', notes: rec.notes || '(none)',
-          outline_points: rec.outline_points || '(none)',
-        }),
-        signal: ctl.signal,
-      });
-      const j = await fr.json().catch(() => ({}));
-      const ok = fr.ok && j.success !== 'false' && j.success !== false;
-      if (!ok) console.error('quote formsubmit failed', fr.status, JSON.stringify(j).slice(0, 300));
-      return ok;
-    } catch (e) { console.error('quote formsubmit exception', e && e.message); return false; } finally { clearTimeout(t); }
-  };
-  const [mailed, forwarded] = await Promise.all([viaResend(), viaFormsubmit()]);
+  const mailed = await viaResend();
 
-  if (saved || mailed || forwarded) return json({ ok: true, saved, mailed, forwarded });
+  if (saved || mailed) return json({ ok: true, saved, mailed });
   return json({ error: 'Could not send. Please call 249-535-7501.' }, 503);
 }
