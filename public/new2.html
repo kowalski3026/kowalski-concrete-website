@@ -300,8 +300,9 @@ nav a.quote::after{content:'';position:absolute;top:0;left:-60%;width:40%;height
 #earlyCta a{display:block;padding:17px 22px;border-radius:12px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;font-weight:700;text-decoration:none}
 #earlyCta a.ec-q{background:linear-gradient(135deg,#FBBF24,#F59E0B 50%,#D97706);color:#141414}
 #earlyCta a.ec-c{color:var(--bone);border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+#earlyCta .ec-s{max-width:420px;margin:-6px auto 22px;color:#cfc8bd;font-size:15px;line-height:1.5}
 #earlyCta .ec-t{margin-top:18px;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,.45)}
-@media(min-width:700px){#earlyCta .ec-btns{flex-direction:row;max-width:560px}#earlyCta .ec-btns a{flex:1}}
+@media(min-width:700px){#earlyCta .ec-btns{flex-direction:row;max-width:760px}#earlyCta .ec-btns a{flex:1}}
 /* closer + social: dark, glowing, same system */
 #closer{background-color:#0a0a0a;color:var(--paper);overflow:hidden;isolation:isolate;
   background-image:repeating-linear-gradient(0deg,transparent 0 41px,rgba(255,255,255,.04) 41px 42px),
@@ -491,7 +492,7 @@ nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::befo
   <div class="brand"><img class="lockup" src="/kowalski-lockup.png" alt="Kowalski Concrete Contracting Inc." width="760" height="180"></div>
   <div class="acts">
     <a class="call" href="tel:2495357501">CALL</a>
-    <a class="quote" href="/free-quote.html">FREE QUOTE</a>
+    <a class="quote" href="/instant-quote.html">INSTANT QUOTE</a>
   </div>
 </nav>
 
@@ -512,10 +513,12 @@ nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::befo
 
 <!-- ========== EARLY CTA ========== -->
 <section id="earlyCta">
-  <div class="ec-k">FREE WRITTEN QUOTES · REPLY WITHIN 24 HOURS</div>
-  <h2>READY FOR A SLAB<br><span>THAT LASTS?</span></h2>
+  <div class="ec-k">PRICE IT IN 60 SECONDS · FREE SITE VISIT</div>
+  <h2>WHAT WILL YOUR<br><span>PROJECT COST?</span></h2>
+  <p class="ec-s">Outline it on an aerial photo of your property, pick your finish, and see a real price range. Preview it on your own house.</p>
   <div class="ec-btns">
-    <a class="ec-q" href="/free-quote.html">GET A FREE QUOTE</a>
+    <a class="ec-q" href="/instant-quote.html">GET AN INSTANT QUOTE</a>
+    <a class="ec-c" href="/free-quote.html">REQUEST A WRITTEN QUOTE</a>
     <a class="ec-c" href="tel:2495357501">CALL 249 535 7501</a>
   </div>
   <div class="ec-t">20+ YEARS · $2M LIABILITY · INNISFIL · BARRIE · MUSKOKA</div>
@@ -718,7 +721,7 @@ nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::befo
   <a class="c-phone" href="tel:2495357501">249 535 7501</a>
   <br>
   <a class="c-quote" href="/free-quote.html">REQUEST A FREE QUOTE</a>
-  <a href="/instant-quote.html" style="display:block;margin-top:14px;text-align:center;color:#F59E0B;font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-decoration:none">OR GET AN INSTANT PRICE RANGE ON YOUR PROPERTY</a>
+  <a href="/instant-quote.html" style="display:block;margin-top:12px;padding:17px 22px;text-align:center;border:1px solid #F59E0B;border-radius:2px;color:#F59E0B;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-decoration:none">OR GET AN INSTANT PRICE RANGE ON YOUR PROPERTY</a>
   <div class="c-foot">
     <span>KOWALSKICC.CA</span>
     <span><a href="/concrete-contractor-simcoe-county.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">SIMCOE COUNTY</a> — <a href="/concrete-contractor-innisfil-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">INNISFIL</a> · <a href="/concrete-contractor-barrie-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">BARRIE</a> · <a href="/concrete-contractor-bradford-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">BRADFORD</a> · <a href="/concrete-contractor-orillia-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">ORILLIA</a> · <a href="/concrete-contractor-muskoka-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">MUSKOKA</a></span>
@@ -1145,5 +1148,6 @@ nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::befo
 </script>
 <div google-add-preferred-source-btn data-theme="dark"></div>
 <script src="/kc-track.js" defer></script>
+<script src="/kc-quote-cta.js" defer></script>
 </body>
 </html>
