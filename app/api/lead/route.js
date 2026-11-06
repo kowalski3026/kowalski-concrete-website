@@ -76,8 +76,11 @@ export async function POST(request) {
   const token = newToken();
   const kRate = 'viz:leadrate:' + ip;
   try {
-    const r = await redis(rc, [['INCR', kRate], ['EXPIRE', kRate, 86400]]);
+    const kDay = 'viz:leadday:' + torontoDay();
+    const r = await redis(rc, [['INCR', kRate], ['EXPIRE', kRate, 86400], ['INCR', kDay], ['EXPIRE', kDay, 90000]]);
     if (r[0] > 5) return json({ error: 'Too many tries. Please call 249-535-7501.' }, 429);
+    // site-wide cap so a bot rotating IPs can't flood the inbox or the lead list
+    if (r[2] > (parseInt(process.env.VIZ_LEADS_PER_DAY, 10) || 60)) return json({ error: 'Please call 249-535-7501 and we will help you directly.' }, 429);
     // previews already used today -> unlock gives 2 MORE on top of whatever was used
     const used = parseInt((await redis(rc, [['GET', 'viz:ip:d:' + ip + ':' + torontoDay()]]))[0], 10) || 0;
     await redis(rc, [

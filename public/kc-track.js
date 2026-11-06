@@ -1,5 +1,8 @@
 /* Kowalski Concrete — lightweight tracking.
-   To turn on Google Analytics 4 or the Meta pixel, paste the IDs below. Nothing else to change. */
+   To turn on Google Analytics 4 or the Meta pixel, paste the IDs below.
+   ALSO REQUIRED: (1) add their domains to the Content-Security-Policy in vercel.json
+   (googletagmanager.com / google-analytics.com, or connect.facebook.net / facebook.com) or the browser blocks them,
+   and (2) update privacy.html, which currently says no tracking pixels are used. */
 (function () {
   var CFG = { GA4_ID: '', META_PIXEL_ID: '' };
 
