@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Instant Concrete Quote | Kowalski Concrete Contracting</title>
-<meta name="description" content="Outline your driveway or patio on satellite imagery, see it with new concrete, and get a price range in about a minute. Innisfil, Barrie, Simcoe County and Muskoka.">
+<meta name="description" content="Outline your driveway, patio, walkway, wall or foundation on aerial imagery and get a price range in about a minute. Innisfil, Barrie, Simcoe County and Muskoka.">
 <link rel="canonical" href="https://kowalskicc.ca/instant-quote.html">
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -12,6 +12,7 @@
 <style>
 :root{--bg:#1c1d1f;--panel:#26272a;--line:#3a3b3f;--bone:#ece6d8;--mute:#a9a69c;--amber:#e8a317;--ok:#7fc77f}
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--bg);color:var(--bone);font-family:Archivo,system-ui,sans-serif;-webkit-text-size-adjust:100%}
 .wrap{max-width:720px;margin:0 auto;padding:20px 16px 80px}
 .top{display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-bottom:6px}
@@ -27,16 +28,16 @@ input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);border-co
 button{font:inherit;font-weight:800;border:0;border-radius:10px;padding:13px 16px;cursor:pointer;background:var(--amber);color:#1c1d1f;font-size:15px}
 button.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
 button:disabled{opacity:.5}
-#map{height:340px;border-radius:12px;margin-top:12px;border:1px solid var(--line);background:#111}
+#map{height:360px;border-radius:12px;margin-top:12px;border:1px solid var(--line);background:#111}
 .hint{color:var(--mute);font-size:13px;margin:8px 0 0}
 .tools{display:flex;gap:8px;margin-top:10px;align-items:center}
-.area{margin-left:auto;font-weight:800;font-size:18px}
-.area small{color:var(--mute);font-weight:400;font-size:12px}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .chips.three{grid-template-columns:repeat(3,1fr)}
+.chips.five{grid-template-columns:repeat(5,1fr)}
 .chip{background:#17181a;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left;color:var(--bone);font-weight:600}
 .chip small{display:block;color:var(--mute);font-weight:400;margin-top:2px}
 .chip.on{border-color:var(--amber);box-shadow:inset 0 0 0 1px var(--amber)}
+.five .chip{text-align:center;padding:12px 4px}
 .lab{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--mute);margin:14px 0 6px}
 label.tog{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:15px}
 label.tog input{width:20px;height:20px;accent-color:var(--amber);flex:none}
@@ -54,49 +55,95 @@ label.tog input{width:20px;height:20px;accent-color:var(--amber);flex:none}
 .lead{display:none;margin-top:12px;padding:12px;border:1px solid var(--amber);border-radius:12px}
 .lead.show{display:block}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.note{background:#1f2023;border-left:3px solid var(--amber);padding:10px 12px;border-radius:0 10px 10px 0;color:var(--mute);font-size:13px;margin-top:12px;line-height:1.5}
 a{color:var(--amber)}
 .vtx{width:16px;height:16px;border-radius:50%;background:var(--amber);border:2px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.4)}
+.leaflet-container .leaflet-control-attribution{font-size:10px}
 </style>
 </head>
 <body>
 <div class="wrap">
   <div class="top"><a href="/">&larr; Kowalski Concrete</a><a href="tel:2495357501">249-535-7501</a></div>
   <h1>See it. Price it. <span>In a minute.</span></h1>
-  <p class="sub">Outline your driveway or patio on satellite imagery, pick a finish, and get a real price range. No waiting on a callback.</p>
+  <p class="sub">Pick your project, measure it on aerial imagery, and get a real price range. No waiting on a callback.</p>
 
   <section class="step">
-    <h2>1. Find your property</h2>
-    <div class="row">
-      <input id="addr" type="text" placeholder="Street address, town" autocomplete="street-address" enterkeyhint="search">
-      <button id="find">Find</button>
-    </div>
-    <div id="findmsg" class="msg"></div>
-    <div id="map"></div>
-    <p class="hint">Tap the corners of the area to outline it. Tap a corner dot to remove it.</p>
-    <div class="tools">
-      <button class="ghost" id="undo">Undo</button>
-      <button class="ghost" id="clear">Clear</button>
-      <div class="area"><span id="sqft">0</span> <small>sq ft</small></div>
-    </div>
-  </section>
-
-  <section class="step">
-    <h2>2. Pick your project</h2>
+    <h2>1. What are you building?</h2>
     <div class="chips three" id="types"></div>
-    <div class="lab">Finish</div>
-    <div class="chips" id="finishes"></div>
-    <div class="lab">Slab thickness</div>
-    <div class="chips three" id="thick"></div>
-    <label class="tog"><input type="checkbox" id="tearout"> Remove existing concrete or asphalt first</label>
-    <label class="tog"><input type="checkbox" id="heated"> Heated slab (snow melts itself)</label>
-    <div id="heatsys" style="display:none">
-      <div class="lab">Heating system</div>
-      <div class="chips" id="heatchips"></div>
+  </section>
+
+  <section class="step" id="sizeStep" data-for="flat wall found steps level">
+    <h2>2. Size</h2>
+
+    <div data-for="flat wall found">
+      <div class="row">
+        <input id="addr" type="text" placeholder="Street address, town" autocomplete="street-address" enterkeyhint="search">
+        <button id="find">Find</button>
+      </div>
+      <div id="findmsg" class="msg"></div>
+      <div id="map"></div>
+      <p class="hint" id="maphint">Tap the corners of the area to outline it. Tap a corner dot to remove it.</p>
+      <div class="tools">
+        <button class="ghost" id="undo">Undo</button>
+        <button class="ghost" id="clear">Clear</button>
+      </div>
+    </div>
+
+    <div data-for="flat wall found level">
+      <div class="lab" id="qtylab">Area (sq ft)</div>
+      <input id="qty" type="number" inputmode="decimal" min="0" step="any" placeholder="Outline it above, or type it in">
+    </div>
+
+    <div data-for="steps">
+      <div class="lab">Number of steps</div>
+      <select id="stepsN"></select>
+      <div class="lab">Step width</div>
+      <div class="chips three" id="stepW"></div>
     </div>
   </section>
 
-  <section class="step">
-    <h2>3. See it on your property <span style="color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></h2>
+  <section class="step" id="optStep" data-for="flat wall found steps level">
+    <h2>3. Options</h2>
+
+    <div data-for="flat">
+      <div class="lab" style="margin-top:0">Finish</div>
+      <div class="chips" id="finishes"></div>
+      <div class="lab">Slab thickness</div>
+      <div class="chips five" id="thick"></div>
+      <label class="tog"><input type="checkbox" id="heated"> Heated slab (snow melts itself)</label>
+      <div id="heatsys" hidden>
+        <div class="lab">Heating system</div>
+        <div class="chips" id="heatchips"></div>
+      </div>
+    </div>
+
+    <div data-for="wall">
+      <div class="lab" style="margin-top:0">Wall height</div>
+      <div class="chips three" id="wallH"></div>
+      <div class="note">In Ontario, walls over 1 m (3'3") typically need a permit, and taller walls usually need an engineered design. This is reflected in the range.</div>
+    </div>
+
+    <div data-for="found">
+      <div class="lab" style="margin-top:0">Foundation type</div>
+      <div class="chips" id="foundT"></div>
+    </div>
+
+    <div data-for="level">
+      <div class="lab" style="margin-top:0">Average depth (mm)</div>
+      <input id="depth" type="number" inputmode="numeric" min="3" max="50" step="1" value="6">
+      <label class="tog"><input type="checkbox" id="membrane"> Crack isolation membrane (common before tile)</label>
+    </div>
+
+    <label class="tog" id="remRow"><input type="checkbox" id="tearout"> <span id="remtxt">Remove existing concrete or asphalt first</span></label>
+  </section>
+
+  <section class="step" data-for="other">
+    <h2>3. Tell us more</h2>
+    <p class="hint" style="margin-top:0">Every job is different. Describe what you have in mind in the notes at the bottom and we'll price it at a free site visit.</p>
+  </section>
+
+  <section class="step" id="prevStep" data-for="flat steps">
+    <h2>4. See it on your property <span style="color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></h2>
     <input id="photo" type="file" accept="image/*">
     <div class="preview" id="pv"><img id="pvimg" alt="Your photo"></div>
     <div class="row" style="margin-top:10px"><button id="render" disabled>Show me with new concrete</button></div>
@@ -114,17 +161,18 @@ a{color:var(--amber)}
   </section>
 
   <section class="step">
-    <h2>4. Your price range</h2>
-    <div class="price" id="price"><div class="meta">Outline your area to see pricing.</div></div>
+    <h2>5. Your price range</h2>
+    <div class="price" id="price"><div class="meta">Choose a project and add a size to see pricing.</div></div>
     <p class="fine">Ballpark only. Final pricing depends on access, grading, base conditions and finish details, and is confirmed at a free site visit.</p>
   </section>
 
   <section class="step">
-    <h2>5. Book your free site visit</h2>
+    <h2>6. Book your free site visit</h2>
     <form id="form">
       <div class="field"><input name="name" placeholder="Name" required autocomplete="name"></div>
       <div class="field"><input name="phone" type="tel" placeholder="Phone" required autocomplete="tel"></div>
       <div class="field"><input name="email" type="email" placeholder="Email (optional)" autocomplete="email"></div>
+      <div class="field"><input id="addr2" name="address" placeholder="Job address" autocomplete="street-address"></div>
       <div class="field"><textarea name="notes" rows="3" placeholder="Anything we should know? (slope, trees, access, timing)"></textarea></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
       <button type="submit" id="send" style="width:100%">Request site visit</button>
@@ -136,36 +184,76 @@ a{color:var(--amber)}
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-/* ===== pricing: mirrors the calculator on kowalskicc.ca (flat work) ===== */
+/* ===== pricing: mirrors the calculator on kowalskicc.ca ===== */
 const FINISHES = {
   broom:   {name:"Broom",    note:"Clean, durable, non-slip", m:1},
   exposed: {name:"Exposed aggregate", note:"Textured, slip resistant", m:1.25},
   stamped: {name:"Stamped",  note:"Looks like stone or slate", m:1.8},
   smooth:  {name:"Smooth",   note:"Trowel finish", m:1}
 };
-const TYPES = {driveway:"Driveway", patio:"Patio", pathway:"Walkway"};
-const HEAT = {elec:{name:"Electric", note:"$16/sq ft + $1,800", perSq:16, flat:1800},
-              hydro:{name:"Hydronic", note:"$22/sq ft + $6,500", perSq:22, flat:6500}};
+const HEAT = {elec:{name:"Electric", perSq:16, flat:1800},
+              hydro:{name:"Hydronic", perSq:22, flat:6500}};
+const STEPW = {0.85:{name:"Narrow", note:"Under 4'", m:0.85}, 1:{name:"Standard", note:"4' to 6'", m:1}, 1.3:{name:"Wide", note:"Over 6'", m:1.3}};
+const WALLT = [{name:"Under 2'", rate:[120,180]}, {name:"2' to 4'", rate:[220,320]}, {name:"Over 4'", rate:[400,550]}];
+const FOUNDT = [{name:"Footings only", rate:[40,80]}, {name:"Full wall + footing", rate:[150,280]}];
+const TYPES = {
+  driveway:  {label:"Driveway", kind:"flat", render:"driveway", unit:"sq ft"},
+  patio:     {label:"Patio", kind:"flat", render:"patio", unit:"sq ft"},
+  walkway:   {label:"Walkway", kind:"flat", render:"pathway", unit:"sq ft"},
+  garage:    {label:"Garage or shed pad", kind:"flat", render:"driveway", unit:"sq ft"},
+  steps:     {label:"Steps", kind:"steps", render:"steps", unit:"steps"},
+  wall:      {label:"Retaining wall", kind:"wall", unit:"linear ft"},
+  foundation:{label:"Foundation", kind:"found", unit:"linear ft"},
+  level:     {label:"Floor leveling", kind:"level", unit:"sq ft"},
+  other:     {label:"Something else", kind:"other", unit:""}
+};
 
-function polygonAreaSqFt(pts){
-  if(pts.length<3) return 0;
+function localXY(pts){
   const lat0 = pts.reduce((s,p)=>s+p[0],0)/pts.length;
   const mLat = 111320, mLng = 111320*Math.cos(lat0*Math.PI/180);
-  const xy = pts.map(p=>[p[1]*mLng, p[0]*mLat]);
-  let a=0;
+  return pts.map(p=>[p[1]*mLng, p[0]*mLat]);
+}
+function polygonAreaSqFt(pts){
+  if(pts.length<3) return 0;
+  const xy = localXY(pts); let a=0;
   for(let i=0;i<xy.length;i++){ const j=(i+1)%xy.length; a += xy[i][0]*xy[j][1]-xy[j][0]*xy[i][1]; }
   return Math.abs(a/2)*10.7639;
 }
-function priceRange(a, o){ // o: {finish, thick, tearout, heated, heatSys}
-  if(!(a>0)) return null;
-  const m = FINISHES[o.finish].m;
-  let lo=a*10*m, hi=a*15*m;
-  if(o.thick>4){ const x=a*(o.thick-4)*1.25; lo+=x; hi+=x; }
-  if(o.heated){ const h=HEAT[o.heatSys]; const x=a*h.perSq+h.flat; lo+=x; hi+=x; }
-  if(o.tearout){ lo+=a*3; hi+=a*4; }
-  return {lo:Math.round(lo/100)*100, hi:Math.round(hi/100)*100};
+function pathLengthFt(pts){
+  if(pts.length<2) return 0;
+  const xy = localXY(pts); let d=0;
+  for(let i=1;i<xy.length;i++) d += Math.hypot(xy[i][0]-xy[i-1][0], xy[i][1]-xy[i-1][1]);
+  return d*3.28084;
 }
-if(typeof module!=="undefined"){ module.exports={polygonAreaSqFt,priceRange}; }
+function r100(n){ return Math.round(n/100)*100; }
+/* s: {type, qty, finish, thick, heated, heatSys, rem, stepW, wallT, foundT, depth, membrane} */
+function priceFor(s){
+  const T = TYPES[s.type]; if(!T || T.kind==="other") return null;
+  const q = +s.qty; if(!(q>0)) return null;
+  let lo=0, hi=0;
+  if(T.kind==="flat"){
+    const m=FINISHES[s.finish].m; lo=q*10*m; hi=q*15*m;
+    if(s.thick>4){ const x=q*(s.thick-4)*1.25; lo+=x; hi+=x; }
+    if(s.heated){ const h=HEAT[s.heatSys]; const x=q*h.perSq+h.flat; lo+=x; hi+=x; }
+    if(s.rem){ lo+=q*3; hi+=q*4; }
+  } else if(T.kind==="steps"){
+    lo=q*300*s.stepW; hi=q*450*s.stepW;
+    if(s.rem){ lo+=q*100; hi+=q*150; }
+  } else if(T.kind==="wall"){
+    const r=WALLT[s.wallT].rate; lo=q*r[0]; hi=q*r[1];
+    if(s.rem){ lo+=q*40; hi+=q*60; }
+  } else if(T.kind==="found"){
+    const r=FOUNDT[s.foundT].rate; lo=q*r[0]; hi=q*r[1];
+    if(s.rem){ lo+=q*50; hi+=q*80; }
+  } else if(T.kind==="level"){
+    lo=q*3; hi=q*5;
+    const units=Math.max(0,(+s.depth||6)-6)/6; lo+=q*units*1; hi+=q*units*2;
+    if(s.membrane){ lo+=q*1.5; hi+=q*1.5; }
+    if(s.rem){ lo+=q*3; hi+=q*4; }
+  }
+  return {lo:r100(lo), hi:r100(hi)};
+}
+if(typeof module!=="undefined"){ module.exports={polygonAreaSqFt,pathLengthFt,priceFor,TYPES}; }
 </script>
 
 <script>
@@ -173,28 +261,54 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
 (function(){
   const $ = id=>document.getElementById(id);
   const fmt = n=>"$"+n.toLocaleString("en-CA");
-  const S = {type:"driveway", finish:"broom", thick:4, heatSys:"elec"};
-  let pts=[], markers=[], poly=null, photoB64=null, lastRange=null;
+  const S = {type:"driveway", finish:"broom", thick:4, heatSys:"elec", stepW:1, wallT:0, foundT:0};
+  let pts=[], markers=[], shape=null, photoB64=null, lastRange=null, lastDesc="";
 
+  /* ---------- map: Ontario aerial imagery (SWOOP), with automatic fallback ---------- */
+  const ONT="https://ws.lioservices.lrc.gov.on.ca/arcgis2/rest/services/LIO_Imagery/Ontario_Imagery_Web_Map_Service/MapServer";
+  const ONT_ATTR='Imagery &copy; King\'s Printer for Ontario. Contains information licensed under the <a href="https://www.ontario.ca/page/open-government-licence-ontario" target="_blank" rel="noopener">Open Government Licence &ndash; Ontario</a>';
+  const SOURCES=[
+    {url:ONT+"/tile/{z}/{y}/{x}", attr:ONT_ATTR},
+    {url:ONT+"/WMTS/tile/1.0.0/LIO_Imagery_Ontario_Imagery_Web_Map_Service/default/default028mm/{z}/{y}/{x}", attr:ONT_ATTR},
+    {url:"https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", attr:"Imagery &copy; Esri, Maxar, Earthstar Geographics"}
+  ];
   const map = L.map("map",{maxZoom:21}).setView([44.30,-79.58],11);
-  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-    {maxNativeZoom:19, maxZoom:21, attribution:"Imagery &copy; Esri, Maxar, Earthstar Geographics"}).addTo(map);
+  let si=0, tileLayer=null, loaded=0, errs=0;
+  function useSource(i){
+    if(tileLayer) map.removeLayer(tileLayer);
+    loaded=0; errs=0;
+    tileLayer=L.tileLayer(SOURCES[i].url,{maxNativeZoom:19,maxZoom:21,attribution:SOURCES[i].attr}).addTo(map);
+    const mine=tileLayer;
+    mine.on("tileload",()=>{ loaded++; });
+    mine.on("tileerror",()=>{ errs++; if(mine===tileLayer && loaded===0 && errs>=4 && si<SOURCES.length-1){ si++; useSource(si); } });
+  }
+  useSource(0);
+
+  const kind = ()=>TYPES[S.type].kind;
+  const mode = ()=>{ const k=kind(); return k==="flat"?"area":(k==="wall"||k==="found")?"length":"none"; };
+
+  function measured(){ return mode()==="area" ? polygonAreaSqFt(pts) : mode()==="length" ? pathLengthFt(pts) : 0; }
 
   function redraw(){
     markers.forEach(m=>m.remove()); markers=[];
-    if(poly){ poly.remove(); poly=null; }
+    if(shape){ shape.remove(); shape=null; }
     pts.forEach((p,i)=>{
-      const m = L.marker(p,{icon:L.divIcon({className:"",html:'<div class="vtx"></div>',iconSize:[16,16],iconAnchor:[8,8]})}).addTo(map);
+      const m=L.marker(p,{icon:L.divIcon({className:"",html:'<div class="vtx"></div>',iconSize:[16,16],iconAnchor:[8,8]})}).addTo(map);
       m.on("click",e=>{ L.DomEvent.stopPropagation(e); pts.splice(i,1); redraw(); });
       markers.push(m);
     });
-    if(pts.length>=2) poly = (pts.length>=3?L.polygon:L.polyline)(pts,{color:"#e8a317",weight:3,fillOpacity:.25}).addTo(map);
-    $("sqft").textContent = Math.round(polygonAreaSqFt(pts)).toLocaleString("en-CA");
+    if(pts.length>=2){
+      const opt={color:"#e8a317",weight:3,fillOpacity:.25};
+      shape=(mode()==="area" && pts.length>=3 ? L.polygon(pts,opt) : L.polyline(pts,opt)).addTo(map);
+    }
+    const v=Math.round(measured());
+    $("qty").value = v>0 ? v : "";
     update();
   }
-  map.on("click",e=>{ pts.push([e.latlng.lat,e.latlng.lng]); redraw(); });
+  map.on("click",e=>{ if(mode()==="none") return; pts.push([e.latlng.lat,e.latlng.lng]); redraw(); });
   $("undo").onclick=()=>{ pts.pop(); redraw(); };
   $("clear").onclick=()=>{ pts=[]; redraw(); };
+  $("qty").addEventListener("input",update);
 
   async function find(){
     const q=$("addr").value.trim(); if(!q) return;
@@ -203,42 +317,91 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
       const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=ca&q="+encodeURIComponent(q));
       const j=await r.json();
       if(!j.length){ $("findmsg").className="msg err"; $("findmsg").textContent="Address not found. Add the town and try again."; return; }
-      map.setView([+j[0].lat,+j[0].lon],20);
+      map.setView([+j[0].lat,+j[0].lon],19);
+      $("addr2").value = $("addr2").value || $("addr").value;
       $("findmsg").className="msg good"; $("findmsg").textContent="Found: "+j[0].display_name;
     }catch(e){ $("findmsg").className="msg err"; $("findmsg").textContent="Search failed. Check your connection or pan the map manually."; }
   }
   $("find").onclick=find;
   $("addr").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); find(); }});
 
-  function chips(box, items, key, sel){
-    Object.entries(items).forEach(([k,v])=>{
-      const b=document.createElement("button"); b.type="button"; b.className="chip"+(k==sel?" on":""); b.dataset.k=k;
-      b.appendChild(document.createTextNode(typeof v==="string"?v:v.name));
+  /* ---------- chips ---------- */
+  function chips(box, items, key, sel, after){
+    const entries = Array.isArray(items) ? items.map((v,i)=>[i,v]) : Object.entries(items);
+    entries.forEach(([k,v])=>{
+      const b=document.createElement("button"); b.type="button"; b.className="chip"+(String(k)===String(sel)?" on":""); b.dataset.k=k;
+      b.appendChild(document.createTextNode(typeof v==="string"?v:(v.label||v.name)));
       if(v.note){ const s=document.createElement("small"); s.textContent=v.note; b.appendChild(s); }
-      b.onclick=()=>{ S[key]=isNaN(k)?k:+k; box.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===b)); update(); };
+      b.onclick=()=>{ S[key]=isNaN(k)?k:+k; box.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===b)); if(after) after(); update(); };
       box.appendChild(b);
     });
   }
-  chips($("types"),TYPES,"type","driveway");
+  chips($("types"),TYPES,"type","driveway",applyKind);
   chips($("finishes"),FINISHES,"finish","broom");
-  chips($("thick"),{4:'4"',5:'5"',6:'6"'},"thick",4);
+  chips($("thick"),{4:'4"',5:'5"',6:'6"',8:'8"',10:'10"'},"thick",4);
   chips($("heatchips"),HEAT,"heatSys","elec");
-  $("tearout").onchange=update;
-  $("heated").onchange=()=>{ $("heatsys").style.display=$("heated").checked?"block":"none"; update(); };
+  chips($("stepW"),STEPW,"stepW",1);
+  chips($("wallH"),WALLT,"wallT",0);
+  chips($("foundT"),FOUNDT,"foundT",0);
+  for(let i=1;i<=10;i++){ const o=document.createElement("option"); o.value=i; o.textContent=i+(i===1?" step":" steps"); if(i===3) o.selected=true; $("stepsN").appendChild(o); }
+  ["stepsN","depth","tearout","membrane"].forEach(id=>$(id).addEventListener("input",update));
+  $("heated").onchange=()=>{ $("heatsys").hidden=!$("heated").checked; update(); };
 
+  let lastMode="area", lastUnit="area";
+  function applyKind(){
+    const k=kind();
+    document.querySelectorAll("[data-for]").forEach(el=>{ el.hidden = !el.dataset.for.split(" ").includes(k); });
+    const labels={flat:"Area (sq ft)",wall:"Wall length (linear ft)",found:"Foundation perimeter (linear ft)",level:"Floor area (sq ft)"};
+    if(labels[k]) $("qtylab").textContent=labels[k];
+    $("maphint").textContent = k==="flat" ? "Tap the corners of the area to outline it. Tap a corner dot to remove it."
+      : k==="wall" ? "Tap along the length of the wall. Tap a dot to remove it."
+      : "Tap along the foundation edge, all the way around. Tap a dot to remove it.";
+    const rem={flat:"Remove existing concrete or asphalt first",steps:"Remove existing steps first",wall:"Remove existing wall first",found:"Remove existing foundation first",level:"Remove existing flooring or adhesive first"};
+    if(rem[k]) $("remtxt").textContent=rem[k];
+    const m=mode();
+    if(m!=="none" && m!==lastMode){ pts=[]; redraw(); }
+    if(m!=="none") setTimeout(()=>map.invalidateSize(),50);
+    if(m!=="none") lastMode=m;
+    const unit = k==="flat"?"area":(k==="wall"||k==="found")?"length":k;
+    if(unit!==lastUnit && k!=="steps" && k!=="other"){ const v=Math.round(measured()); $("qty").value = v>0?v:""; }
+    if(k!=="steps" && k!=="other") lastUnit=unit;
+    update();
+  }
+
+  /* ---------- price ---------- */
+  function qtyNow(){ return kind()==="steps" ? +$("stepsN").value : (parseFloat($("qty").value)||0); }
+  function state(){
+    return {type:S.type, qty:qtyNow(), finish:S.finish, thick:S.thick, heated:$("heated").checked, heatSys:S.heatSys,
+            rem:$("tearout").checked, stepW:S.stepW, wallT:S.wallT, foundT:S.foundT, depth:+$("depth").value||6, membrane:$("membrane").checked};
+  }
+  function describe(){
+    const T=TYPES[S.type], k=T.kind, s=state(), parts=[T.label];
+    if(k==="other") return parts[0];
+    const q=Math.round(s.qty).toLocaleString("en-CA");
+    if(k==="steps") parts.push(q+(s.qty===1?" step":" steps"), STEPW[s.stepW].name.toLowerCase()+" width");
+    else parts.push(q+" "+T.unit);
+    if(k==="flat"){ parts.push(FINISHES[s.finish].name, s.thick+'"'); if(s.heated) parts.push("heated ("+HEAT[s.heatSys].name.toLowerCase()+")"); }
+    if(k==="wall") parts.push("height "+WALLT[s.wallT].name);
+    if(k==="found") parts.push(FOUNDT[s.foundT].name.toLowerCase());
+    if(k==="level"){ parts.push(s.depth+" mm deep"); if(s.membrane) parts.push("with membrane"); }
+    if(s.rem) parts.push("with removal");
+    return parts.join(" · ");
+  }
   function update(){
-    const sq=polygonAreaSqFt(pts);
-    const r=priceRange(sq,{finish:S.finish,thick:S.thick,tearout:$("tearout").checked,heated:$("heated").checked,heatSys:S.heatSys});
-    lastRange=r;
     const el=$("price"); el.textContent="";
-    if(!r){ const d=document.createElement("div"); d.className="meta"; d.textContent="Outline your area to see pricing."; el.appendChild(d); return; }
+    const k=kind();
+    if(k==="other"){
+      lastRange=null; lastDesc=describe();
+      const d=document.createElement("div"); d.className="meta"; d.textContent="We'll price this at a free site visit. Send us the details below."; el.appendChild(d); return;
+    }
+    const r=priceFor(state()); lastRange=r; lastDesc=r?describe():TYPES[S.type].label;
+    if(!r){ const d=document.createElement("div"); d.className="meta"; d.textContent="Add a size above to see pricing."; el.appendChild(d); return; }
     const big=document.createElement("div"); big.className="big"; big.textContent=fmt(r.lo)+" – "+fmt(r.hi);
-    const meta=document.createElement("div"); meta.className="meta";
-    meta.textContent=Math.round(sq).toLocaleString("en-CA")+" sq ft · "+TYPES[S.type]+" · "+FINISHES[S.finish].name+' · '+S.thick+'"'+($("heated").checked?" · heated ("+HEAT[S.heatSys].name.toLowerCase()+")":"")+($("tearout").checked?" · with removal":"");
+    const meta=document.createElement("div"); meta.className="meta"; meta.textContent=lastDesc;
     el.appendChild(big); el.appendChild(meta);
   }
 
-  // photo -> base64 JPEG under the API's size cap
+  /* ---------- photo preview ---------- */
   $("photo").onchange=e=>{
     const f=e.target.files[0]; if(!f) return;
     const img=new Image(), url=URL.createObjectURL(f);
@@ -260,13 +423,18 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
   };
 
   const tok=()=>{ try{ return localStorage.getItem("vizTok")||""; }catch(e){ return ""; } };
-  const choices=()=>({projectType:S.type, finish:S.finish, fieldColor:"natural"});
+  function choices(){
+    const T=TYPES[S.type], c={projectType:T.render||"driveway", finish:T.kind==="flat"?S.finish:"broom", fieldColor:"natural"};
+    if(T.kind==="steps"){ c.stepCount=+$("stepsN").value; c.stepsStyle="standard"; }
+    return c;
+  }
   let justUnlocked=false;
 
   async function render(){
     if(!photoB64) return;
     $("render").disabled=true; $("lead").classList.remove("show");
     $("rendermsg").className="msg"; $("rendermsg").textContent="Rendering your new concrete... about 15 seconds.";
+    const label = TYPES[S.type].kind==="flat" ? FINISHES[S.finish].name : "New steps";
     try{
       const r=await fetch("/api/visualize",{method:"POST",headers:{"Content-Type":"application/json"},
         body:JSON.stringify({image:photoB64,mimeType:"image/jpeg",choices:choices(),token:tok()})});
@@ -279,7 +447,7 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
       if(!r.ok||!d.data) throw new Error(d.error||"Something went wrong. Please try again.");
       justUnlocked=false;
       const ba=$("ba"); ba.textContent="";
-      [["Before","data:image/jpeg;base64,"+photoB64],["After: "+FINISHES[S.finish].name,"data:"+d.mimeType+";base64,"+d.data]].forEach(([t,src])=>{
+      [["Before","data:image/jpeg;base64,"+photoB64],["After: "+label,"data:"+d.mimeType+";base64,"+d.data]].forEach(([t,src])=>{
         const w=document.createElement("div"), p=document.createElement("p"), im=document.createElement("img");
         p.className="tag"; p.textContent=t; im.src=src; im.alt=t; im.style.cssText="width:100%;border-radius:12px;display:block";
         w.appendChild(p); w.appendChild(im); ba.appendChild(w);
@@ -302,7 +470,7 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
       if(!r.ok) throw new Error(d.error||"Something went wrong. Please try again.");
       try{ if(d.token) localStorage.setItem("vizTok",d.token); }catch(e){}
       if(!web){
-        const payload={_subject:"New Instant Quote Lead — "+name,_captcha:"false",_template:"table",name,contact,project:S.type,finish:S.finish,source:"kowalskicc.ca/instant-quote"};
+        const payload={_subject:"New Instant Quote Lead — "+name,_captcha:"false",_template:"table",name,contact,project:S.type,finish:choices().finish,source:"kowalskicc.ca/instant-quote"};
         if(/@/.test(contact)) payload.email=contact;
         fetch("https://formsubmit.co/ajax/info@kowalskicc.ca",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)}).catch(()=>{});
       }
@@ -310,17 +478,15 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
     }catch(err){ $("lerr").textContent=err.message; $("lbtn").disabled=false; }
   };
 
+  /* ---------- booking ---------- */
   $("form").onsubmit=async e=>{
     e.preventDefault();
     const fd=new FormData($("form"));
     if(fd.get("website")) return; // honeypot
-    const sq=Math.round(polygonAreaSqFt(pts));
-    const body={_subject:"Instant quote request: "+fd.get("name"),_captcha:"false",_template:"table",
+    const body={_subject:"Instant quote request: "+fd.get("name")+" ("+TYPES[S.type].label+")",_captcha:"false",_template:"table",
       name:fd.get("name"),phone:fd.get("phone"),email:fd.get("email")||"(none)",notes:fd.get("notes")||"(none)",
-      address:$("addr").value||"(not entered)",
-      project:TYPES[S.type],area_sqft:sq||"(not outlined)",finish:FINISHES[S.finish].name,thickness:S.thick+'"',
-      removal:$("tearout").checked?"yes":"no",
-      heated:$("heated").checked?"yes ("+HEAT[S.heatSys].name+")":"no",
+      address:fd.get("address")||$("addr").value||"(not entered)",
+      project:lastDesc||TYPES[S.type].label,
       price_range:lastRange?fmt(lastRange.lo)+" - "+fmt(lastRange.hi):"(none)",
       outline_points:pts.map(p=>p[0].toFixed(6)+","+p[1].toFixed(6)).join(" | ")||"(none)",
       source:"kowalskicc.ca/instant-quote"};
@@ -338,6 +504,8 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
       $("send").disabled=false;
     }
   };
+
+  applyKind();
 })();
 }
 </script>

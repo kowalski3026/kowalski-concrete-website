@@ -48,7 +48,7 @@
       "headers": [
         {
           "key": "Content-Security-Policy",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://server.arcgisonline.com https://d8j0ntlcm91z4.cloudfront.net https://slab-rush.vercel.app; media-src 'self' blob: data:; connect-src 'self' https://formsubmit.co https://nominatim.openstreetmap.org; frame-src https://slab-rush.vercel.app; frame-ancestors 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://unpkg.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https://ws.lioservices.lrc.gov.on.ca https://server.arcgisonline.com https://d8j0ntlcm91z4.cloudfront.net https://slab-rush.vercel.app; media-src 'self' blob: data:; connect-src 'self' https://formsubmit.co https://nominatim.openstreetmap.org; frame-src https://slab-rush.vercel.app; frame-ancestors 'self'; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
         },
         {
           "key": "X-Content-Type-Options",
