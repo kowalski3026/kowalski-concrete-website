@@ -8,62 +8,69 @@
 <link rel="canonical" href="https://kowalskicc.ca/instant-quote.html">
 <link rel="icon" href="/favicon.ico">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Archivo:wght@400;600;800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#1c1d1f;--panel:#26272a;--line:#3a3b3f;--bone:#ece6d8;--mute:#a9a69c;--amber:#e8a317;--ok:#7fc77f}
+/* Matches the site's flat, square-edged button system (de-slop pass): amber slab, ink text, mono caps, no gradient/glow */
+:root{--ink:#141414;--paper:#F5F3F0;--amber:#F59E0B;--bone:#E8E4DE;--mute:#9b948a;--bg:#141414;--panel:#181714;--line:rgba(255,255,255,.14);--ok:#7fc77f;
+  --disp:'Archivo',sans-serif;--body:'DM Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
 *{box-sizing:border-box}
 [hidden]{display:none!important}
-html,body{margin:0;background:var(--bg);color:var(--bone);font-family:Archivo,system-ui,sans-serif;-webkit-text-size-adjust:100%}
-.wrap{max-width:720px;margin:0 auto;padding:20px 16px 80px}
-.top{display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-bottom:14px}
-.top a{color:var(--mute);text-decoration:none}
-h1{font-size:28px;line-height:1.1;margin:8px 0 6px;font-weight:800;letter-spacing:-.5px}
+html,body{margin:0;background:var(--bg);color:var(--bone);font-family:var(--body);-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.top a{text-decoration:none}
+.top .tel{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--amber)}
+h1{font-family:var(--disp);font-weight:900;font-stretch:125%;font-size:clamp(28px,8vw,44px);line-height:1.04;margin:8px 0 8px;letter-spacing:-.01em;color:var(--paper)}
 h1 span{color:var(--amber)}
-.sub{color:var(--mute);margin:0 0 22px;font-size:15px}
-.step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
-.step h2{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--amber);margin:0 0 10px;font-weight:800}
+.sub{color:#cfc8bd;margin:0 0 22px;font-size:16px;line-height:1.5}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:3px;padding:18px 16px;margin-bottom:14px}
+.step h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);margin:0 0 14px;font-weight:600;border-left:3px solid var(--amber);padding:2px 0 2px 10px}
 .row{display:flex;gap:8px}
-input,textarea,select{width:100%;background:#17181a;color:var(--bone);border:1px solid var(--line);border-radius:10px;padding:13px;font:inherit;font-size:16px}
-input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);border-color:transparent}
-button{font:inherit;font-weight:800;border:0;border-radius:10px;padding:13px 16px;cursor:pointer;background:var(--amber);color:#1c1d1f;font-size:15px}
-button.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
-button:disabled{opacity:.5}
-#map{height:360px;border-radius:12px;margin-top:12px;border:1px solid var(--line);background:#111}
+input,textarea,select{width:100%;background:#0e0e0d;color:var(--bone);border:1.5px solid rgba(245,240,230,.3);border-radius:2px;padding:13px;font:inherit;font-size:16px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);outline-offset:0;border-color:transparent}
+button{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:0;border-radius:2px;padding:16px 22px;cursor:pointer;background:var(--amber);color:var(--ink);box-shadow:none}
+button.ghost{background:transparent;color:var(--bone);border:1.5px solid rgba(245,240,230,.55);padding:14px 18px}
+button:active{transform:translateY(1px)}
+button:disabled{opacity:.45}
+@media (hover:hover){ button:not(:disabled):hover{background:var(--paper)} button.ghost:not(:disabled):hover{background:var(--paper);color:var(--ink)} .chip:hover:not(.on){border-color:rgba(245,240,230,.6)} }
+#map{height:360px;border-radius:2px;margin-top:12px;border:1px solid var(--line);background:#0e0e0d}
 .hint{color:var(--mute);font-size:13px;margin:8px 0 0}
 .tools{display:flex;gap:8px;margin-top:10px;align-items:center}
 .chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .chips.three{grid-template-columns:repeat(3,1fr)}
 .chips.five{grid-template-columns:repeat(5,1fr)}
-.chip{background:#17181a;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left;color:var(--bone);font-weight:600}
-.chip small{display:block;color:var(--mute);font-weight:400;margin-top:2px}
-.chip.on{border-color:var(--amber);box-shadow:inset 0 0 0 1px var(--amber)}
+.chip{background:transparent;border:1.5px solid rgba(245,240,230,.3);border-radius:2px;padding:12px;text-align:left;color:var(--bone);font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.chip small{display:block;color:var(--mute);font-family:var(--body);font-weight:400;font-size:12px;letter-spacing:0;text-transform:none;margin-top:3px}
+.chip.on{background:var(--amber);border-color:var(--amber);color:var(--ink)}
+.chip.on small{color:rgba(20,20,20,.75)}
 .five .chip{text-align:center;padding:12px 4px}
-.lab{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--mute);margin:14px 0 6px}
-label.tog{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:15px}
+.lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+label.tog{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:15px}
 label.tog input{width:20px;height:20px;accent-color:var(--amber);flex:none}
 .preview{display:none;margin-top:12px}
-.preview img{width:100%;border-radius:12px;display:block}
+.preview img{width:100%;border-radius:2px;display:block}
 .ba{display:grid;gap:10px;margin-top:10px}
-.tag{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mute);margin:0 0 4px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 4px}
 .price{text-align:center;padding:8px 0}
-.price .big{font-size:38px;font-weight:800;color:var(--amber);letter-spacing:-1px;line-height:1.1}
-.price .meta{color:var(--mute);font-size:14px;margin-top:6px}
+.price .big{font-family:var(--disp);font-size:clamp(30px,9vw,44px);font-weight:900;font-stretch:125%;color:var(--amber);letter-spacing:-.01em;line-height:1.1}
+.price .meta{color:var(--mute);font-size:14px;margin-top:8px}
 .fine{color:var(--mute);font-size:12px;line-height:1.5;margin-top:10px}
 .msg{margin-top:10px;font-size:14px}
 .err{color:#ff8a7a}.good{color:var(--ok)}
 .field{margin-bottom:10px}
-.lead{display:none;margin-top:12px;padding:12px;border:1px solid var(--amber);border-radius:12px}
+.lead{display:none;margin-top:12px;padding:14px;border:1px solid var(--amber);border-radius:2px}
 .lead.show{display:block}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-.note{background:#1f2023;border-left:3px solid var(--amber);padding:10px 12px;border-radius:0 10px 10px 0;color:var(--mute);font-size:13px;margin-top:12px;line-height:1.5}
+.note{background:#0e0e0d;border-left:3px solid var(--amber);padding:10px 12px;border-radius:0;color:var(--mute);font-size:13px;margin-top:12px;line-height:1.5}
 a{color:var(--amber)}
-.vtx{width:16px;height:16px;border-radius:50%;background:var(--amber);border:2px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.4)}
+.vtx{width:16px;height:16px;border-radius:2px;background:var(--amber);border:2px solid var(--ink);box-shadow:0 0 0 1.5px var(--paper)}
 .leaflet-container .leaflet-control-attribution{font-size:10px}
+.leaflet-bar a{border-radius:2px!important}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="top"><a href="/" aria-label="Kowalski Concrete Contracting Inc. home"><img src="/kowalski-lockup.png" alt="Kowalski Concrete Contracting Inc." width="760" height="180" style="height:44px;width:auto;display:block"></a><a href="tel:2495357501" style="color:var(--amber);font-weight:600">249-535-7501</a></div>
+  <div class="top"><a href="/" aria-label="Kowalski Concrete Contracting Inc. home"><img src="/kowalski-lockup.png" alt="Kowalski Concrete Contracting Inc." width="760" height="180" style="height:44px;width:auto;display:block"></a><a class="tel" href="tel:2495357501">249-535-7501</a></div>
   <h1>See it. Price it. <span>In a minute.</span></h1>
   <p class="sub">Pick your project, measure it on aerial imagery, and get a real price range. No waiting on a callback.</p>
 
@@ -298,7 +305,7 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
       markers.push(m);
     });
     if(pts.length>=2){
-      const opt={color:"#e8a317",weight:3,fillOpacity:.25};
+      const opt={color:"#F59E0B",weight:3,fillOpacity:.25};
       shape=(mode()==="area" && pts.length>=3 ? L.polygon(pts,opt) : L.polyline(pts,opt)).addTo(map);
     }
     const v=Math.round(measured());
@@ -449,7 +456,7 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
       const ba=$("ba"); ba.textContent="";
       [["Before","data:image/jpeg;base64,"+photoB64],["After: "+label,"data:"+d.mimeType+";base64,"+d.data]].forEach(([t,src])=>{
         const w=document.createElement("div"), p=document.createElement("p"), im=document.createElement("img");
-        p.className="tag"; p.textContent=t; im.src=src; im.alt=t; im.style.cssText="width:100%;border-radius:12px;display:block";
+        p.className="tag"; p.textContent=t; im.src=src; im.alt=t; im.style.cssText="width:100%;border-radius:2px;display:block";
         w.appendChild(p); w.appendChild(im); ba.appendChild(w);
       });
       $("rendermsg").className="msg good"; $("rendermsg").textContent="Preview only. Final colour, texture and layout are confirmed on site.";
