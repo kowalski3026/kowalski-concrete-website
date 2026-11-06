@@ -429,15 +429,16 @@ nav a.quote,#calc .c-cta,#closer .c-quote,#earlyCta a.ec-q,#play .pl-btn,#calc .
   border-radius:0;clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
 /* outlined: steel plate, 1.5px edge drawn by an inset layer so the cut corners keep their border */
-nav a.call,#earlyCta a.ec-c,#calc .f-btns button:not(.sel),#calc .f-btns-grid button:not(.sel){
+nav a.call,#earlyCta a.ec-c,#closer a.c-alt,#calc .f-btns button:not(.sel),#calc .f-btns-grid button:not(.sel){
   position:relative;isolation:isolate;border:0;border-radius:0;background:rgba(245,240,230,.4);color:var(--bone);
   clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch))}
-nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::before,#calc .f-btns-grid button:not(.sel)::before{
+nav a.call::before,#earlyCta a.ec-c::before,#closer a.c-alt::before,#calc .f-btns button:not(.sel)::before,#calc .f-btns-grid button:not(.sel)::before{
   content:'';position:absolute;inset:1.5px;z-index:-1;background:linear-gradient(#262626,#181818);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
   clip-path:polygon(calc(var(--ch) - 1px) 0,100% 0,100% calc(100% - var(--ch) + 1px),calc(100% - var(--ch) + 1px) 100%,0 100%,0 calc(var(--ch) - 1px))}
 @media (hover:hover){
-  nav a.call:hover,#earlyCta a.ec-c:hover,#calc .f-btns button:not(.sel):hover,#calc .f-btns-grid button:not(.sel):hover{background:var(--amber);color:var(--bone)}
+  nav a.call:hover,#earlyCta a.ec-c:hover,#closer a.c-alt:hover,#calc .f-btns button:not(.sel):hover,#calc .f-btns-grid button:not(.sel):hover{background:var(--amber);color:var(--bone)}
 }
+#closer a.c-alt{display:block;margin-top:12px;padding:17px 22px;text-align:center;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-decoration:none}
 /* calculator card: machined plate */
 #calc .c-card{--ch:18px;position:relative;isolation:isolate;border:0;border-radius:0;background:#3b3b3b;box-shadow:none;
   clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch))}
@@ -721,7 +722,7 @@ nav a.call::before,#earlyCta a.ec-c::before,#calc .f-btns button:not(.sel)::befo
   <a class="c-phone" href="tel:2495357501">249 535 7501</a>
   <br>
   <a class="c-quote" href="/free-quote.html">REQUEST A FREE QUOTE</a>
-  <a href="/instant-quote.html" style="display:block;margin-top:12px;padding:17px 22px;text-align:center;border:1px solid #F59E0B;border-radius:2px;color:#F59E0B;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-decoration:none">OR GET AN INSTANT PRICE RANGE ON YOUR PROPERTY</a>
+  <a class="c-alt" href="/instant-quote.html">OR GET AN INSTANT PRICE RANGE ON YOUR PROPERTY</a>
   <div class="c-foot">
     <span>KOWALSKICC.CA</span>
     <span><a href="/concrete-contractor-simcoe-county.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">SIMCOE COUNTY</a> — <a href="/concrete-contractor-innisfil-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">INNISFIL</a> · <a href="/concrete-contractor-barrie-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">BARRIE</a> · <a href="/concrete-contractor-bradford-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">BRADFORD</a> · <a href="/concrete-contractor-orillia-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">ORILLIA</a> · <a href="/concrete-contractor-muskoka-ontario.html" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">MUSKOKA</a></span>
