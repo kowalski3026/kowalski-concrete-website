@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Instant Concrete Quote | Kowalski Concrete Contracting</title>
+<meta name="description" content="Outline your driveway or patio on satellite imagery, see it with new concrete, and get a price range in about a minute. Innisfil, Barrie, Simcoe County and Muskoka.">
+<link rel="canonical" href="https://kowalskicc.ca/instant-quote.html">
+<link rel="icon" href="/favicon.ico">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1c1d1f;--panel:#26272a;--line:#3a3b3f;--bone:#ece6d8;--mute:#a9a69c;--amber:#e8a317;--ok:#7fc77f}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--bone);font-family:Archivo,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 80px}
+.top{display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-bottom:6px}
+.top a{color:var(--mute);text-decoration:none}
+h1{font-size:28px;line-height:1.1;margin:8px 0 6px;font-weight:800;letter-spacing:-.5px}
+h1 span{color:var(--amber)}
+.sub{color:var(--mute);margin:0 0 22px;font-size:15px}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:14px}
+.step h2{font-size:13px;letter-spacing:1.4px;text-transform:uppercase;color:var(--amber);margin:0 0 10px;font-weight:800}
+.row{display:flex;gap:8px}
+input,textarea,select{width:100%;background:#17181a;color:var(--bone);border:1px solid var(--line);border-radius:10px;padding:13px;font:inherit;font-size:16px}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);border-color:transparent}
+button{font:inherit;font-weight:800;border:0;border-radius:10px;padding:13px 16px;cursor:pointer;background:var(--amber);color:#1c1d1f;font-size:15px}
+button.ghost{background:transparent;color:var(--bone);border:1px solid var(--line)}
+button:disabled{opacity:.5}
+#map{height:340px;border-radius:12px;margin-top:12px;border:1px solid var(--line);background:#111}
+.hint{color:var(--mute);font-size:13px;margin:8px 0 0}
+.tools{display:flex;gap:8px;margin-top:10px;align-items:center}
+.area{margin-left:auto;font-weight:800;font-size:18px}
+.area small{color:var(--mute);font-weight:400;font-size:12px}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chips.three{grid-template-columns:repeat(3,1fr)}
+.chip{background:#17181a;border:1px solid var(--line);border-radius:10px;padding:12px;text-align:left;color:var(--bone);font-weight:600}
+.chip small{display:block;color:var(--mute);font-weight:400;margin-top:2px}
+.chip.on{border-color:var(--amber);box-shadow:inset 0 0 0 1px var(--amber)}
+.lab{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--mute);margin:14px 0 6px}
+label.tog{display:flex;gap:10px;align-items:center;margin-top:12px;font-size:15px}
+label.tog input{width:20px;height:20px;accent-color:var(--amber);flex:none}
+.preview{display:none;margin-top:12px}
+.preview img{width:100%;border-radius:12px;display:block}
+.ba{display:grid;gap:10px;margin-top:10px}
+.tag{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--mute);margin:0 0 4px}
+.price{text-align:center;padding:8px 0}
+.price .big{font-size:38px;font-weight:800;color:var(--amber);letter-spacing:-1px;line-height:1.1}
+.price .meta{color:var(--mute);font-size:14px;margin-top:6px}
+.fine{color:var(--mute);font-size:12px;line-height:1.5;margin-top:10px}
+.msg{margin-top:10px;font-size:14px}
+.err{color:#ff8a7a}.good{color:var(--ok)}
+.field{margin-bottom:10px}
+.lead{display:none;margin-top:12px;padding:12px;border:1px solid var(--amber);border-radius:12px}
+.lead.show{display:block}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+a{color:var(--amber)}
+.vtx{width:16px;height:16px;border-radius:50%;background:var(--amber);border:2px solid #fff;box-shadow:0 0 0 2px rgba(0,0,0,.4)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/">&larr; Kowalski Concrete</a><a href="tel:2495357501">249-535-7501</a></div>
+  <h1>See it. Price it. <span>In a minute.</span></h1>
+  <p class="sub">Outline your driveway or patio on satellite imagery, pick a finish, and get a real price range. No waiting on a callback.</p>
+
+  <section class="step">
+    <h2>1. Find your property</h2>
+    <div class="row">
+      <input id="addr" type="text" placeholder="Street address, town" autocomplete="street-address" enterkeyhint="search">
+      <button id="find">Find</button>
+    </div>
+    <div id="findmsg" class="msg"></div>
+    <div id="map"></div>
+    <p class="hint">Tap the corners of the area to outline it. Tap a corner dot to remove it.</p>
+    <div class="tools">
+      <button class="ghost" id="undo">Undo</button>
+      <button class="ghost" id="clear">Clear</button>
+      <div class="area"><span id="sqft">0</span> <small>sq ft</small></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <h2>2. Pick your project</h2>
+    <div class="chips three" id="types"></div>
+    <div class="lab">Finish</div>
+    <div class="chips" id="finishes"></div>
+    <div class="lab">Slab thickness</div>
+    <div class="chips three" id="thick"></div>
+    <label class="tog"><input type="checkbox" id="tearout"> Remove existing concrete or asphalt first</label>
+    <label class="tog"><input type="checkbox" id="heated"> Heated slab (snow melts itself)</label>
+    <div id="heatsys" style="display:none">
+      <div class="lab">Heating system</div>
+      <div class="chips" id="heatchips"></div>
+    </div>
+  </section>
+
+  <section class="step">
+    <h2>3. See it on your property <span style="color:var(--mute);font-weight:400;text-transform:none;letter-spacing:0">(optional)</span></h2>
+    <input id="photo" type="file" accept="image/*">
+    <div class="preview" id="pv"><img id="pvimg" alt="Your photo"></div>
+    <div class="row" style="margin-top:10px"><button id="render" disabled>Show me with new concrete</button></div>
+    <div id="rendermsg" class="msg"></div>
+    <div class="lead" id="lead">
+      <div style="font-weight:800;margin-bottom:8px">Unlock 2 more free previews</div>
+      <div class="field"><input id="lname" placeholder="Name" autocomplete="name"></div>
+      <div class="field"><input id="lcontact" placeholder="Phone or email" autocomplete="tel"></div>
+      <label class="tog" style="margin-top:0"><input type="checkbox" id="lconsent"> OK for Kowalski Concrete to contact me about my project</label>
+      <input class="hp" id="lweb" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button id="lbtn" style="width:100%;margin-top:10px">Unlock and generate</button>
+      <div id="lerr" class="msg err"></div>
+    </div>
+    <div class="ba" id="ba"></div>
+  </section>
+
+  <section class="step">
+    <h2>4. Your price range</h2>
+    <div class="price" id="price"><div class="meta">Outline your area to see pricing.</div></div>
+    <p class="fine">Ballpark only. Final pricing depends on access, grading, base conditions and finish details, and is confirmed at a free site visit.</p>
+  </section>
+
+  <section class="step">
+    <h2>5. Book your free site visit</h2>
+    <form id="form">
+      <div class="field"><input name="name" placeholder="Name" required autocomplete="name"></div>
+      <div class="field"><input name="phone" type="tel" placeholder="Phone" required autocomplete="tel"></div>
+      <div class="field"><input name="email" type="email" placeholder="Email (optional)" autocomplete="email"></div>
+      <div class="field"><textarea name="notes" rows="3" placeholder="Anything we should know? (slope, trees, access, timing)"></textarea></div>
+      <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" id="send" style="width:100%">Request site visit</button>
+      <div id="sendmsg" class="msg"></div>
+    </form>
+    <p class="fine">Kowalski Concrete Contracting Inc. &middot; 249-535-7501 &middot; Innisfil, Simcoe County &amp; Muskoka</p>
+  </section>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+/* ===== pricing: mirrors the calculator on kowalskicc.ca (flat work) ===== */
+const FINISHES = {
+  broom:   {name:"Broom",    note:"Clean, durable, non-slip", m:1},
+  exposed: {name:"Exposed aggregate", note:"Textured, slip resistant", m:1.25},
+  stamped: {name:"Stamped",  note:"Looks like stone or slate", m:1.8},
+  smooth:  {name:"Smooth",   note:"Trowel finish", m:1}
+};
+const TYPES = {driveway:"Driveway", patio:"Patio", pathway:"Walkway"};
+const HEAT = {elec:{name:"Electric", note:"$16/sq ft + $1,800", perSq:16, flat:1800},
+              hydro:{name:"Hydronic", note:"$22/sq ft + $6,500", perSq:22, flat:6500}};
+
+function polygonAreaSqFt(pts){
+  if(pts.length<3) return 0;
+  const lat0 = pts.reduce((s,p)=>s+p[0],0)/pts.length;
+  const mLat = 111320, mLng = 111320*Math.cos(lat0*Math.PI/180);
+  const xy = pts.map(p=>[p[1]*mLng, p[0]*mLat]);
+  let a=0;
+  for(let i=0;i<xy.length;i++){ const j=(i+1)%xy.length; a += xy[i][0]*xy[j][1]-xy[j][0]*xy[i][1]; }
+  return Math.abs(a/2)*10.7639;
+}
+function priceRange(a, o){ // o: {finish, thick, tearout, heated, heatSys}
+  if(!(a>0)) return null;
+  const m = FINISHES[o.finish].m;
+  let lo=a*10*m, hi=a*15*m;
+  if(o.thick>4){ const x=a*(o.thick-4)*1.25; lo+=x; hi+=x; }
+  if(o.heated){ const h=HEAT[o.heatSys]; const x=a*h.perSq+h.flat; lo+=x; hi+=x; }
+  if(o.tearout){ lo+=a*3; hi+=a*4; }
+  return {lo:Math.round(lo/100)*100, hi:Math.round(hi/100)*100};
+}
+if(typeof module!=="undefined"){ module.exports={polygonAreaSqFt,priceRange}; }
+</script>
+
+<script>
+if(typeof document!=="undefined" && typeof L!=="undefined"){
+(function(){
+  const $ = id=>document.getElementById(id);
+  const fmt = n=>"$"+n.toLocaleString("en-CA");
+  const S = {type:"driveway", finish:"broom", thick:4, heatSys:"elec"};
+  let pts=[], markers=[], poly=null, photoB64=null, lastRange=null;
+
+  const map = L.map("map",{maxZoom:21}).setView([44.30,-79.58],11);
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+    {maxNativeZoom:19, maxZoom:21, attribution:"Imagery &copy; Esri, Maxar, Earthstar Geographics"}).addTo(map);
+
+  function redraw(){
+    markers.forEach(m=>m.remove()); markers=[];
+    if(poly){ poly.remove(); poly=null; }
+    pts.forEach((p,i)=>{
+      const m = L.marker(p,{icon:L.divIcon({className:"",html:'<div class="vtx"></div>',iconSize:[16,16],iconAnchor:[8,8]})}).addTo(map);
+      m.on("click",e=>{ L.DomEvent.stopPropagation(e); pts.splice(i,1); redraw(); });
+      markers.push(m);
+    });
+    if(pts.length>=2) poly = (pts.length>=3?L.polygon:L.polyline)(pts,{color:"#e8a317",weight:3,fillOpacity:.25}).addTo(map);
+    $("sqft").textContent = Math.round(polygonAreaSqFt(pts)).toLocaleString("en-CA");
+    update();
+  }
+  map.on("click",e=>{ pts.push([e.latlng.lat,e.latlng.lng]); redraw(); });
+  $("undo").onclick=()=>{ pts.pop(); redraw(); };
+  $("clear").onclick=()=>{ pts=[]; redraw(); };
+
+  async function find(){
+    const q=$("addr").value.trim(); if(!q) return;
+    $("findmsg").className="msg"; $("findmsg").textContent="Searching...";
+    try{
+      const r=await fetch("https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=ca&q="+encodeURIComponent(q));
+      const j=await r.json();
+      if(!j.length){ $("findmsg").className="msg err"; $("findmsg").textContent="Address not found. Add the town and try again."; return; }
+      map.setView([+j[0].lat,+j[0].lon],20);
+      $("findmsg").className="msg good"; $("findmsg").textContent="Found: "+j[0].display_name;
+    }catch(e){ $("findmsg").className="msg err"; $("findmsg").textContent="Search failed. Check your connection or pan the map manually."; }
+  }
+  $("find").onclick=find;
+  $("addr").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); find(); }});
+
+  function chips(box, items, key, sel){
+    Object.entries(items).forEach(([k,v])=>{
+      const b=document.createElement("button"); b.type="button"; b.className="chip"+(k==sel?" on":""); b.dataset.k=k;
+      b.appendChild(document.createTextNode(typeof v==="string"?v:v.name));
+      if(v.note){ const s=document.createElement("small"); s.textContent=v.note; b.appendChild(s); }
+      b.onclick=()=>{ S[key]=isNaN(k)?k:+k; box.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===b)); update(); };
+      box.appendChild(b);
+    });
+  }
+  chips($("types"),TYPES,"type","driveway");
+  chips($("finishes"),FINISHES,"finish","broom");
+  chips($("thick"),{4:'4"',5:'5"',6:'6"'},"thick",4);
+  chips($("heatchips"),HEAT,"heatSys","elec");
+  $("tearout").onchange=update;
+  $("heated").onchange=()=>{ $("heatsys").style.display=$("heated").checked?"block":"none"; update(); };
+
+  function update(){
+    const sq=polygonAreaSqFt(pts);
+    const r=priceRange(sq,{finish:S.finish,thick:S.thick,tearout:$("tearout").checked,heated:$("heated").checked,heatSys:S.heatSys});
+    lastRange=r;
+    const el=$("price"); el.textContent="";
+    if(!r){ const d=document.createElement("div"); d.className="meta"; d.textContent="Outline your area to see pricing."; el.appendChild(d); return; }
+    const big=document.createElement("div"); big.className="big"; big.textContent=fmt(r.lo)+" – "+fmt(r.hi);
+    const meta=document.createElement("div"); meta.className="meta";
+    meta.textContent=Math.round(sq).toLocaleString("en-CA")+" sq ft · "+TYPES[S.type]+" · "+FINISHES[S.finish].name+' · '+S.thick+'"'+($("heated").checked?" · heated ("+HEAT[S.heatSys].name.toLowerCase()+")":"")+($("tearout").checked?" · with removal":"");
+    el.appendChild(big); el.appendChild(meta);
+  }
+
+  // photo -> base64 JPEG under the API's size cap
+  $("photo").onchange=e=>{
+    const f=e.target.files[0]; if(!f) return;
+    const img=new Image(), url=URL.createObjectURL(f);
+    img.onload=()=>{
+      let max=1600, q=.85, b64="";
+      for(let i=0;i<6;i++){
+        const s=Math.min(1,max/Math.max(img.width,img.height));
+        const c=document.createElement("canvas"); c.width=Math.round(img.width*s); c.height=Math.round(img.height*s);
+        c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+        b64=c.toDataURL("image/jpeg",q).split(",")[1];
+        if(b64.length<2900000) break;
+        max=Math.round(max*.8); q=Math.max(.6,q-.05);
+      }
+      photoB64=b64; $("pvimg").src="data:image/jpeg;base64,"+b64; $("pv").style.display="block"; $("render").disabled=false;
+      URL.revokeObjectURL(url);
+    };
+    img.onerror=()=>{ $("rendermsg").className="msg err"; $("rendermsg").textContent="Could not read that photo. Try a JPG or PNG."; };
+    img.src=url;
+  };
+
+  const tok=()=>{ try{ return localStorage.getItem("vizTok")||""; }catch(e){ return ""; } };
+  const choices=()=>({projectType:S.type, finish:S.finish, fieldColor:"natural"});
+  let justUnlocked=false;
+
+  async function render(){
+    if(!photoB64) return;
+    $("render").disabled=true; $("lead").classList.remove("show");
+    $("rendermsg").className="msg"; $("rendermsg").textContent="Rendering your new concrete... about 15 seconds.";
+    try{
+      const r=await fetch("/api/visualize",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({image:photoB64,mimeType:"image/jpeg",choices:choices(),token:tok()})});
+      const d=await r.json().catch(()=>({}));
+      if(d.needLead){
+        if(justUnlocked){ justUnlocked=false; throw new Error("We saved your info but could not confirm it. Tap the button once more or call 249-535-7501."); }
+        $("rendermsg").textContent=""; $("lead").classList.add("show"); $("lead").scrollIntoView({behavior:"smooth",block:"center"});
+        $("render").disabled=false; return;
+      }
+      if(!r.ok||!d.data) throw new Error(d.error||"Something went wrong. Please try again.");
+      justUnlocked=false;
+      const ba=$("ba"); ba.textContent="";
+      [["Before","data:image/jpeg;base64,"+photoB64],["After: "+FINISHES[S.finish].name,"data:"+d.mimeType+";base64,"+d.data]].forEach(([t,src])=>{
+        const w=document.createElement("div"), p=document.createElement("p"), im=document.createElement("img");
+        p.className="tag"; p.textContent=t; im.src=src; im.alt=t; im.style.cssText="width:100%;border-radius:12px;display:block";
+        w.appendChild(p); w.appendChild(im); ba.appendChild(w);
+      });
+      $("rendermsg").className="msg good"; $("rendermsg").textContent="Preview only. Final colour, texture and layout are confirmed on site.";
+    }catch(err){
+      $("rendermsg").className="msg err"; $("rendermsg").textContent=err.message||"Preview unavailable. Your price range still works.";
+    }
+    $("render").disabled=false;
+  }
+  $("render").onclick=render;
+
+  $("lbtn").onclick=async()=>{
+    const name=$("lname").value.trim(), contact=$("lcontact").value.trim(), consent=$("lconsent").checked, web=$("lweb").value;
+    $("lerr").textContent=""; $("lbtn").disabled=true;
+    try{
+      const r=await fetch("/api/lead",{method:"POST",headers:{"Content-Type":"application/json"},
+        body:JSON.stringify({name,contact,consent,website:web,choices:choices()})});
+      const d=await r.json().catch(()=>({}));
+      if(!r.ok) throw new Error(d.error||"Something went wrong. Please try again.");
+      try{ if(d.token) localStorage.setItem("vizTok",d.token); }catch(e){}
+      if(!web){
+        const payload={_subject:"New Instant Quote Lead — "+name,_captcha:"false",_template:"table",name,contact,project:S.type,finish:S.finish,source:"kowalskicc.ca/instant-quote"};
+        if(/@/.test(contact)) payload.email=contact;
+        fetch("https://formsubmit.co/ajax/info@kowalskicc.ca",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(payload)}).catch(()=>{});
+      }
+      justUnlocked=true; $("lead").classList.remove("show"); $("lbtn").disabled=false; render();
+    }catch(err){ $("lerr").textContent=err.message; $("lbtn").disabled=false; }
+  };
+
+  $("form").onsubmit=async e=>{
+    e.preventDefault();
+    const fd=new FormData($("form"));
+    if(fd.get("website")) return; // honeypot
+    const sq=Math.round(polygonAreaSqFt(pts));
+    const body={_subject:"Instant quote request: "+fd.get("name"),_captcha:"false",_template:"table",
+      name:fd.get("name"),phone:fd.get("phone"),email:fd.get("email")||"(none)",notes:fd.get("notes")||"(none)",
+      address:$("addr").value||"(not entered)",
+      project:TYPES[S.type],area_sqft:sq||"(not outlined)",finish:FINISHES[S.finish].name,thickness:S.thick+'"',
+      removal:$("tearout").checked?"yes":"no",
+      heated:$("heated").checked?"yes ("+HEAT[S.heatSys].name+")":"no",
+      price_range:lastRange?fmt(lastRange.lo)+" - "+fmt(lastRange.hi):"(none)",
+      outline_points:pts.map(p=>p[0].toFixed(6)+","+p[1].toFixed(6)).join(" | ")||"(none)",
+      source:"kowalskicc.ca/instant-quote"};
+    if(/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(body.email)) body._replyto=body.email;
+    $("send").disabled=true; $("sendmsg").className="msg"; $("sendmsg").textContent="Sending...";
+    try{
+      const r=await fetch("https://formsubmit.co/ajax/info@kowalskicc.ca",{method:"POST",
+        headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(body)});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok||j.success==="false") throw new Error("send failed");
+      $("sendmsg").className="msg good"; $("sendmsg").textContent="Got it. We'll call you to set up your free site visit.";
+      $("form").reset();
+    }catch(err){
+      $("sendmsg").className="msg err"; $("sendmsg").textContent="Could not send. Please call 249-535-7501.";
+      $("send").disabled=false;
+    }
+  };
+})();
+}
+</script>
+<script src="/kc-track.js" defer></script>
+</body>
+</html>
