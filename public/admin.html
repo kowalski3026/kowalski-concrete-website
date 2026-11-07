@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Admin | Kowalski Concrete</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Matches the site's flat, square-edged button system (de-slop pass): amber slab, ink text, mono caps, no gradient/glow */
+:root{--ink:#141414;--paper:#F5F3F0;--amber:#F59E0B;--bone:#E8E4DE;--mute:#9b948a;--bg:#141414;--panel:#181714;--line:rgba(255,255,255,.14);--ok:#7fc77f;
+  --disp:'Archivo',sans-serif;--body:'DM Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--bone);font-family:var(--body);-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.top a{text-decoration:none}
+.top .tel{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--amber)}
+h1{font-family:var(--disp);font-weight:900;font-stretch:125%;font-size:clamp(28px,8vw,44px);line-height:1.04;margin:8px 0 8px;letter-spacing:-.01em;color:var(--paper)}
+h1 span{color:var(--amber)}
+.sub{color:#cfc8bd;margin:0 0 22px;font-size:16px;line-height:1.5}
+.step{--ch:18px;position:relative;isolation:isolate;background:#3b3b3b;border:0;border-radius:0;padding:19px 17px;margin-bottom:14px;clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch))}
+.step::before{content:'';position:absolute;inset:1px;z-index:-1;background:linear-gradient(#1b1b1b,#131313);box-shadow:inset 0 1px 0 rgba(255,255,255,.1);clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px)}
+.step h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);margin:0 0 14px;font-weight:600;border-left:3px solid var(--amber);padding:2px 0 2px 10px}
+.row{display:flex;gap:8px}
+input,textarea,select{width:100%;background:#0e0e0d;color:var(--bone);border:1.5px solid rgba(245,240,230,.3);border-radius:2px;padding:13px;font:inherit;font-size:16px}
+input:-webkit-autofill,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #0e0e0d inset!important;box-shadow:0 0 0 1000px #0e0e0d inset!important;-webkit-text-fill-color:var(--bone)!important;caret-color:var(--bone);transition:background-color 9999s ease-in-out 0s}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);outline-offset:0;border-color:transparent}
+/* chamfered plates, same as the homepage: filled = amber, outlined = steel edge drawn by an inset layer */
+:root{--ch:10px}
+button{--ch:8px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:0;border-radius:0;padding:16px 22px;cursor:pointer;background:var(--amber);color:var(--ink);
+  clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+button.ghost,.chip:not(.on){position:relative;isolation:isolate;background:rgba(245,240,230,.4);color:var(--bone);box-shadow:none}
+button.ghost{padding:16px 20px}
+button.ghost::before,.chip:not(.on)::before{content:'';position:absolute;inset:1.5px;z-index:-1;background:linear-gradient(#262626,#181818);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+  clip-path:polygon(calc(var(--ch) - 1px) 0,100% 0,100% calc(100% - var(--ch) + 1px),calc(100% - var(--ch) + 1px) 100%,0 100%,0 calc(var(--ch) - 1px))}
+button:active{transform:translateY(1px)}
+button:disabled{opacity:.45}
+@media (hover:hover){ button:not(:disabled):not(.ghost):not(.chip):hover{background:var(--paper)} button.ghost:not(:disabled):hover,.chip:not(.on):hover{background:var(--amber);color:var(--bone)} }
+.hint{color:var(--mute);font-size:13px;margin:8px 0 0}
+.tools{display:flex;gap:8px;margin-top:10px;align-items:center}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chips.three{grid-template-columns:repeat(3,1fr)}
+.chips.five{grid-template-columns:repeat(5,1fr)}
+.chip{--ch:8px;text-align:left;padding:13px 14px;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.chip small{display:block;color:var(--mute);font-family:var(--body);font-weight:400;font-size:12px;letter-spacing:0;text-transform:none;margin-top:3px}
+.chip.on{background:var(--amber);color:var(--ink)}
+.chip.on small{color:rgba(20,20,20,.75)}
+.chip small{position:relative}
+.five .chip{text-align:center;padding:13px 4px;--ch:6px}
+.lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+label.tog{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:15px}
+label.tog input{width:20px;height:20px;accent-color:var(--amber);flex:none}
+.preview{display:none;margin-top:12px}
+.preview img{width:100%;border-radius:2px;display:block}
+.ba{display:grid;gap:10px;margin-top:10px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 4px}
+.price{text-align:center;padding:8px 0}
+.price .big{font-family:var(--disp);font-size:clamp(30px,9vw,44px);font-weight:900;font-stretch:125%;color:var(--amber);letter-spacing:-.01em;line-height:1.1}
+.price .meta{color:var(--mute);font-size:14px;margin-top:8px}
+.fine{color:var(--mute);font-size:12px;line-height:1.5;margin-top:10px}
+.msg{margin-top:10px;font-size:14px}
+.err{color:#ff8a7a}.good{color:var(--ok)}
+.field{margin-bottom:10px}
+.lead{display:none;margin-top:12px;padding:14px;border:1px solid var(--amber);border-radius:2px}
+.lead.show{display:block}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.note{background:#0e0e0d;border-left:3px solid var(--amber);padding:10px 12px;border-radius:0;color:var(--mute);font-size:13px;margin-top:12px;line-height:1.5}
+a{color:var(--amber)}
+.out{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:6px}
+.stat{background:#0e0e0d;border-left:3px solid var(--amber);padding:12px}
+.stat b{display:block;font-family:var(--disp);font-stretch:125%;font-weight:900;font-size:clamp(20px,6vw,28px);color:var(--amber);line-height:1.1}
+.stat span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
+th,td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:600}
+tr.be td{color:var(--amber)}
+svg{width:100%;height:auto;display:block;margin-top:12px}
+.cta{display:block;text-align:center;text-decoration:none;margin-top:14px}
+a.btn{--ch:8px;display:block;text-align:center;text-decoration:none;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:16px 22px;background:var(--amber);color:var(--ink);clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+@media (hover:hover){a.btn:hover{background:var(--paper)}}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tabs button{flex:1}
+.lead-card{margin-bottom:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.lead-card:last-child{border:0;margin:0;padding:0}
+.lead-card b{color:var(--paper)}
+.badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--line);color:var(--mute);margin-left:6px}
+.badge.new{color:var(--amber);border-color:var(--amber)}.badge.booked{color:var(--ok);border-color:var(--ok)}
+.sm{padding:10px 12px;font-size:11px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.qrbox{text-align:center;background:#fff;padding:14px;margin-top:10px}
+.qrbox canvas{max-width:100%;height:auto}.qrbox .cap{color:#141414;font-family:var(--mono);font-size:12px;margin-top:6px;word-break:break-all}
+.thumbs{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.thumbs img{width:64px;height:64px;object-fit:cover}
+@media print{body *{visibility:hidden}.qrbox,.qrbox *{visibility:visible}.qrbox{position:absolute;left:0;top:0;width:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/"><img src="/kowalski-lockup.png" alt="Kowalski Concrete" style="height:40px;width:auto;display:block"></a><span class="tel">ADMIN</span></div>
+
+  <section class="step" id="login">
+    <h2>Sign in</h2>
+    <div class="field"><input id="pw" type="password" placeholder="Admin password" autocomplete="current-password"></div>
+    <button id="go" style="width:100%">Sign in</button>
+    <div id="lmsg" class="msg err"></div>
+  </section>
+
+  <div id="app" hidden>
+    <div class="tabs"><button data-t="leads">Leads</button><button class="ghost" data-t="new">New job</button><button class="ghost" data-t="jobs">Jobs</button></div>
+
+    <section class="step" id="t-leads"><h2>Leads</h2><div id="leads">Loading...</div></section>
+
+    <section class="step" id="t-new" hidden>
+      <h2>New job page</h2>
+      <div class="lab" style="margin-top:0">Project</div>
+      <select id="j-type"><option>Driveway</option><option>Patio</option><option>Walkway</option><option>Garage or shed pad</option><option>Steps</option><option>Retaining wall</option><option>Foundation</option><option>Floor leveling</option><option>Concrete work</option></select>
+      <div class="lab">Town (shown to anyone with the link)</div><input id="j-city" placeholder="e.g. Innisfil">
+      <div class="lab">Pour date</div><input id="j-date" type="date">
+      <div class="lab">Finish</div><input id="j-finish" placeholder="e.g. Broom, exposed aggregate">
+      <div class="lab">Thickness</div><input id="j-thick" placeholder='e.g. 5"'>
+      <div class="lab">Concrete mix</div><input id="j-mix" placeholder="e.g. 32 MPa, air-entrained">
+      <div class="lab">Size</div><input id="j-area" placeholder="e.g. 900 sq ft">
+      <div class="lab">Note on the page (optional)</div><textarea id="j-notes" rows="2"></textarea>
+      <div class="lab">Referral offer (optional, leave blank for the standard wording)</div><textarea id="j-ref" rows="2" placeholder="e.g. Refer a neighbour and get $100 off your next job"></textarea>
+      <div class="lab">Photos (up to 8)</div><input id="j-photos" type="file" accept="image/*" multiple>
+      <div class="note">Do not put the customer's name or street address on the page. The link is meant to be scanned by anyone who sees the QR code.</div>
+      <button id="j-save" style="width:100%;margin-top:12px">Create job page</button>
+      <div id="j-msg" class="msg"></div>
+      <div id="j-out"></div>
+    </section>
+
+    <section class="step" id="t-jobs" hidden><h2>Jobs</h2><div id="jobs"></div></section>
+  </div>
+</div>
+<script src="/qr.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+let KEY=sessionStorage.getItem("kcAdmin")||"";
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+async function api(action,data){
+  const r=await fetch("/api/admin",{method:"POST",headers:{"Content-Type":"application/json","x-admin-key":KEY},body:JSON.stringify(Object.assign({action},data||{}))});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok) throw Object.assign(new Error(j.error||"Request failed"),{status:r.status});
+  return j;
+}
+async function enter(){
+  try{ await api("login"); sessionStorage.setItem("kcAdmin",KEY); $("login").hidden=true; $("app").hidden=false; loadLeads(); }
+  catch(e){ $("login").hidden=false; $("app").hidden=true; $("lmsg").textContent=e.message; }
+}
+$("go").onclick=()=>{ KEY=$("pw").value; enter(); };
+$("pw").addEventListener("keydown",e=>{ if(e.key==="Enter"){ KEY=$("pw").value; enter(); }});
+if(KEY) enter();
+
+document.querySelectorAll(".tabs button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll(".tabs button").forEach(x=>x.classList.toggle("ghost",x!==b));
+  ["leads","new","jobs"].forEach(t=>$("t-"+t).hidden=(t!==b.dataset.t));
+  if(b.dataset.t==="leads") loadLeads(); if(b.dataset.t==="jobs") loadJobs();
+});
+
+async function loadLeads(){
+  try{
+    const {leads}=await api("leads");
+    $("leads").innerHTML=leads.length?leads.map(l=>'<div class="lead-card"><b>'+esc(l.name)+'</b><span class="badge '+esc(l.status)+'">'+esc(l.status)+'</span>'
+      +'<div><a href="tel:'+esc(l.phone)+'">'+esc(l.phone)+'</a>'+(l.email?' &middot; '+esc(l.email):'')+'</div>'
+      +'<div class="hint" style="margin:4px 0">'+esc(l.project)+(l.price_range?' &middot; '+esc(l.price_range):'')+'</div>'
+      +(l.address?'<div class="hint" style="margin:2px 0">'+esc(l.address)+'</div>':'')
+      +(l.notes?'<div class="hint" style="margin:2px 0">'+esc(l.notes)+'</div>':'')
+      +'<div class="hint" style="margin:2px 0">'+new Date(l.at).toLocaleString("en-CA")+' &middot; texts: '+(l.consent?(l.stopped?'opted out':l.replied?'replied':'on, '+l.step+'/3 sent'):'no consent')+'</div>'
+      +'<div class="acts"><button class="ghost sm" data-id="'+l.id+'" data-s="booked">Booked</button><button class="ghost sm" data-id="'+l.id+'" data-s="lost">Lost</button><button class="ghost sm" data-id="'+l.id+'" data-s="new">Reopen</button></div></div>').join(""):"No leads yet.";
+    $("leads").querySelectorAll("button[data-id]").forEach(b=>b.onclick=async()=>{ b.disabled=true; try{ await api("setStatus",{id:b.dataset.id,status:b.dataset.s}); loadLeads(); }catch(e){ alert(e.message); b.disabled=false; }});
+  }catch(e){ $("leads").textContent=e.message; if(e.status===401){ sessionStorage.removeItem("kcAdmin"); location.reload(); } }
+}
+
+function drawQR(host,url){
+  const q=window.kcQR(url), scale=Math.max(4,Math.floor(320/(q.n+8))), size=(q.n+8)*scale;
+  const c=document.createElement("canvas"); c.width=c.height=size; const x=c.getContext("2d");
+  x.fillStyle="#fff"; x.fillRect(0,0,size,size); x.fillStyle="#000";
+  for(let r=0;r<q.n;r++) for(let k=0;k<q.n;k++) if(q.dark(r,k)) x.fillRect((k+4)*scale,(r+4)*scale,scale,scale);
+  host.innerHTML=""; host.className="qrbox"; host.appendChild(c);
+  const cap=document.createElement("div"); cap.className="cap"; cap.textContent="Scan for your job page: "+url; host.appendChild(cap);
+  const p=document.createElement("button"); p.className="ghost sm"; p.style.marginTop="8px"; p.textContent="Print"; p.onclick=()=>window.print(); host.appendChild(p);
+}
+
+async function loadJobs(){
+  try{
+    const {jobs}=await api("jobs");
+    $("jobs").innerHTML=jobs.length?jobs.map(j=>'<div class="lead-card"><b>'+esc(j.type)+'</b> &middot; '+esc(j.city)+' <span class="badge">'+esc(j.date)+'</span>'
+      +'<div class="hint" style="margin:4px 0"><a href="'+esc(j.url)+'" target="_blank" rel="noopener">'+esc(j.url)+'</a> &middot; '+(j.photos||0)+' photos</div>'
+      +'<div class="acts"><button class="ghost sm" data-url="'+esc(j.url)+'">Show QR</button></div><div class="qh"></div></div>').join(""):"No jobs yet.";
+    $("jobs").querySelectorAll("button[data-url]").forEach(b=>b.onclick=()=>drawQR(b.closest(".lead-card").querySelector(".qh"),b.dataset.url));
+  }catch(e){ $("jobs").textContent=e.message; }
+}
+
+/* photos: shrink in the browser, then upload one at a time */
+function shrink(file){
+  return new Promise((res,rej)=>{
+    const img=new Image(), u=URL.createObjectURL(file);
+    img.onload=()=>{ const m=1400, s=Math.min(1,m/Math.max(img.width,img.height)), c=document.createElement("canvas");
+      c.width=Math.round(img.width*s); c.height=Math.round(img.height*s); c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+      URL.revokeObjectURL(u); let q=.72, d=c.toDataURL("image/jpeg",q);
+      while(d.length>800000 && q>.3){ q-=.1; d=c.toDataURL("image/jpeg",q); }
+      res(d.split(",")[1]); };
+    img.onerror=()=>rej(new Error("Could not read a photo.")); img.src=u;
+  });
+}
+$("j-date").value=new Date().toISOString().slice(0,10);
+$("j-save").onclick=async()=>{
+  const m=$("j-msg"); m.className="msg"; m.textContent="Saving..."; $("j-save").disabled=true; $("j-out").innerHTML="";
+  try{
+    const r=await api("jobCreate",{type:$("j-type").value,city:$("j-city").value,date:$("j-date").value,finish:$("j-finish").value,thickness:$("j-thick").value,mix:$("j-mix").value,area:$("j-area").value,notes:$("j-notes").value,referral:$("j-ref").value});
+    const files=[...$("j-photos").files].slice(0,8);
+    for(let i=0;i<files.length;i++){ m.textContent="Uploading photo "+(i+1)+" of "+files.length+"..."; await api("photo",{id:r.id,data:await shrink(files[i])}); }
+    m.className="msg good"; m.textContent="Done. "+r.url;
+    const h=document.createElement("div"); $("j-out").appendChild(h); drawQR(h,r.url);
+  }catch(e){ m.className="msg err"; m.textContent=e.message; }
+  $("j-save").disabled=false;
+};
+</script>
+</body>
+</html>
