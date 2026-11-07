@@ -533,6 +533,14 @@ if(typeof document!=="undefined" && typeof L!=="undefined"){
   };
 
   applyKind();
+
+  /* deep links, e.g. /instant-quote.html?type=driveway&heated=elec&sqft=900 */
+  try{
+    const P=new URLSearchParams(location.search), pick=(box,k)=>{ const b=$(box).querySelector('.chip[data-k="'+k+'"]'); if(b) b.click(); };
+    const t=P.get("type"); if(t && TYPES[t] && t!=="driveway") pick("types",t);
+    const h=P.get("heated"); if(h && HEAT[h] && kind()==="flat"){ $("heated").checked=true; $("heatsys").hidden=false; pick("heatchips",h); }
+    const a=parseFloat(P.get("sqft")); if(a>0 && a<100000 && ["flat","level"].includes(kind())){ $("qty").value=Math.round(a); update(); }
+  }catch(e){}
 })();
 }
 </script>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heated Driveway Cost Calculator | Kowalski Concrete Contracting</title>
+<meta name="description" content="Compare plowing your driveway every winter with a heated slab. See the upfront premium, yearly running cost and break-even year. Innisfil, Barrie, Simcoe County and Muskoka.">
+<link rel="canonical" href="https://kowalskicc.ca/heated-driveway-cost.html">
+<link rel="icon" href="/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Archivo:wght@400;600;800&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Matches the site's flat, square-edged button system (de-slop pass): amber slab, ink text, mono caps, no gradient/glow */
+:root{--ink:#141414;--paper:#F5F3F0;--amber:#F59E0B;--bone:#E8E4DE;--mute:#9b948a;--bg:#141414;--panel:#181714;--line:rgba(255,255,255,.14);--ok:#7fc77f;
+  --disp:'Archivo',sans-serif;--body:'DM Sans',sans-serif;--mono:'IBM Plex Mono',monospace}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--bone);font-family:var(--body);-webkit-text-size-adjust:100%}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 90px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.top a{text-decoration:none}
+.top .tel{font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--amber)}
+h1{font-family:var(--disp);font-weight:900;font-stretch:125%;font-size:clamp(28px,8vw,44px);line-height:1.04;margin:8px 0 8px;letter-spacing:-.01em;color:var(--paper)}
+h1 span{color:var(--amber)}
+.sub{color:#cfc8bd;margin:0 0 22px;font-size:16px;line-height:1.5}
+.step{--ch:18px;position:relative;isolation:isolate;background:#3b3b3b;border:0;border-radius:0;padding:19px 17px;margin-bottom:14px;clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch))}
+.step::before{content:'';position:absolute;inset:1px;z-index:-1;background:linear-gradient(#1b1b1b,#131313);box-shadow:inset 0 1px 0 rgba(255,255,255,.1);clip-path:polygon(17px 0,100% 0,100% calc(100% - 17px),calc(100% - 17px) 100%,0 100%,0 17px)}
+.step h2{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone);margin:0 0 14px;font-weight:600;border-left:3px solid var(--amber);padding:2px 0 2px 10px}
+.row{display:flex;gap:8px}
+input,textarea,select{width:100%;background:#0e0e0d;color:var(--bone);border:1.5px solid rgba(245,240,230,.3);border-radius:2px;padding:13px;font:inherit;font-size:16px}
+input:-webkit-autofill,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill{-webkit-box-shadow:0 0 0 1000px #0e0e0d inset!important;box-shadow:0 0 0 1000px #0e0e0d inset!important;-webkit-text-fill-color:var(--bone)!important;caret-color:var(--bone);transition:background-color 9999s ease-in-out 0s}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--amber);outline-offset:0;border-color:transparent}
+/* chamfered plates, same as the homepage: filled = amber, outlined = steel edge drawn by an inset layer */
+:root{--ch:10px}
+button{--ch:8px;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;border:0;border-radius:0;padding:16px 22px;cursor:pointer;background:var(--amber);color:var(--ink);
+  clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+button.ghost,.chip:not(.on){position:relative;isolation:isolate;background:rgba(245,240,230,.4);color:var(--bone);box-shadow:none}
+button.ghost{padding:16px 20px}
+button.ghost::before,.chip:not(.on)::before{content:'';position:absolute;inset:1.5px;z-index:-1;background:linear-gradient(#262626,#181818);box-shadow:inset 0 1px 0 rgba(255,255,255,.12);
+  clip-path:polygon(calc(var(--ch) - 1px) 0,100% 0,100% calc(100% - var(--ch) + 1px),calc(100% - var(--ch) + 1px) 100%,0 100%,0 calc(var(--ch) - 1px))}
+button:active{transform:translateY(1px)}
+button:disabled{opacity:.45}
+@media (hover:hover){ button:not(:disabled):not(.ghost):not(.chip):hover{background:var(--paper)} button.ghost:not(:disabled):hover,.chip:not(.on):hover{background:var(--amber);color:var(--bone)} }
+.hint{color:var(--mute);font-size:13px;margin:8px 0 0}
+.tools{display:flex;gap:8px;margin-top:10px;align-items:center}
+.chips{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.chips.three{grid-template-columns:repeat(3,1fr)}
+.chips.five{grid-template-columns:repeat(5,1fr)}
+.chip{--ch:8px;text-align:left;padding:13px 14px;font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.chip small{display:block;color:var(--mute);font-family:var(--body);font-weight:400;font-size:12px;letter-spacing:0;text-transform:none;margin-top:3px}
+.chip.on{background:var(--amber);color:var(--ink)}
+.chip.on small{color:rgba(20,20,20,.75)}
+.chip small{position:relative}
+.five .chip{text-align:center;padding:13px 4px;--ch:6px}
+.lab{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:16px 0 8px}
+label.tog{display:flex;gap:10px;align-items:center;margin-top:14px;font-size:15px}
+label.tog input{width:20px;height:20px;accent-color:var(--amber);flex:none}
+.preview{display:none;margin-top:12px}
+.preview img{width:100%;border-radius:2px;display:block}
+.ba{display:grid;gap:10px;margin-top:10px}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0 0 4px}
+.price{text-align:center;padding:8px 0}
+.price .big{font-family:var(--disp);font-size:clamp(30px,9vw,44px);font-weight:900;font-stretch:125%;color:var(--amber);letter-spacing:-.01em;line-height:1.1}
+.price .meta{color:var(--mute);font-size:14px;margin-top:8px}
+.fine{color:var(--mute);font-size:12px;line-height:1.5;margin-top:10px}
+.msg{margin-top:10px;font-size:14px}
+.err{color:#ff8a7a}.good{color:var(--ok)}
+.field{margin-bottom:10px}
+.lead{display:none;margin-top:12px;padding:14px;border:1px solid var(--amber);border-radius:2px}
+.lead.show{display:block}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.note{background:#0e0e0d;border-left:3px solid var(--amber);padding:10px 12px;border-radius:0;color:var(--mute);font-size:13px;margin-top:12px;line-height:1.5}
+a{color:var(--amber)}
+.out{display:grid;gap:10px;grid-template-columns:1fr 1fr;margin-top:6px}
+.stat{background:#0e0e0d;border-left:3px solid var(--amber);padding:12px}
+.stat b{display:block;font-family:var(--disp);font-stretch:125%;font-weight:900;font-size:clamp(20px,6vw,28px);color:var(--amber);line-height:1.1}
+.stat span{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:6px}
+table{width:100%;border-collapse:collapse;font-size:14px;margin-top:12px}
+th,td{padding:8px 6px;text-align:right;border-bottom:1px solid var(--line)}
+th:first-child,td:first-child{text-align:left}
+th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:600}
+tr.be td{color:var(--amber)}
+svg{width:100%;height:auto;display:block;margin-top:12px}
+.cta{display:block;text-align:center;text-decoration:none;margin-top:14px}
+a.btn{--ch:8px;display:block;text-align:center;text-decoration:none;font-family:var(--mono);font-weight:700;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:16px 22px;background:var(--amber);color:var(--ink);clip-path:polygon(var(--ch) 0,100% 0,100% calc(100% - var(--ch)),calc(100% - var(--ch)) 100%,0 100%,0 var(--ch));box-shadow:inset 0 1px 0 rgba(255,255,255,.5)}
+@media (hover:hover){a.btn:hover{background:var(--paper)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><a href="/" aria-label="Kowalski Concrete Contracting Inc. home"><img src="/kowalski-lockup.png" alt="Kowalski Concrete Contracting Inc." width="760" height="180" style="height:44px;width:auto;display:block"></a><a class="tel" href="tel:2495357501">249-535-7501</a></div>
+  <h1>Heated driveway: <span>does it pay off?</span></h1>
+  <p class="sub">Put in what you pay for plowing now. See the extra cost of a heated slab, what it costs to run, and the year it breaks even.</p>
+
+  <section class="step">
+    <h2>1. Your driveway</h2>
+    <div class="lab" style="margin-top:0">Driveway size (sq ft)</div>
+    <input id="area" type="number" inputmode="decimal" min="50" step="any" value="900">
+    <div class="lab">Heating system</div>
+    <div class="chips" id="sys"></div>
+    <div class="lab">What you pay for snow clearing per winter ($)</div>
+    <input id="plow" type="number" inputmode="decimal" min="0" step="any" value="600">
+    <p class="hint">Plow contract, or your own cost for a blower, fuel and time. Salt and damage repairs can be added in.</p>
+  </section>
+
+  <section class="step">
+    <h2>2. Running cost assumptions</h2>
+    <div class="lab" style="margin-top:0">Heating cost per sq ft per winter ($)</div>
+    <input id="op" type="number" inputmode="decimal" min="0" step="any">
+    <div class="lab">Yearly price increase (%)</div>
+    <input id="inf" type="number" inputmode="decimal" min="0" max="15" step="any" value="3">
+    <div class="note">Running cost depends on your electricity or gas rate, how much snow falls, and whether the system runs on a sensor or a timer. The starting figures are rough estimates, not measurements. Change them to match your own rates. We confirm real numbers at a free site visit.</div>
+  </section>
+
+  <section class="step">
+    <h2>3. Result</h2>
+    <div class="out" id="out"></div>
+    <div id="verdict" class="msg"></div>
+    <svg id="chart" viewBox="0 0 640 300" role="img" aria-label="Cumulative cost, plowing versus heated slab, by year"></svg>
+    <table id="tbl"></table>
+    <p class="fine">The heated slab cost is the extra amount on top of a normal concrete driveway, using our standard heated-slab pricing (electric $16/sq ft plus $1,800, hydronic $22/sq ft plus $6,500). It does not count the value of avoided shoveling, slip risk, salt damage to concrete, or added resale appeal. Estimates only.</p>
+    <a class="btn cta" id="quoteLink" href="/instant-quote.html">Price my heated driveway</a>
+  </section>
+  <p class="fine">Kowalski Concrete Contracting Inc. &middot; 249-535-7501 &middot; Innisfil, Simcoe County &amp; Muskoka</p>
+</div>
+<script>
+const HEAT={elec:{name:"Electric",perSq:16,flat:1800,op:1.0},hydro:{name:"Hydronic",perSq:22,flat:6500,op:0.7}};
+const HORIZON=20;
+/* pure model: returns premium, year-1 costs, cumulative arrays and break-even year */
+function model(o){
+  const h=HEAT[o.sys], a=+o.area, premium=a*h.perSq+h.flat;
+  const g=1+(+o.inf||0)/100;
+  let cumP=0,cumH=premium,plowCum=[0],heatCum=[premium],be=null,y1p=+o.plow,y1h=a*(+o.op);
+  for(let y=1;y<=HORIZON;y++){
+    const f=Math.pow(g,y-1);
+    cumP+=y1p*f; cumH+=y1h*f;
+    plowCum.push(cumP); heatCum.push(cumH);
+    if(be===null && cumP>=cumH) be=y;
+  }
+  return {premium,y1p,y1h,plowCum,heatCum,be};
+}
+if(typeof module!=="undefined") module.exports={model,HEAT};
+if(typeof document!=="undefined") (function(){
+  const $=id=>document.getElementById(id), fmt=n=>"$"+Math.round(n).toLocaleString("en-CA");
+  let sys="elec";
+  const sysBox=$("sys");
+  Object.entries(HEAT).forEach(([k,v])=>{
+    const b=document.createElement("button"); b.type="button"; b.className="chip"+(k===sys?" on":""); b.textContent=v.name;
+    const s=document.createElement("small"); s.textContent=k==="elec"?"Cables in the slab":"Heated fluid loops"; b.appendChild(s);
+    b.onclick=()=>{ sys=k; sysBox.querySelectorAll(".chip").forEach(c=>c.classList.toggle("on",c===b)); $("op").value=HEAT[k].op; update(); };
+    sysBox.appendChild(b);
+  });
+  $("op").value=HEAT[sys].op;
+  ["area","plow","op","inf"].forEach(id=>$(id).addEventListener("input",update));
+  function chart(m){
+    const W=640,H=300,L=56,R=12,T=14,B=30, max=Math.max(m.plowCum[HORIZON],m.heatCum[HORIZON],1);
+    const X=y=>L+(W-L-R)*y/HORIZON, Y=v=>T+(H-T-B)*(1-v/max);
+    const path=arr=>arr.map((v,i)=>(i?"L":"M")+X(i).toFixed(1)+" "+Y(v).toFixed(1)).join("");
+    let g="";
+    for(let i=0;i<=4;i++){ const v=max*i/4; g+='<line x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'" stroke="rgba(255,255,255,.12)"/><text x="'+(L-6)+'" y="'+(Y(v)+4)+'" text-anchor="end" fill="#9b948a" font-size="11" font-family="IBM Plex Mono,monospace">'+(v>=1000?"$"+Math.round(v/1000)+"k":"$"+Math.round(v))+'</text>'; }
+    for(let y=0;y<=HORIZON;y+=5) g+='<text x="'+X(y)+'" y="'+(H-10)+'" text-anchor="middle" fill="#9b948a" font-size="11" font-family="IBM Plex Mono,monospace">'+(y?"Yr "+y:"Now")+'</text>';
+    g+='<path d="'+path(m.plowCum)+'" fill="none" stroke="#E8E4DE" stroke-width="2.5" stroke-dasharray="6 4"/><path d="'+path(m.heatCum)+'" fill="none" stroke="#F59E0B" stroke-width="3"/>';
+    if(m.be) g+='<circle cx="'+X(m.be)+'" cy="'+Y(m.plowCum[m.be])+'" r="5" fill="#141414" stroke="#F59E0B" stroke-width="2.5"/>';
+    g+='<text x="'+(L+8)+'" y="'+(T+14)+'" text-anchor="start" fill="#F59E0B" font-size="12" font-family="IBM Plex Mono,monospace">Heated slab (solid)</text><text x="'+(L+8)+'" y="'+(T+30)+'" text-anchor="start" fill="#E8E4DE" font-size="12" font-family="IBM Plex Mono,monospace">Plowing (dashed)</text>';
+    $("chart").innerHTML=g;
+  }
+  function update(){
+    const o={area:$("area").value,sys,plow:$("plow").value,op:$("op").value,inf:$("inf").value};
+    if(!(+o.area>0)||!(+o.plow>=0)||!(+o.op>=0)||$("plow").value===""||$("op").value===""){ $("out").innerHTML=""; $("verdict").textContent="Fill in the size and costs above."; return; }
+    const m=model(o);
+    $("out").innerHTML=[[fmt(m.premium),"Extra cost to heat"],[fmt(m.y1h),"Heating, first winter"],[fmt(m.y1p),"Plowing, first winter"],[m.be?"Year "+m.be:"Beyond "+HORIZON+" yrs","Break-even"]].map(x=>'<div class="stat"><b>'+x[0]+'</b><span>'+x[1]+'</span></div>').join("");
+    const v=$("verdict");
+    if(m.be) v.textContent="On these numbers, the heated slab costs less overall than plowing from year "+m.be+" onward, before counting the convenience.";
+    else v.textContent="On these numbers, plowing stays cheaper over "+HORIZON+" years. Heated slabs are usually chosen for convenience, safety and no salt on the concrete. Try your own figures above.";
+    chart(m);
+    let t='<tr><th>Years</th><th>Plowing</th><th>Heated slab</th></tr>';
+    [1,5,10,15,20].forEach(y=>{ t+='<tr'+(m.be===y?' class="be"':'')+'><td>'+y+'</td><td>'+fmt(m.plowCum[y])+'</td><td>'+fmt(m.heatCum[y])+'</td></tr>'; });
+    $("tbl").innerHTML=t;
+    $("quoteLink").href="/instant-quote.html?type=driveway&heated="+sys+"&sqft="+Math.round(+o.area);
+  }
+  update();
+})();
+</script>
+<script src="/kc-track.js" defer></script>
+</body>
+</html>
